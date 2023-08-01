@@ -1,0 +1,90 @@
+// Import SCSS STYLE GENERAL
+// @import "../style.scss";
+
+/* Dashboard page */
+
+//Input
+.input-group {
+@extend .my-input-group !optional;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 100%;
+    }
+
+    // Bouton Création de compte
+
+    @media (min-width: 992px) { /* Taille lg et supérieure */
+    .btn-lg-lg {
+    font-size: 1.25rem;
+    }
+}
+
+// btn-responsive
+@media (max-width: 767px) {
+.btn-responsive {
+font-size: 0.55rem;
+    }
+}
+
+@media (min-width: 767px ) and (max-width: 992px) {
+.btn-responsive {
+font-size: 0.85rem;
+    }
+}
+
+//Text users
+
+div.container {
+    div.row {
+        div.col-lg-6 {
+            div.m-2 {
+                h3 {
+                    + p {
+                    font-family: $font-text;
+                    font-style: normal;
+                    font-weight: 500;
+                    font-size: 1rem;
+                    line-height: 21px;
+                    color: #B5B5C3;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+// Avatar
+.user-details {
+    display: flex;
+    align-items: center;
+}
+
+.avatar {
+    margin-right: 10px;
+}
+
+
+//Ligne admin
+// div.container-lg > 
+// div.row > 
+// div.col-lg-12.col-10 > 
+// div.mb-1 > 
+// ul.list-unstyled > 
+// li:nth-child(1) > div {
+//     margin-right: 7.2rem;
+    
+// }
+
+//     @media (min-width: 669px ) and (max-width: 766px) {
+//         div.container-lg > 
+//         div.row > 
+//         div.col-lg-12.col-10 > 
+//         div.mb-1 > 
+//         ul.list-unstyled > 
+//         li:nth-child(1) > div {
+//             margin-right: 5.5rem;
+//     }
+
+// }

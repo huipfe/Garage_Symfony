@@ -1,0 +1,298 @@
+// Import SCSS STYLE GENERAL
+// @import "../style.scss";
+
+/* Login page */
+
+// Se connecter
+div.col-lg-5 {
+    p:nth-child(2) {
+        font-family: $font-text;
+        font-weight: 200;
+        font-size: 20px;
+        line-height: 25px;
+        font-style: normal;
+        color: $color-primary_white;
+    }
+}
+
+@media (min-width: 992px) {
+    div.col-lg-5 {
+        p:nth-child(2) {
+        color: #8F8F8F;
+        }
+    }
+}
+
+
+// Div Input Name
+div.form-outline.mb-4 {
+    label {
+        font-family: $font-headline;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 30px;
+        line-height: 15px;
+    }
+}
+
+// Text Div Mot de passe
+
+.mot-de-passe {
+    font-family: $font-text;
+    font-style: normal;
+    font-weight: 100;
+    font-size: 20px;
+    line-height: 15px;
+    color: $color-primary_white;
+}
+@media (min-width: 992px) {
+    .mot-de-passe {
+        font-weight: 100;
+        font-size: 15px;
+        line-height: 20px;
+        color: #8F8F8F;
+    }
+}
+
+// Bouton connexion
+button.btn-connexion {
+    background-color: $color-primary_red_dark;
+}
+
+// Input Form Control
+.my-form-control {
+    @extend .form-control !optional;
+        display: block;
+        width: 100%;
+        padding: 0.375rem 0.75rem;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: $color-primary_white;
+        
+        background-color: transparent;
+        background-clip: padding-box;
+        border: var(--bs-border-width) solid #C3C3C3;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        border-radius: var(--bs-border-radius);
+        transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.my-form-control::placeholder {
+    font-family: $font-text;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 25px;
+    color: $color-primary_white;
+}
+
+
+@media (min-width: 992px) {
+    .my-form-control {
+    @extend .form-control !optional;
+    color: $color-primary_black;
+}
+    .my-form-control::placeholder {
+        font-weight: 200;
+        font-size: 15px;
+        line-height: 20px;
+        color: #8F8F8F;
+    }
+}
+
+// Image & texte - Desktop
+
+
+div.col-lg-7.col-xl-6 {
+    div {
+        p.mb-2.mx-1.mt-4.d-none.d-lg-block {
+                &:nth-of-type(1) {
+                position: absolute;
+                top: 45%;
+                left: 33%;
+                transform: translate(-110%, -80%);
+                font-family: $font-headline;
+                font-style: normal;
+                font-weight: 600;
+                font-size: 40px;
+                line-height: 46px;
+                color: $color-primary_white;
+            }
+
+                &:nth-of-type(2) {
+                position: absolute;
+                top: 55%;
+                left: 33%;
+                transform: translate(-105%, 45%);
+                font-family: $font-text;
+                font-style: normal;
+                font-weight: 600;
+                font-size: 16px;
+                line-height: 19px;
+                color: $color-primary_white;
+            }
+        }
+    }
+}
+
+    @media (min-width: 1440px) and (max-width: 1619px) {
+                div.col-lg-7.col-xl-6 {
+        div {
+            p.mb-2.mx-1.mt-4.d-none.d-lg-block {
+                    &:nth-of-type(1) {
+                    left: 33%;
+                    font-size: 35px;
+                    line-height: 36px;
+    
+                }
+    
+                    &:nth-of-type(2) {
+                    left: 35%;
+                    font-size: 15px;
+                    line-height: 20px;
+                }
+            }
+        }
+    }
+}
+
+
+    @media (min-width: 1200px) and (max-width: 1439px) {
+                div.col-lg-7.col-xl-6 {
+        div {
+            p.mb-2.mx-1.mt-4.d-none.d-lg-block {
+                    &:nth-of-type(1) {
+                    left: 40%;
+                    transform: translate(-110%, -80%);
+                    font-size: 35px;
+                    line-height: 36px;
+    
+                }
+    
+                    &:nth-of-type(2) {
+                    left: 43%;
+                    transform: translate(-105%, 45%);
+                    font-size: 15px;
+                    line-height: 25px;
+                }
+            }
+        }
+    }
+}
+
+    @media (min-width: 992px) and (max-width: 1199px) {
+                div.col-lg-7.col-xl-6 {
+        div {
+            p.mb-2.mx-1.mt-4.d-none.d-lg-block {
+                    &:nth-of-type(1) {
+                    left: 45%;
+                    transform: translate(-110%, -80%);
+                    font-size: 33px;
+                    line-height: 40px;
+    
+                }
+    
+                    &:nth-of-type(2) {
+                    left: 45%;
+                    transform: translate(-105%, 45%);
+                    font-size: 13px;
+                    line-height: 27px;
+                }
+            }
+        }
+    }
+}
+
+
+// Members Staff img & text
+    .staff-members {
+        position: absolute;
+        width: 10%;
+        height: auto;
+        top: 90%;
+        left: 17%;
+        transform: translate(-110%, -80%);
+    }
+    .staff-members-text {
+        font-family: $font-text;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 14px;
+        color: $color-primary_white;
+        
+        position: absolute;
+        top: 89%;
+        left: 25%;
+        transform: translate(-110%, -80%);
+    }
+
+
+@media (min-width: 1670px) and (max-width: 1820px) {
+    .staff-members {
+        width: 10%;
+        top: 85%;
+        left: 15%;
+        }
+
+    .staff-members-text {
+        top: 84%;
+        left: 24%;
+    }
+}
+
+@media (min-width: 1580px) and (max-width: 1669px) {
+    .staff-members {
+        width: 10%;
+        top: 80%;
+        left: 13%;
+    }
+    .staff-members-text {
+        top: 79%;
+        left: 22%;
+    }
+}
+
+@media (min-width: 1439px) and (max-width: 1579px) {
+    .staff-members {
+        width: 10%;
+        top: 80%;
+        left: 13%;
+    }
+    .staff-members-text {
+        top: 79%;
+        left: 23%;
+    }
+}
+
+
+    @media (min-width: 1200px) and (max-width: 1439px) {
+        .staff-members {
+        width: 10%;
+        top: 80%;
+        left: 20%;
+        }
+        .staff-members-text {
+        top: 79%;
+        left: 30%;
+        font-size: 12px;
+        line-height: 14px;
+        }
+}
+
+    @media (min-width: 992px) and (max-width: 1199px) {
+        .staff-members {
+            width: 10%;
+            top: 76%;
+            left: 16%;
+        }
+        .staff-members-text {
+        top: 75%;
+        left: 27%;
+        font-size: 10px;
+        line-height: 14px;
+        }
+}

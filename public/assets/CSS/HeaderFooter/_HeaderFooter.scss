@@ -1,0 +1,79 @@
+// Import SCSS STYLE GENERAL
+// @import "../style.scss";
+
+
+/* Header */
+// Navbar
+ul.navbar-nav {
+    li.nav-item {
+        a.nav-link {
+            color: $color-primary_red_dark;
+        }
+    }
+}
+
+// Gaps @Media Quieries entre les éléments de ma navbar
+    @media (min-width: 1537px) {
+        .navbar-nav {
+            gap: 100px;
+        }
+    }
+    @media (min-width: 1418px) and (max-width: 1537px) {
+        .navbar-nav {
+            gap: 80px;
+        }
+    }
+    @media (min-width: 1358px) and (max-width: 1417px) {
+        .navbar-nav {
+            gap: 70px;
+        }
+    }
+    @media (min-width: 1298px) and (max-width: 1357px) {
+        .navbar-nav {
+            gap: 60px;
+        }
+    }
+    @media (min-width: 1238px) and (max-width: 1297px) {
+        .navbar-nav {
+            gap: 50px;
+        }
+    }
+    @media (min-width: 1177px) and (max-width: 1237px){
+        .navbar-nav {
+            gap: 40px;
+        }
+    }
+    @media (min-width: 1112px) and (max-width: 1176px){
+        .navbar-nav {
+            gap: 30px;
+        }
+    }
+        @media (min-width: 1048px) and (max-width: 1111px){
+        .navbar-nav {
+            gap: 20px;
+        }
+    }
+        @media (min-width: 992px) and (max-width: 1047px){
+        .navbar-nav {
+            gap: 10px;
+        }
+    }
+
+
+/* Footer */
+footer {
+    // background-color: $color-primary_black linear-gradient
+    // background: 
+    //     linear-gradient(to bottom right, #333 0%, #000 50%) bottom right / 50% 50% no-repeat, 
+    //     linear-gradient(to bottom left, #333 0%, #000 50%) bottom left / 50% 50% no-repeat, 
+    //     linear-gradient(to top left, #333 0%, #000 50%) top left / 50% 50% no-repeat, 
+    //     linear-gradient(to top right, #333 0%, #000 50%) top right / 50% 50% no-repeat;
+    background: 
+        linear-gradient(to bottom right, $color-primary_black 0%, #000 50%) bottom right/51% 51% no-repeat,
+        linear-gradient(to bottom left, $color-primary_black 0%, #000 50%) bottom left/50% 51% no-repeat,
+        linear-gradient(to top left, $color-primary_black 0%, #000 50%) top left/51% 51% no-repeat, 
+        linear-gradient(to top right, $color-primary_black 0%, #000 50%) top right/50% 51% no-repeat; 
+    
+
+    color: $color-primary_white;
+}

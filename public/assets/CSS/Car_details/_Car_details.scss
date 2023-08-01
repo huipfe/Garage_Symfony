@@ -1,0 +1,189 @@
+/* Haut de la page - image */
+section#header {
+    div.container {
+        background: $color-primary_red_light;
+        width: auto;
+        height: 380px;
+
+            @media (min-width: 480px) and (max-width: 520px) {
+                height: 410px;
+            }
+        
+            @media (min-width: 521px) and (max-width: 767px) {
+                height: 450px;
+            }
+        
+            @media (min-width: 768px) and (max-width: 992px) {
+                height: 570px;
+            }
+        
+            @media (min-width: 993px) and (max-width: 1200px) {
+                height: 678px;
+            }
+            @media (min-width: 1200px) and (max-width: 1400px) {
+                height: 630px;
+            }
+            @media (min-width: 1400px) {
+                height: 630px;
+            }
+        }
+        /* Bouton Retour flêche */
+    div.justify-content-start a.text-decoration-none span {
+        color: $color-primary_black;
+        text-align: start;
+        font-size: 12px;
+        font-family: $font-text;
+        font-weight: 500;
+        line-height: 15px;
+        letter-spacing: 0.30px;
+    }
+
+  /* Image */
+    img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+
+/* Descriptif */
+section#description {
+    div.m-2.fw-4 {
+        display: flex;
+        width: 100px;
+        height: auto;
+        padding: 2px 6px;
+        align-items: center;
+        gap: 10px;
+        flex-shrink: 0;
+        border-radius: 10px;
+        background: var(--red, $color-primary_red_dark);
+        color: var(--primary-grey-6, $color-primary_white);
+
+        p {
+            font-size: 14px;
+            margin: 0.5rem;
+            margin-left: 14px;
+            font-family: $font-headline;
+            font-weight: 600;
+            letter-spacing: 0.72px;
+            text-transform: uppercase;
+        }
+    }
+
+    div.m-2 {
+        h1 {
+            color: $color-primary_black;
+            font-size: 35px;
+            font-family: $font-headline;
+            font-weight: 600;
+        }
+        h2 {
+            color: $color-primary_black;
+            font-size: 25px;
+            font-family: $font-headline;
+            font-weight: 500;
+        }
+
+        h3 {
+            color: $color-primary_black;
+            font-size: 20px;
+            font-family: $font-headline;
+            font-weight: 400;
+        }
+    }
+
+    div.m-3 {
+    /* Genre + étoile */
+    h4 {
+        color: $color-primary_red_light;
+        text-align: start;
+        font-size: 20px;
+        margin-right: 20px;
+        font-family: $font-text;
+        font-weight: 500;
+        line-height: 15px;
+        letter-spacing: 1.65px;
+    }
+
+    .bi-star-fill::before {
+        content: "\f586";
+        color: #f2d900;
+        }
+    }
+
+    div.mb-2 {
+        h5 {
+            color: $color-primary_black;
+            font-size: 20px;
+            font-family: $font-text;
+            font-weight: 600;
+            line-height: 15px;
+            letter-spacing: 0.24px;
+        }
+
+    /* Text */
+    p {
+        color: $color-primary_black;
+        font-size: 13px;
+        font-family: $font-text;
+        font-weight: 300;
+        line-height: 180%;
+        letter-spacing: 0.2px;
+        display: flex;
+        flex-direction: column;
+        margin-left: 1.5rem;
+        }
+    }
+}
+
+/* Série image modal & poids */
+section#modal-image {
+    display: flex;
+    width: 380px;
+    height: 189px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 19px;
+    flex-shrink: 0;
+
+    .m-2 {
+        align-items: center;
+        gap: 23px;
+        flex-shrink: 0;
+    }
+
+    button.btn {
+        border-radius: 10px;
+        border: 5px solid $color-primary_red;
+        background: lightgray 6.132px 8.137px / 75% 75% no-repeat, $color-primary_white;
+    }
+
+    img {
+        width: 50px;
+        height: 50px;
+    }
+
+    h5 {
+        color: $color-primary_black;
+        font-size: 20px;
+        font-family: $font-text;
+        font-weight: 600;
+        line-height: 15px;
+        letter-spacing: 0.24px;
+    }    
+
+  /* Button */
+    .my-btn-danger {
+        @extend .btn !optional;
+        @extend .btn-danger !optional;
+        border-radius: 10px;
+        border: 2px solid $color-primary_black;
+        background: $color-primary_red;
+        margin-left: 5px;
+    }
+}
+
+
+
+

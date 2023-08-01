@@ -1,0 +1,547 @@
+// Import SCSS STYLE GENERAL
+// @import "../style.scss";
+
+/* Used_cars_listing page */
+
+main div  {
+    h1.products {
+    font-family: $font-headline;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 64px;
+    // display: flex;
+    align-items: center;
+    text-align: center;
+    text-transform: uppercase;
+    color: $color-primary_black;
+    }
+
+}
+
+// Mis en avant 
+
+#ads {
+    margin: 30px 0 30px 0;
+}
+
+#ads .card-notify-badge {
+        position: absolute;
+        left: -10px;
+        top: -20px;
+        background: #f2d900;
+        text-align: center;
+        border-radius: 30px 30px 30px 30px; 
+        color: $color-primary_black;
+        padding: 5px 10px;
+        font-size: 14px;
+
+    }
+
+#ads .card-notify-year {
+        position: absolute;
+        right: -10px;
+        top: -20px;
+        background: $color-primary_red;
+        border-radius: 50%;
+        text-align: center;
+        color: $color-primary_white;      
+        font-size: 14px;      
+        width: 50px;
+        height: 50px;    
+        padding: 15px 0 0 0;
+}
+
+
+#ads .card-detail-badge {      
+        background: #f2d900;
+        text-align: center;
+        border-radius: 30px 30px 30px 30px;
+        color: $color-primary_black;
+        padding: 5px 10px;
+        font-size: 14px;        
+    }
+
+
+
+#ads .card:hover {
+            background: $color-primary_white;
+            box-shadow: 12px 15px 20px 0px rgba(46,61,73,0.15);
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+#ads .card-image-overlay {
+        font-size: 20px;
+        
+    }
+
+
+#ads .card-image-overlay span {
+            display: inline-block;              
+        }
+
+
+#ads .ad-btn {
+        text-transform: uppercase;
+        width: 150px;
+        height: 40px;
+        border-radius: 80px;
+        font-size: 16px;
+        line-height: 35px;
+        text-align: center;
+        border: 3px solid #e6de08;
+        display: block;
+        text-decoration: none;
+        margin: 20px auto 1px auto;
+        color: $color-primary_black;
+        overflow: hidden;        
+        position: relative;
+        background-color: #e6de08;
+    }
+
+#ads .ad-btn:hover {
+            background-color: #e6de08;
+            color: $color-primary_black;
+            border: 2px solid #e6de08;
+            // background: transparent;
+            transition: all 0.3s ease;
+            box-shadow: 12px 15px 20px 0px rgba(46,61,73,0.15);
+        }
+
+#ads .ad-title h5 {
+        text-transform: uppercase;
+        font-size: 18px;
+    }
+
+// Barre de recherche
+
+
+// Barre de filtrage Mobile
+section#filter-sidebar {
+    div.filtrage-bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 40rem;
+        height: 3rem;
+        background: $color-primary_white;
+        border-radius: 21px;
+        padding: 0 10px;
+
+        margin-left: 18px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+
+        h5.m-2.p-2.filtrage-title {
+            font-family: $font-headline;
+            font-style: normal;
+            font-weight: 600;
+            font-size: 0.8rem;
+            line-height: 13px;
+            color: $color-primary_black;
+            margin: 0;
+        }
+
+        div.gray-bar {
+            display: flex;
+            align-items: center;
+            flex-grow: 1;
+            height: 34px;
+            margin: 4px;
+            background: $color-primary_black;
+            padding: 0 10px;
+
+            .form-check {
+                margin-right: 2px;
+                margin-bottom: 0;
+                margin-top: 0;
+            }
+
+            span {
+                font-family: $font-text;
+                font-style: normal;
+                font-weight: 500;
+                font-size: 10px;
+                line-height: 12px;
+                text-align: start;
+                color: $color-primary_white;
+                margin: 0 5px;
+            }
+        }
+    }
+}
+
+
+// Checkbox
+.form-check-input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+}
+
+.form-check-input[type="checkbox"] + .form-check-label::before {
+    content: "";
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-left: -7px;
+    background-color: $color-primary_red_dark;
+    border: 1px solid $color-primary_red_light;
+    border-radius: 3px;
+    vertical-align: middle;
+}
+
+.form-check-input[type="checkbox"]:checked + .form-check-label::before {
+    content: "\2713";
+    color: $color-primary_white;
+    text-align: center;
+    line-height: 16px;
+}
+
+
+// Barre de filtrage LG >992px
+
+@media (min-width: 1701px)   {
+    section#filter-sidebar {
+        div.filtrage-bar {
+            width: 70rem;
+            height: 4rem;
+            padding: 0 25px;
+            margin-left: 20rem;
+
+            div.gray-bar {
+                height: 50px;
+                padding: 0 120px;
+
+                .form-check {
+                    margin-right: 40px;
+                    margin-left: 20px;
+                }
+
+                span {
+                font-family: $font-text;
+                font-style: normal;
+                font-weight: 500;
+                font-size: 13px;
+                line-height: 10px;
+                text-align: start;
+                color: $color-primary_white;
+                margin: 0 5px;
+                }
+            }
+        }
+    }
+    .form-check-input[type="checkbox"] + .form-check-label::before {
+    width: 20px;
+    height: 20px;
+    margin-left: 5px;
+    border-radius: 5px;
+    }
+    div.container-lg > div.row > div.col-lg-6 > div.input-group {
+        margin-top: 12px;
+        margin-left: -10px;
+    }
+}
+
+@media (min-width: 1501px) and (max-width: 1700px)  {
+    section#filter-sidebar {
+        div.filtrage-bar {
+            width: 70rem;
+            height: 4rem;
+            padding: 0 25px;
+            margin-left: 15rem;
+
+            div.gray-bar {
+                height: 50px;
+                padding: 0 120px;
+
+                .form-check {
+                    margin-right: 40px;
+                    margin-left: 20px;
+                }
+
+                span {
+                font-family: $font-text;
+                font-style: normal;
+                font-weight: 500;
+                font-size: 13px;
+                line-height: 20px;
+                text-align: start;
+                color: $color-primary_white;
+                margin: 0 5px;
+                }
+            }
+        }
+    }
+    .form-check-input[type="checkbox"] + .form-check-label::before {
+    width: 20px;
+    height: 20px;
+    margin-left: 5px;
+    border-radius: 5px;
+    }
+    div.container-lg > div.row > div.col-lg-6 > div.input-group {
+        margin-top: 12px;
+        margin-left: -10px;
+    }
+}
+
+
+
+@media (min-width: 1301px) and (max-width: 1500px) {
+    section#filter-sidebar {
+        div.filtrage-bar {
+            width: 70rem;
+            height: 4rem;
+            padding: 0 25px;
+            margin-left: 10rem;
+
+            div.gray-bar {
+                height: 50px;
+                padding: 0 120px;
+
+                .form-check {
+                    margin-right: 40px;
+                    margin-left: 20px;
+                }
+
+                span {
+                font-family: $font-text;
+                font-style: normal;
+                font-weight: 500;
+                font-size: 10px;
+                line-height: 12px;
+                text-align: start;
+                color: $color-primary_white;
+                margin: 0 5px;
+                }
+            }
+        }
+    }
+    .form-check-input[type="checkbox"] + .form-check-label::before {
+    width: 20px;
+    height: 20px;
+    margin-left: 5px;
+    border-radius: 5px;
+    }
+    div.container-lg > div.row > div.col-lg-6 > div.input-group {
+        margin-top: 12px;
+        margin-left: -10px;
+    }
+}
+
+
+
+@media (min-width: 1201px) and (max-width: 1300px) {
+    section#filter-sidebar {
+        div.filtrage-bar {
+            width: 70rem;
+            height: 4rem;
+            padding: 0 25px;
+            margin-left: 5rem;
+
+            div.gray-bar {
+                height: 50px;
+                padding: 0 130px;
+
+                .form-check {
+                    margin-right: 40px;
+                    margin-left: 20px;
+                }
+
+                span {
+                font-family: $font-text;
+                font-style: normal;
+                font-weight: 500;
+                font-size: 10px;
+                line-height: 12px;
+                text-align: start;
+                color: $color-primary_white;
+                margin: 0 5px;
+                }
+            }
+        }
+    }
+    .form-check-input[type="checkbox"] + .form-check-label::before {
+    width: 20px;
+    height: 20px;
+    margin-left: 5px;
+    border-radius: 5px;
+    }
+    div.container-lg > div.row > div.col-lg-6 > div.input-group {
+        margin-top: 12px;
+        margin-left: -10px;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1200px) {
+    section#filter-sidebar {
+        div.filtrage-bar {
+            width: 60rem;
+            height: 4rem;
+            padding: 0 30px;
+
+            margin-left: 2rem;
+
+            div.gray-bar {
+                height: 40px;
+                padding: 0 70px;
+
+                .form-check {
+                    margin-right: 34px;
+                    margin-bottom: 0;
+                    margin-top: 0;
+                }
+            }
+        }
+    }
+    div.container-lg > div.row > div.col-lg-6 > div.input-group {
+        margin-top: 12px;
+        margin-left: -10px;
+    }
+}
+
+// Barre de filtrage Mobile >819px
+@media (min-width: 819px) and (max-width: 992px) {
+    section#filter-sidebar {
+            div.filtrage-bar {
+                width: 50rem;
+                height: 4rem;
+                padding: 0 25px;
+                margin-left: 1rem;
+                margin-top: 15px;
+                margin-bottom: 20px;
+                h5.m-2.p-2.filtrage-title {
+                        font-size: 0.7rem;
+                }
+    
+                div.gray-bar {
+                    width: 20rem;
+                    height: 35px;
+                    margin: 1px;
+                    padding: 0 25px;
+    
+                    .form-check {
+                        margin-left: 9px;
+                        margin-right: 25px;
+                    }
+                    span {
+                        font-size: 9px;
+                        margin: 0 3px;
+
+                }
+            }
+        }
+    }
+}
+
+// Barre de filtrage Mobile <680px
+@media (min-width: 560px) and (max-width: 680px) {
+    section#filter-sidebar {
+        div.filtrage-bar {
+            width: 30rem;
+            padding: 0 5px;
+
+            h5.m-2.p-2.filtrage-title {
+                font-size: 0.7rem;
+            }
+
+            div.gray-bar {
+                width: 20rem;
+                height: 28px;
+                margin: 1px;
+                padding: 0 22px;
+
+                .form-check {
+                    margin-right: -2px;
+                    margin-left: -25px;
+                }
+
+                span {
+                    font-size: 9px;
+                    margin: 5 3px;
+                }
+            }
+        }
+    }
+    
+    .form-check-input[type="checkbox"] + .form-check-label::before {
+        width: 12px;
+        height: 12px;
+        margin-left: -1px;
+    }
+
+    .form-check-input[type="checkbox"]:checked + .form-check-label::before {
+        line-height: 12px;
+    }
+        .checkbox-icon {
+        font-size: 12px;
+        margin-left: -57px;
+        margin-right: 45px;
+    }
+}
+
+@media (max-width: 559px) {
+    section#filter-sidebar {
+        div.filtrage-bar {
+            width: 25rem;
+            padding: 0 5px;
+
+            h5.m-2.p-2.filtrage-title {
+                font-size: 0.7rem;
+            }
+
+            div.gray-bar {
+                width: 15rem;
+                height: 30px;
+                margin: 6px;
+                padding: 0 30px;
+
+                .form-check {
+                    margin-left: -15px;
+                    margin-right: 5px;
+                }
+
+                span {
+                    font-size: 6px;
+                    margin: 0 3px;
+                }
+            }
+        }
+    }
+    
+    .form-check-input[type="checkbox"] + .form-check-label::before {
+        width: 10px;
+        height: 10px;
+        margin-right: -8px;
+    }
+
+    .form-check-input[type="checkbox"]:checked + .form-check-label::before {
+        line-height: 15px;
+    }
+    .checkbox-icon {
+        font-size: 10px;
+        margin-left: -35px;
+        margin-right: 20px;
+    }
+}
+
+// Details button
+
+
+
+// Rating
+$star-color: #FFD233;
+
+.rating {
+    .bi-star-fill {
+        color: $star-color;
+    }
+
+    .bi-star {
+        color: rgba($star-color, 0.4); // Couleur avec une transparence de 0.4
+    }
+}
+
+.btn-danger .bi-info-circle-fill {
+    color: $color-primary_red_light;
+}
+

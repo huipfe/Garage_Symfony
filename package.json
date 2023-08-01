@@ -1,0 +1,5 @@
+{
+  "scripts": {
+    "scss:compile": "node-sass public/assets/CSS/style.scss public/assets/CSS/style.css"
+  }
+}
