@@ -5,9 +5,17 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class HomeController extends AbstractController
 {
+    //#[Route('/')]
+    //public function index() : Response
+    //{
+    //return $this->render('base.html.twig');
+    //}
+
     #[Route('/')]
-    public function index() : Response
+    public function index(): Response
     {
-        return $this->render('base.html.twig');
+        return $this->render('main/index.html.twig');
     }
+
 }
+
