@@ -55,15 +55,7 @@
     <main>
 
         <section class="position-relative">
-            {% if error %}
-                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-            {% endif %}
 
-            {% if app.user %}
-                <div class="mb-3">
-                    You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
-                </div>
-            {% endif %}
             <div class="container-fluid py-5 py-lg-0">
                 <div class="row d-flex align-items-center ">
                     <div class="col-md-8 col-lg-7 col-xl-6">
@@ -118,6 +110,16 @@
                                 <p class="fw-thin mb-5 mx-1 mt-4">
                                     Uniquement nos collaborateurs,<br> peuvent se connecter.</p>
                             </div>
+
+                            {% if error %}
+                                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                            {% endif %}
+
+                            {% if app.user %}
+                                <div class="mb-3">
+                                    You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+                                </div>
+                            {% endif %}
 
                             <!-- Name input -->
                             <!-- <div class="form-outline mb-4">
@@ -186,6 +188,34 @@
                                     class="btn btn-danger btn-connexion btn-lg btn-block w-100">
                                 Connexion
                             </button>
+
+                            <a href="{{ path('app_register') }}" class="btn btn-danger btn-lg btn-block w-100 my-3">
+                                <!--<svg
+                                        width="38"
+                                        height="38"
+                                        viewBox="0 0 38 38"
+                                        fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M18.9995 17.4167C20.2521 17.4167 21.4766 17.0452
+                                22.5181 16.3493C23.5597 15.6534 24.3714 14.6643 24.8508
+                                13.507C25.3301 12.3497 25.4555 11.0763 25.2112 9.84776C24.9668
+                                8.61922 24.3636 7.49073 23.4779 6.60499C22.5921 5.71926 21.4636
+                                5.11607 20.2351 4.8717C19.0066 4.62732 17.7331 4.75274 16.5759
+                                5.2321C15.4186 5.71145 14.4295 6.52321 13.7336 7.56472C13.0376
+                                8.60624 12.6662 9.83072 12.6662 11.0833C12.6662 12.763 13.3335
+                                14.3739 14.5212 15.5617C15.7089 16.7494 17.3198 17.4167 18.9995
+                                17.4167Z" fill="#D92332" />
+                                    <path d="M28.4997 33.25C28.9196 33.25
+                                29.3224 33.0832 29.6193 32.7863C29.9162
+                                32.4894 30.083 32.0866 30.083 31.6667C30.083
+                                28.7272 28.9153 25.9081 26.8368 23.8296C24.7583
+                                21.7511 21.9392 20.5834 18.9997 20.5834C16.0602 20.5834
+                                13.2411 21.7511 11.1626 23.8296C9.08409 25.9081 7.91638 28.7272 7.91638
+                                31.6667C7.91638 32.0866 8.0832 32.4894 8.38013 32.7863C8.67706 33.0832
+                                9.07979 33.25 9.49972 33.25H28.4997Z" fill="#D92332" />
+                                </svg>-->
+                                M'inscrire
+                            </a>
 
                         </form>
 
