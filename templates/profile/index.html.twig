@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profils de l'utilisateur{% endblock %}
+
+{% block body %}
+    <main>
+        <section>
+            <h1 class="m-1">Profil de l'utilisateur {{ user.firstname }} {{ user.lastname }}</h1>
+            <p class="m-3 fs-2">Mon email : {{ user.email }}</p>
+            <p class="m-3 fs-3">Mon adresse : {{ user.address }}</p>
+            <p class="m-3 fs-3">Mon code postale : {{ user.zipcode }}</p>
+            <p class="m-3 fs-3">Ma ville : {{ user.city }}</p>
+        </section>
+    </main>
+{% endblock %}

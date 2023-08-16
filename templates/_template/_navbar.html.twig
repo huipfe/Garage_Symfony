@@ -1,7 +1,7 @@
 <header id="header">
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-            <a class="navbar-brand img-fluid" href="#">
+            <a class="navbar-brand img-fluid" href="{{ path('home_index') }}">
                 <img
                         src="/Assets/images/Header & Footer/Logo_garage.png"
                         width="100"
@@ -53,8 +53,10 @@
                     </li>
 
                     <li class="nav-item ">
-                        <a class="nav-link" href="/cars">
-                            Nos produits</a>
+                        <!--<a class="nav-link" href="/cars">-->
+                        <a class="nav-link" href="{{ path('products_index') }}">
+                            Nos produits
+                        </a>
                     </li>
                     <!-- ECF_Garage/src/Views/templates/Used_cars_listing.html.php -->
 
@@ -113,7 +115,8 @@
                     <!-- Icône du tableau de bord (visible pour les administrateurs) -->
                     <li class="list-inline-item nav-item" style="margin-top: 5px;">
                         <!-- /ECF_Garage/src/Views/templates/Dashboard.html.php -->
-                        <a href="/dashboard/administration">
+                            <!--  <a href="/dashboard/administration">-->
+                        <a href="{{ path('admin_users_index') }}">
                             <svg width="30"
                                  height="35"
                                  viewBox="0 0 25 29"
@@ -164,6 +167,23 @@
                         </a>
                     </li>
 
+                        <!-- Profile-->
+                        <li class="list-inline-item nav-item" style="margin-top: 5px;">
+                            <a href="{{ path('profile_index') }}">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                     width="38"
+                                     height="38"
+                                     fill="none"
+                                     class="bi bi-person"
+                                     viewBox="0 0 16 16">
+                                    <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4
+                                    8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6
+                                    4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289
+                                    10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z" fill="#D92332" />
+                                </svg>
+                            </a>
+                        </li>
+
                     {% else%}
 
                     <?php else: ?>
@@ -200,7 +220,7 @@
                         </a>
                     </li>
 
-                        <!-- M'inscrire -->
+                        <!-- M'inscrire
                         <li class="list-inline-item nav-item" style="margin-top: 5px;">
                             <a href={{ path('app_register') }}>
                                 <svg xmlns="http://www.w3.org/2000/svg"
@@ -217,7 +237,7 @@
                                     9.038 8.564 9 8 9c-5 0-6 3-6 4s1 1 1 1h5.256Z"/>
                                 </svg>
                             </a>
-                        </li>
+                        </li>-->
 
                     {% endif %}
 

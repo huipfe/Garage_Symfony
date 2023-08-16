@@ -1,21 +1,27 @@
 <?php
 namespace App\Controller;
+use App\Repository\CategoriesRepository;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+
+#[Route('/', name: 'home_')]
 class HomeController extends AbstractController
 {
-    //#[Route('/')]
-    //public function index() : Response
-    //{
-    //return $this->render('base.html.twig');
-    //}
-
-    #[Route('/')]
-    public function index(): Response
+    #[Route('/', name: 'index')]
+    public function index(CategoriesRepository $categoriesRepository) : Response
     {
-        return $this->render('main/index.html.twig');
-    }
+    return $this->render('base.html.twig', [
+        'categories' => $categoriesRepository->findBy([],
+            ['categoryOrder' => 'asc']),
+    ]);
+}
+
+    //#[Route('/', name:'main') ]
+    //public function index(): Response
+    //{
+    //return $this->render('main/index.html.twig');
+    //}
 
 }
 
