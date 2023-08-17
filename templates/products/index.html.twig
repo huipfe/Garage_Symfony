@@ -11,7 +11,7 @@
             <div class="row">
 
                 <div class="col-lg">
-                    <h1 class="products">Nos Produits</h1>
+                    <h1 class="products">Nos Produits & Services</h1>
                 </div>
 
 
@@ -33,7 +33,7 @@
 
 
         <!-- Barre de filtrage -->
-        <section id="filter-sidebar">
+        <!--<section id="filter-sidebar">
             <div class=" filtrage-bar ">
                 <h5 class="m-2 p-2 filtrage-title">
                     Liste des voitures <br> d'occasions par filtre
@@ -105,7 +105,7 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section>-->
 
 
         <!-- Main cars -->
@@ -117,7 +117,11 @@
                 <?php foreach ($carsDetails as $car) : ?>-->
 
                 {% for category in categories %}
-
+                    {% if category.parent == null %}
+                    <div class="col-12 m-3 py-3">
+                        <h2>{{ category.name }}</h2>
+                    </div>
+                {% else %}
                 <div class="col-lg-4">
                     <div class="card mb-3" style="background: #E8E4E4;">
                         <div class="row g-0">
@@ -145,23 +149,20 @@
                                     <!--<?php endif; ?>-->
                                 {% endif %}
 
-                                <?php
-                            // Récupérer les données binaires de l'image depuis la base de données
-                            $imageData = $car->image;
-                                ?>
 
                                 <!-- Me permet de faire apparaitre les images de ma BDD,
-                                qui ont été passé via mon formulaire.-->
+                                qui ont été passé via mon formulaire.
                                 <img src="data:image/jpeg;base64,<?= $imageData ?>"
-                                     alt="ImageVoiture" class="img-fluid">
+                                     alt="ImageVoiture" class="img-fluid">-->
 
                             </div>
                             <div class="col-md-7 col-lg-12">
 
                                 <div class="card-body mx-3 text-md-center text-lg-end">
                                     <h3 class="card-title fw-bold"
-                                        id = "title-card"><?= $car->marque?>
+                                        id = "title-card">{{ category.name }}
                                     </h3>
+
 
                                     <p class="card-text fst-italic"
                                        id = "title-description">
@@ -194,6 +195,7 @@
                                     </span>
                                     </p>
 
+
                                     <!-- <div class="rating">
                                         <i class="bi bi-star-fill"></i>
                                         <i class="bi bi-star-fill"></i>
@@ -202,9 +204,9 @@
                                         <i class="bi bi-star"></i>
                                     </div> -->
 
-                                    <a href=""
-                                       class="btn btn-danger">Détails
-                                        <i class="mx-1 bi bi-info-circle-fill" style="color:#D9777F"></i>
+                                    <a href="{{ path('categories_list', {slug: category.slug}) }}"
+                                       class="btn btn-danger">Voir les produits
+                                        <i class="mx-1 bi bi-tools" style="color:#D9777F"></i>
                                     </a>
                                 </div>
                             </div>
@@ -213,6 +215,8 @@
                 </div>
 
                 <!--<?php endforeach; ?>-->
+
+                    {% endif %}
 
                 {% endfor %}
 
@@ -224,7 +228,7 @@
             <a href="/addCars/ajouter">
                 <button
                         class="btn btn-danger mx-2 my-2 bi bi-plus-circle">
-                    Ajouter Voiture
+                    Ajouter Catégorie
                 </button>
             </a>
             <!-- <?php endif; ?>-->
@@ -241,7 +245,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        Êtes-vous sûr de vouloir supprimer cette voiture ?
+                        Êtes-vous sûr de vouloir supprimer cette catégorie ?
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>

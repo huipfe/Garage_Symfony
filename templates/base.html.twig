@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-">
-    <title>{% block title %}Bienvenu sur le {% endblock %} Garage_V_Parrot - Symfony 6</title>
+    <title>{% block title %}Bienvenu sur le E-Commerce du {% endblock %} Garage_V_Parrot - Symfony 6</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22>
     <text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
 
@@ -38,10 +38,10 @@
     {% include "_template/_navbar.html.twig" %}
 
     {% block body %}
-     <main>
+     <!--<main>
         <section class="row">
         {% for category in categories %}
-            {% if category.parent ==null %}
+            {% if category.parent == null %}
                 <div class="col-12 m-3 py-3">
                    <h2>{{ category.name }}</h2>
                 </div>
@@ -51,19 +51,17 @@
                         <img src="..." class="card-img-top" alt="...">
                         <div class="card-body">
                             <h3 class="card-title">{{ category.name }}</h3>
-                            <a href="#" class="btn btn-primary">Voir les produits</a>
+                            <a href="{{ path('categories_list', {slug: category.slug}) }}" class="btn btn-primary">Voir les produits</a>
                         </div>
                     </div>
             </div>
-              <!--  <div class="col-3 fs-5 m-3 py-1">
-                    <a href="#">{{ category.name }}</a>
-                </div> -->
 
             {% endif %}
 
         {% endfor %}
         </section>
-    </main>
+    </main>-->
+
     {% endblock %}
 
     <!-- Footer -->

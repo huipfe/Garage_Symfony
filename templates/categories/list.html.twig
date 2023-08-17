@@ -1,0 +1,281 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}La Liste des {{ category.name }}{% endblock %}
+
+{% block body %}
+
+
+    <main >
+
+
+
+        <div class="container-lg">
+            <div class="row">
+
+                <div class="col-lg">
+                    <h1 class="products">
+                       La Liste  des {{ category.name }}
+                    </h1>
+                </div>
+
+
+
+                <div class="col-lg-6">
+                    <div class="input-group">
+                        <input type="text" class="form-control m-2 p-2 rounded-5"
+                               id="searchInput" placeholder="Recherche">
+                        <div class="input-group-append">
+                            <button class="btn btn-light m-2 p-2" type="button" id="searchButton">
+                                <i class="bi bi-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+
+        <!-- Barre de filtrage -->
+        <section id="filter-sidebar">
+            <div class=" filtrage-bar ">
+                <h5 class="m-2 p-2 filtrage-title">
+                    Liste des voitures <br> d'occasions par filtre
+                </h5>
+                <div class="gray-bar d-flex align-items-center">
+                    <div class="form-check ">
+                        <input class="form-check-input"
+                               type="checkbox"
+                               value=""
+                               id="checkbox1"
+                               name="years">
+                        <label
+                                class="form-check-label cursor-pointer"
+                                for="checkbox1">
+                            <span class="checkbox-icon pe-none">2020>=</span>
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input
+                                class="form-check-input"
+                                type="checkbox"
+                                value=""
+                                id="checkbox2"
+                                name="years">
+                        <label
+                                class="form-check-label cursor-pointer"
+                                for="checkbox2">
+                            <span class="checkbox-icon pe-none">2020<=</span>
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input
+                                class="form-check-input"
+                                type="checkbox"
+                                value=""
+                                id="checkbox3"
+                                name="kilometers">
+                        <label
+                                class="form-check-label cursor-pointer"
+                                for="checkbox3">
+                            <span class="checkbox-icon pe-none">2000km>=</span>
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input
+                                class="form-check-input"
+                                type="checkbox"
+                                value=""
+                                id="checkbox4"
+                                name="kilometers">
+                        <label
+                                class="form-check-label cursor-pointer"
+                                for="checkbox4">
+                            <span class="checkbox-icon pe-none">2000km<=</span>
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input
+                                class="form-check-input"
+                                type="checkbox"
+                                value=""
+                                id="checkbox5"
+                                name="price">
+                        <label
+                                class="form-check-label cursor-pointer"
+                                for="checkbox5">
+                            <span class="checkbox-icon pe-none">100000€<=</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+
+
+
+        <!-- Main cars -->
+
+        {% for product in products %}
+        <div class="container">
+            <div class="row">
+
+                <div class="justify-content-start">
+                    <a href="{{ path('products_index') }}"  class="text-decoration-none">
+                        <span>
+                            <button class="btn btn-danger">
+                                <i class="bi bi-arrow-left"></i>
+                                Retour à la liste
+                            </button>
+                        </span>
+                    </a>
+                </div>
+
+                        <div class=" col-lg-4">
+                            <div class="card mb-3" style="background: #E8E4E4;">
+                                <div class="row g-0">
+                                    <div class="col-md-5 col-lg-12">
+
+                                        <!-- Supression d'une voiture -->
+                                        {% if app.user %}
+                                            <!--<?php if(isset($_SESSION['user']) && !empty($_SESSION['user'])): ?>-->
+                                            <button class="btn btn-danger mx-2 my-2 bi bi-trash3-fill deleteBtn"
+                                                    data-bs-toggle="modal"
+                                                    data-bs-target="#deleteModal"
+                                                    data-action="/deleteCars/delete/<?= $car->id ?>">
+                                            </button>
+                                            <!--<?php endif; ?>-->
+                                        {% endif %}
+
+                                        <!-- Modification d'une voiture -->
+                                        {% if app.user %}
+                                            <!--<<?php if(isset($_SESSION['user']) && !empty($_SESSION['user'])): ?>-->
+                                            <a href="/modifier/modifie/<?= $car->id?>">
+                                                <button
+                                                        class="btn btn-danger mx-2 my-2 bi bi-pencil-square">
+                                                </button>
+                                            </a>
+                                            <!--<?php endif; ?>-->
+                                        {% endif %}
+
+                                        <?php
+                            // Récupérer les données binaires de l'image depuis la base de données
+                            $imageData = $car->image;
+                                        ?>
+                                        <!-- Me permet de faire apparaitre les images de ma BDD,
+                                        qui ont été passé via mon formulaire.-->
+                                        <img src="data:image/jpeg;base64,<?= $imageData ?>"
+                                             alt="ImageVoiture" class="img-fluid">
+
+                                    </div>
+
+                                    <div class="col-md-7 col-lg-12">
+
+
+
+                                        <div class="card-body mx-3 text-md-center text-lg-end">
+                                            <h3 class="card-title fw-bold"
+                                                id = "title-card">{{ product.name }}
+                                            </h3>
+
+
+                                            <p class="card-text fst-italic"
+                                               id = "title-description">
+                                                {{product.description }}
+                                            </p>
+
+                                            <p class="card-text fs-5"
+                                               id = "title-modele">Modèle :
+                                                <?= $car->modele?>
+                                            </p>
+
+                                            <p class="card-text fs-5 filter-year"
+                                               id = "title-year">Année :
+                                                <span>
+                                                <?= $car->annee?>
+                                            </span>
+                                            </p>
+
+                                            <p class="card-text fs-5 filter-kilometrage"
+                                               id = "title-kilometrage">Kilométrage :
+                                                <span>
+                                                <?= $car->kilometrage?> km
+                                            </span>
+                                            </p>
+
+                                            <p class="card-text fs-5"
+                                               id = "title-price">Prix :
+                                                <span class="fw-bold">
+                                                <?= $car->prix?>€
+                                            </span>
+                                            </p>
+
+
+                                            <!-- <div class="rating">
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star"></i>
+                                                <i class="bi bi-star"></i>
+                                            </div> -->
+
+                                            <a href=""
+                                               class="btn btn-danger">Détails
+                                                <i class="mx-1 bi bi-info-circle-fill" style="color:#D9777F"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--<?php endforeach; ?>-->
+                {% endfor %}
+
+
+
+            </div>
+
+            <!-- Creation d'une nouvelle voiture -->
+            {% if app.user %}
+                <!--<?php if(isset($_SESSION['user']) && !empty($_SESSION['user'])): ?>-->
+                <a href="/addCars/ajouter">
+                    <button
+                            class="btn btn-danger mx-2 my-2 bi bi-plus-circle">
+                        Ajouter {{category.name}}
+                    </button>
+                </a>
+                <!-- <?php endif; ?>-->
+
+            {% endif %}
+        </div>
+
+        <!-- Modal de suppression -->
+        <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="deleteModalLabel">Confirmation de suppression</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Êtes-vous sûr de vouloir supprimer cette {{category.name}}  ?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                        <form id="deleteForm" action="/deleteCars/delete/" method="POST">
+                            <button type="submit" class="btn btn-danger">Supprimer</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="/Assets/JS/Used_cars_listing.js"></script>
+
+    </main>
+
+{% endblock %}
