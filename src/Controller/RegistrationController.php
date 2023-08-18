@@ -5,6 +5,8 @@ namespace App\Controller;
 use App\Entity\Users;
 use App\Form\RegistrationFormType;
 use App\Security\UsersAuthenticator;
+use App\Service\JWTService;
+use App\Service\SendMailService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,7 +19,9 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 class RegistrationController extends AbstractController
 {
     #[Route('/register', name: 'app_register')]
-    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserAuthenticatorInterface $userAuthenticator, UsersAuthenticator $authenticator, EntityManagerInterface $entityManager): Response
+    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher,
+                             UserAuthenticatorInterface $userAuthenticator, UsersAuthenticator $authenticator,
+                             EntityManagerInterface $entityManager, SendMailService $mail, JWTService $jwt): Response
     {
         $user = new Users();
         $form = $this->createForm(RegistrationFormType::class, $user);
@@ -34,7 +38,38 @@ class RegistrationController extends AbstractController
 
             $entityManager->persist($user);
             $entityManager->flush();
+
+            // On génère le JWT de l'utilisateur
+
+            // On créer le header
+            $header =
+                [
+                    'type' => 'JWT',
+                    'alg' => 'HS256'
+                ];
+
+            // ON créer le payload
+            $payload =
+                [
+                    'user_id' => $user->getId()
+                ];
+
+            // On génère le Token
+
+            $token = $jwt ->generate($header, $payload,
+            $this->getParameter('app.jwtsecret'));
+
+            //dd($token);
+
             // do anything else you need here, like send an email
+            // On envoie un mail
+            $mail->send(
+                'no-reply@monsite.com',
+                $user->getEmail(),
+                "Activation de votre compte sur le site d'E-Commerce",
+                'register',
+                compact('user', 'token')
+            );
 
             return $userAuthenticator->authenticateUser(
                 $user,

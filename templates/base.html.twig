@@ -37,32 +37,20 @@
     <!-- NavBar -->
     {% include "_template/_navbar.html.twig" %}
 
-    {% block body %}
-     <!--<main>
-        <section class="row">
-        {% for category in categories %}
-            {% if category.parent == null %}
-                <div class="col-12 m-3 py-3">
-                   <h2>{{ category.name }}</h2>
-                </div>
-                {% else %}
-            <div class="col-4">
-                    <div class="mx-4 card h-100 w-100" >
-                        <img src="..." class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h3 class="card-title">{{ category.name }}</h3>
-                            <a href="{{ path('categories_list', {slug: category.slug}) }}" class="btn btn-primary">Voir les produits</a>
-                        </div>
-                    </div>
+    <!-- On vérifie sur l'utilisateur connecté est vérifier ou pas -->
+    {% if app.user and app.user.isVerified == false %}
+        <div class="alert alert-warning alert-dismissible" role="alert">
+            <button type="button" class="btn-close" data-bs-dismiss="alert"
+                    aria-label="Close"></button>
+            <div class="alert-message">
+                <strong>Votre compte n'est pas activé</strong>, renvoyer le lien d'activation.
             </div>
+        </div>
+    {% endif %}
 
-            {% endif %}
-
-        {% endfor %}
-        </section>
-    </main>-->
-
-    {% endblock %}
+    <!-- On affiche nos messages flash -->
+    {% include "_template/_flash.html.twig" %}
+    {% block body %} {% endblock %}
 
     <!-- Footer -->
     {% include "_template/_footer.html.twig" %}
