@@ -6,20 +6,29 @@ Title :
 
 ----------------------------------------------------------------
 
-### Compte test : 
-
+### Compte créer par moi, via la fonction d'inscription :
 ilan.tervil@wanadoo.fr
 
 6EnVm6F8qpWFtdG
 
 ----------------------------------------------------------------
 
+test.tervil@wanadoo.fr
+
+azertyuiop
+
+----------------------------------------------------------------
+----------------------------------------------------------------
+### à recréer
+
 jonas.tervil@wanadoo.fr
 
 V8dwdsSu6uzPZiE
 
 ----------------------------------------------------------------
-### Compte test par datafitxure : 
+----------------------------------------------------------------
+
+### Compte Admin, généré par datafitxure : 
 
 admin@example.com
 
@@ -27,7 +36,7 @@ admin123456789
 
 ----------------------------------------------------------------
 
-#### Mail généré aléatoirement via la fixture
+#### Comptes Users, généré aléatoirement via la fixture
 
 (olivie90@orange.fr)
 
@@ -42,12 +51,4 @@ admin123456789
 userFaker123456789
 
 ----------------------------------------------------------------
-#### Compte créer par moi, via la fonction d'inscription : 
-
-ilan.tervil@wanadoo.fr
-
-admin123456789 
-
-test.tervil@wanadoo.fr
-
-azertyuiop`
+----------------------------------------------------------------
