@@ -11,6 +11,7 @@
             <div class="row">
                 <!-- Section header -->
                 <div class="col-lg-6">
+
                     <section id="header">
                         <div class="container">
 
@@ -18,7 +19,7 @@
                                 <a href="{{ path('products_index') }}"
                                    class="text-decoration-none">
                                 <span>
-                                    <button class="btn">
+                                    <button class="btn btn-danger mt-2">
                                         <i class="bi bi-arrow-left"></i>
                                         Retour à la liste
                                     </button>
@@ -26,15 +27,29 @@
                                 </a>
                             </div>
 
-                            <?php
-                    // Récupérer les données binaires de l'image depuis la base de données
-                    $imageData = $details->image;
-                            ?>
+                            <div id="carouselExample" class="carousel slide">
+                                <div class="carousel-inner">
 
-                            <img class="mb-3 mt-5" src="data:image/jpeg;base64, <?= $imageData ?>"
-                                 alt="ImageBoucle" class="img-fluid">
-                        </div>
-                    </section>
+                                    {% for image in product.images %}
+                                    <div class="carousel-item {{ (loop.first) ? 'active' : '' }}">
+                                        <img  src="{{ asset('assets/images/Car_details/') ~ image.name }}"
+                                              class="img-fluid mb-3 mt-5"
+                                              alt="{{ image.name }}">
+                                    </div>
+                                    {% endfor %}
+
+                                </div>
+                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
+                            </div>
+                   </section>
+
                 </div>
 
                 <!-- Section description -->
@@ -43,7 +58,16 @@
 
                         <div class="col-lg-12">
                             <section id="description">
-                                <div class="m-2 fw-4"><p>Hot Sale</p></div>
+
+                                {% if product.stock > 0 %}
+                                    <a class="fw-4 m-2 btn btn-success ">
+                                        <p class="mx-2 bi bi-cart-check">En Stock</p>
+                                    </a>
+                                {% else %}
+                                        <p class="text-danger bi bi-cart-x">En rupture de stock</p>
+                                {% endif %}
+
+                                <!--<div class="m-2 fw-4"><p>Ajouter au panier</p></div>-->
                                 <div class="m-2 d-lg-flex">
                                     <h1>{{ product.name }}</h1>
 
@@ -55,7 +79,8 @@
                                     </h3>
                                 </div>
                                 <div class="m-3 mt-5 d-flex">
-                                    <h4 class=""> <?= $details->modele?></h4>
+                                    <h4 class=""> Catégorie : {{ product.categories.name }}
+                                    </h4>
 
                                     <!-- <i class="bi bi-star-fill"></i>
                                     <i class="bi bi-star-fill"></i>
@@ -83,7 +108,18 @@
                                 <div>
 
                                     <div class="m-2">
-                                        <button class="btn" data-bs-toggle="modal" data-bs-target="#imageModal1">
+
+                                        {% for image in product.images %}
+                                            <button class="btn" data-bs-toggle="modal" data-bs-target="#imageModal1">
+                                                <img
+                                                        width="50px"
+                                                        height="50px"
+                                                        src="{{ asset('assets/images/Car_details/') ~ image.name }}"
+                                                        alt="miniature-produit">
+                                            </button>
+                                        {% endfor %}
+
+                                        <!--<button class="btn" data-bs-toggle="modal" data-bs-target="#imageModal1">
                                             <img
                                                     width="50px"
                                                     height="50px"
@@ -103,14 +139,15 @@
                                                     height="50px"
                                                     src="/Assets/images/Car_details/miniature-3.jpg"
                                                     alt="miniature-1">
-                                        </button>
+                                        </button>-->
+
                                     </div>
 
                                     <div class="mb-3 mt-4">
                                         <h5 class="m-2 mb-4">Nombre en stock & Prix :</h5>
                                         <div class="btn my-btn-danger mb-2 btn-danger"> {{ product.stock }}
                                         </div>
-                                        <div class="btn my-btn-danger mb-2 btn-danger"> {{ product.price }} €
+                                        <div class="btn my-btn-danger mb-2 btn-danger"> {{ product.price /100 }} €
                                         </div>
                                     </div>
 
@@ -119,6 +156,7 @@
                         </div>
 
                         <!-- Modal 1 -->
+                        {% for image in product.images %}
                         <div
                                 class="modal fade"
                                 id="imageModal1"
@@ -139,8 +177,8 @@
                                         <div class="row">
                                             <div class="col-lg-6">
                                                 <img
-                                                        src="/Assets/images/Car_details/miniature-1.jpg"
-                                                        alt="miniature-1"
+                                                        src="{{ asset('assets/images/Car_details/') ~ image.name }}"
+                                                        alt="{{ image.name }}"
                                                         class="img-fluid">
                                             </div>
                                             <div class="col-lg-6">
@@ -161,64 +199,64 @@
                                 </div>
                             </div>
                         </div>
-
+                        {% endfor %}
 
                         <!-- Modal 2 -->
-                        <div
-                                class="modal fade"
-                                id="imageModal2"
-                                tabindex="-1"
-                                aria-labelledby="imageModalLabel2"
-                                aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered modal-lg">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="imageModalLabel2">Image 2</h5>
-                                        <button
-                                                type="button"
-                                                class="btn-close"
-                                                data-bs-dismiss="modal"
-                                                aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="row">
-                                            <div class="col-lg-6">
-                                                <img
-                                                        width= "480px"
-                                                        height= "320px"
-                                                        src="/Assets/images/Car_details/miniature-2.jpg"
-                                                        alt="miniature-2"
-                                                        class="img-fluid">
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <h6>Title</h6>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                                    Donec accumsan, ligula id convallis imperdiet,
-                                                    lorem nisl elementum mi, non finibus sem nisi eu ante.
-                                                </p>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                                    Donec accumsan, ligula id convallis imperdiet,
-                                                    lorem nisl elementum mi, non finibus sem nisi eu ante.
-                                                </p>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                                    Donec accumsan, ligula id convallis imperdiet,
-                                                    lorem nisl elementum mi, non finibus sem nisi eu ante.
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button
-                                                type="button"
-                                                class="btn btn-secondary"
-                                                data-bs-dismiss="modal">Close</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <!-- <div
+                                 class="modal fade"
+                                 id="imageModal2"
+                                 tabindex="-1"
+                                 aria-labelledby="imageModalLabel2"
+                                 aria-hidden="true">
+                             <div class="modal-dialog modal-dialog-centered modal-lg">
+                                 <div class="modal-content">
+                                     <div class="modal-header">
+                                         <h5 class="modal-title" id="imageModalLabel2">Image 2</h5>
+                                         <button
+                                                 type="button"
+                                                 class="btn-close"
+                                                 data-bs-dismiss="modal"
+                                                 aria-label="Close"></button>
+                                     </div>
+                                     <div class="modal-body">
+                                         <div class="row">
+                                             <div class="col-lg-6">
+                                                 <img
+                                                         width= "480px"
+                                                         height= "320px"
+                                                         src="/Assets/images/Car_details/miniature-2.jpg"
+                                                         alt="miniature-2"
+                                                         class="img-fluid">
+                                             </div>
+                                             <div class="col-lg-6">
+                                                 <h6>Title</h6>
+                                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                                     Donec accumsan, ligula id convallis imperdiet,
+                                                     lorem nisl elementum mi, non finibus sem nisi eu ante.
+                                                 </p>
+                                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                                     Donec accumsan, ligula id convallis imperdiet,
+                                                     lorem nisl elementum mi, non finibus sem nisi eu ante.
+                                                 </p>
+                                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                                     Donec accumsan, ligula id convallis imperdiet,
+                                                     lorem nisl elementum mi, non finibus sem nisi eu ante.
+                                                 </p>
+                                             </div>
+                                         </div>
+                                     </div>
+                                     <div class="modal-footer">
+                                         <button
+                                                 type="button"
+                                                 class="btn btn-secondary"
+                                                 data-bs-dismiss="modal">Close</button>
+                                     </div>
+                                 </div>
+                             </div>
+                         </div>-->
 
-                        <!-- Modal 3 -->
-                        <div
+                         <!-- Modal 3 -->
+                        <!--<div
                                 class="modal fade"
                                 id="imageModal3" tabindex="-1"
                                 aria-labelledby="imageModalLabel3"
@@ -231,8 +269,11 @@
                                                 type="button"
                                                 class="btn-close"
                                                 data-bs-dismiss="modal"
-                                                aria-label="Close"></button>
+                                                aria-label="Close">
+
+                                        </button>
                                     </div>
+
                                     <div class="modal-body">
                                         <div class="row">
                                             <div class="col-lg-6">
@@ -249,15 +290,18 @@
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="modal-footer">
                                         <button
                                                 type="button"
                                                 class="btn btn-secondary"
-                                                data-bs-dismiss="modal">Close</button>
+                                                data-bs-dismiss="modal">Close
+                                        </button>
                                     </div>
+
                                 </div>
                             </div>
-                        </div>
+                        </div>-->
 
                     </div>
                 </div>
