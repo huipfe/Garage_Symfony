@@ -5,7 +5,7 @@
 {% block body %}
 
 
-    <main >
+    <main>
 
 
 
@@ -113,17 +113,15 @@
         </section>
 
 
-
-
-
-
         <!-- Main cars -->
 
-        {% for product in products %}
+
+
         <div class="container">
             <div class="row">
 
                 <div class="justify-content-start">
+
                     <a href="{{ path('products_index') }}"  class="text-decoration-none">
                         <span>
                             <button class="btn btn-danger my-2">
@@ -131,8 +129,11 @@
                                 Retour à la liste
                             </button>
                         </span>
+
                     </a>
                 </div>
+
+                {% for product in products.data %}
 
                         <div class=" col-lg-4">
                             <div class="card mb-3" style="background: #E8E4E4;">
@@ -236,7 +237,11 @@
                         <!--<?php endforeach; ?>-->
                 {% endfor %}
 
-
+                {% set path = 'categories_list' %}
+                {% set slug = category.slug %}
+                {% set pages = products.pages %}
+                {% set currentPage = products.page %}
+                {% include "_template/_pagination.html.twig" %}
 
             </div>
 
