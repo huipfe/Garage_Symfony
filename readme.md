@@ -38,15 +38,15 @@ admin123456789
 
 #### Comptes Users, généré aléatoirement via la fixture
 
-(olivie90@orange.fr)
+olivie90@orange.fr
 
-(jules38@sfr.fr)
+jules38@sfr.fr
 
-(rodrigues.helene@berger.com)
+rodrigues.helene@berger.com
 
-(capucine.hamel@vallee.fr)
+capucine.hamel@vallee.fr
 
-(dufour.sylvie@perret.com)
+dufour.sylvie@perret.com
 
 userFaker123456789
 
