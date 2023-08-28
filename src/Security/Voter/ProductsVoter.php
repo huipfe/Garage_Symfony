@@ -24,14 +24,14 @@ class ProductsVoter extends Voter
 
     }
 
-    protected function supports(string $attribute, $product): bool
+    protected function supports(string $attribute, $subject): bool
     {
         //Si l'attribut n'est pas dans un tableau
         if(!in_array($attribute, [self::EDIT, self::DELETE])){ //Si l'attribut n'est pas dans ces deux là, Edit et Delete, alors
             return false;
         }
         // On vérifie si product est une instance de l'entité products
-        if(!$product instanceof Products){
+        if(!$subject instanceof Products){
             return false;
         }
         return true;
@@ -40,7 +40,7 @@ class ProductsVoter extends Voter
         // return in_array($attribute, [self::EDIT, self::DELETE])) && $product instanceof Products;
     }
 
-    protected function voteOnAttribute($attribute, $product, TokenInterface $token): bool
+    protected function voteOnAttribute($attribute, $subject, TokenInterface $token): bool
     {
 
         // On récupère l'utilisateur à partir du token.

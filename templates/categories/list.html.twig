@@ -154,7 +154,8 @@
                                         <!-- Modification d'une voiture -->
                                         {% if app.user %}
                                             <!--<<?php if(isset($_SESSION['user']) && !empty($_SESSION['user'])): ?>-->
-                                            <a href="/modifier/modifie/<?= $car->id?>">
+                                            <a href="{{ path('admin_products_edit',
+                                                {"id" : product.id }) }}">
                                                 <button
                                                         class="btn btn-danger mx-2 my-2 bi bi-pencil-square">
                                                 </button>

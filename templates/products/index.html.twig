@@ -225,10 +225,10 @@
             <!-- Creation d'une nouvelle voiture -->
             {% if app.user %}
             <!--<?php if(isset($_SESSION['user']) && !empty($_SESSION['user'])): ?>-->
-            <a href="/addCars/ajouter">
+            <a href="{{ path('admin_products_add') }}">
                 <button
                         class="btn btn-danger mx-2 my-2 bi bi-plus-circle">
-                    Ajouter Catégorie
+                    Ajouter un produit
                 </button>
             </a>
             <!-- <?php endif; ?>-->

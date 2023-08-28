@@ -1,0 +1,30 @@
+{% extends './base.html.twig' %}
+
+{% block title %}Panel d'administration - Produits{% endblock %}
+
+{% block body %}
+
+<main class="container">
+
+    <section class="row">
+        <div class="col-12">
+
+            <div class="justify-content-start">
+                   <a href="{{ path('products_index') }}" class="text-decoration-none">
+                       <span>
+                           <button class="btn btn-danger mb-3">
+                               <i class="bi bi-arrow-left"></i>
+                               Retour à la liste
+                           </button>
+                       </span>
+                   </a>
+            </div>
+
+            <h1>Modifier un produit</h1>
+            {% include "admin/products/_form.html.twig" with {'button_label' :'Modifier'} %}
+        </div>
+    </section>
+</main>
+
+
+{% endblock %}
