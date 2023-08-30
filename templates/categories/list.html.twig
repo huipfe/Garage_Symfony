@@ -163,14 +163,12 @@
                                             <!--<?php endif; ?>-->
                                         {% endif %}
 
-                                        <?php
-                            // Récupérer les données binaires de l'image depuis la base de données
-                            $imageData = $car->image;
-                                        ?>
-                                        <!-- Me permet de faire apparaitre les images de ma BDD,
-                                        qui ont été passé via mon formulaire.-->
-                                        <img src="data:image/jpeg;base64,<?= $imageData ?>"
-                                             alt="ImageVoiture" class="img-fluid">
+
+                                        <img src="{{ asset('assets/images/uploads/products/mini/300-300-' ~ product.images[0].name) }}"
+                                             alt="{{ product.name }}"
+                                             class="img-fluid m-2"
+                                             width="400"
+                                             height="300">
 
                                     </div>
 
@@ -211,7 +209,7 @@
                                             <p class="card-text fs-5"
                                                id = "title-price">Prix :
                                                 <span class="fw-bold">
-                                                <?= $car->prix?>€
+                                                {{ product.price /100 }} €
                                             </span>
                                             </p>
 

@@ -24,7 +24,12 @@
             {% include "admin/products/_form.html.twig" with {'button_label' :'Modifier'} %}
         </div>
     </section>
+
 </main>
 
 
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('assets/JS/images.js') }}" defer></script>
 {% endblock %}

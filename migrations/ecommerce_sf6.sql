@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : mer. 23 août 2023 à 15:23
+-- Généré le : mar. 29 août 2023 à 14:42
 -- Version du serveur : 8.0.30
 -- Version de PHP : 8.2.6
 
@@ -121,10 +121,8 @@ CREATE TABLE `images` (
 
 INSERT INTO `images` (`id`, `products_id`, `name`) VALUES
 (1, 16, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\9c77519d96bf0f6c9a4f82ce45f1407e.png'),
-(2, 15, ''),
 (3, 16, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\58d66c1ff59b92a9d75571f9d1a7cecf.png'),
 (4, 15, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\15fef9211421611e6716821777e5a9c0.png'),
-(5, 14, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\ed95ff31f59fa00ecdbcaef88fce88df.png'),
 (6, 13, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\37ff5bc8f597b543a391b8c43d1296c2.png'),
 (7, 16, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\f9c0f4fb1b65b1e9773f7726fce6c334.png'),
 (8, 15, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\146e70f5f126a3c798a115fea12c8f66.png'),
@@ -162,7 +160,7 @@ INSERT INTO `images` (`id`, `products_id`, `name`) VALUES
 (40, 16, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\fef82a36883da9d149ee7c5db7b30ac8.png'),
 (41, 13, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\bccd53e838d484721c201d5cbdf7018f.png'),
 (42, 13, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\d0e2b0e69277f7e809bd0cf0cd1ac74d.png'),
-(43, 14, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\f425364b1c72989071e20fdc254a814a.png'),
+(43, 14, 'miniature-1.jpg'),
 (44, 20, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\f2168139d5473845af4f0504e49db6bf.png'),
 (45, 12, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\cfe6c95bb17a415d7740022edc89a65f.png'),
 (46, 17, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\830b9c93aa7d5f5ec8aef6f95b8dc42a.png'),
@@ -170,7 +168,6 @@ INSERT INTO `images` (`id`, `products_id`, `name`) VALUES
 (48, 18, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\e9f9a306ea0ca0f7a08ff2b95e9ba2ce.png'),
 (49, 13, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\20289f3acab99ad91d4a1825b0f7647f.png'),
 (50, 20, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\3ffb94deb55da52a5fc60d093eb5da63.png'),
-(51, 14, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\9a238d081b7d3c037f483ee878756085.png'),
 (52, 17, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\026da58032f2fbfb3c472d92ff8d6a63.png'),
 (53, 12, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\654e5c4b15937182efdcee64cf8726b8.png'),
 (54, 11, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\41445ebd2c7bd909f658ebcfff1862b8.png'),
@@ -188,8 +185,8 @@ INSERT INTO `images` (`id`, `products_id`, `name`) VALUES
 (66, 17, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\8a22a03323c38768b258d6741e5c4ff5.png'),
 (67, 18, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\f18be66977b6eb395b84d9bf76b50520.png'),
 (68, 11, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\6029a27e9a21f632a786b4d2066ed671.png'),
-(69, 14, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\b5a743636301648e60c2a1c96821ede0.png'),
-(70, 14, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\972e19305e9d1a84260a95d1f723e186.png'),
+(69, 14, 'miniature-2.jpg'),
+(70, 14, 'miniature-3.jpg'),
 (71, 19, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\10ce496285b8cf60aa4d90011dd27ddf.png'),
 (72, 19, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\6f97ef25e386f0a098166c33537b42d1.png'),
 (73, 19, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\3798901073b218bd1557bd83107f2a59.png'),
@@ -211,7 +208,7 @@ INSERT INTO `images` (`id`, `products_id`, `name`) VALUES
 (89, 16, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\0e665988c6f2c9f1e17f8db27f615fd6.png'),
 (90, 19, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\5c50b9e6fe725d304871f42b2f63838d.png'),
 (91, 19, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\5ff1b49353ef8f57a10c79618482d6bf.png'),
-(92, 14, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\7b1316c2495a0b6a8f75aef4ca87b30b.png'),
+(92, 14, 'miniature-4.jpg'),
 (93, 20, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\c1559ea06036b03a724f0f0dcf05b137.png'),
 (94, 13, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\dc81bb0705521c7dfc384689ef0fc437.png'),
 (95, 20, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\ffa6c32d3c9a4427584efb7d07da5ab1.png'),
@@ -219,7 +216,10 @@ INSERT INTO `images` (`id`, `products_id`, `name`) VALUES
 (97, 17, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\10d0ed4ab8a525ddfddff9e59c93347a.png'),
 (98, 17, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\d44858830282fc548cf37e83e547e328.png'),
 (99, 11, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\56636b9a39b98ccfe2af876a074cff6a.png'),
-(100, 20, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\a1827b72cee421e570c511eb269b217a.png');
+(100, 20, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\a1827b72cee421e570c511eb269b217a.png'),
+(104, 25, 'c00eb0d25120ad325709e0705a4fc601.webp'),
+(105, 25, 'f5ee2401f3625418deb7d4ebf41ce0fd.webp'),
+(106, 25, 'ae5ba232bd79da8af44ff274dc955a8f.webp');
 
 -- --------------------------------------------------------
 
@@ -295,14 +295,18 @@ CREATE TABLE `products` (
 INSERT INTO `products` (`id`, `categories_id`, `name`, `description`, `price`, `stock`, `created_at`, `slug`) VALUES
 (11, 124, 'Hic.', 'Autem dolorum veritatis consequatur neque. Omnis aliquam quos et. Labore adipisci et dicta.', 62693, 7, '2023-08-14 14:04:49', 'hic'),
 (12, 118, 'Vel.', 'Qui nesciunt voluptatem tempora esse odit autem. Placeat sit nesciunt deleniti laboriosam id. Earum expedita consequuntur quidem eius et. Incidunt quidem sed magnam rerum.', 105726, 1, '2023-08-14 14:04:49', 'vel'),
-(13, 122, 'Nemo.', 'Exercitationem magnam reiciendis provident impedit. Harum aut dicta incidunt quis. Quam dolorum cumque sunt consequatur voluptas temporibus explicabo aut.', 68564, 6, '2023-08-14 14:04:49', 'nemo'),
-(14, 119, 'Enim.', 'Explicabo labore corrupti neque atque. Commodi possimus minima aut laudantium dolorem veritatis. Totam recusandae nesciunt sunt fugit.', 136194, 5, '2023-08-14 14:04:49', 'enim'),
-(15, 121, 'Qui.', 'Vitae quis debitis reiciendis rerum eum. Quis temporibus odit ad aut dolor sed excepturi. Ea excepturi et ut autem eum sequi quasi facilis.', 20058, 2, '2023-08-14 14:04:49', 'qui'),
-(16, 120, 'Aut.', 'Dolorum autem nihil omnis eaque recusandae delectus. Earum inventore qui placeat.', 146010, 6, '2023-08-14 14:04:49', 'aut'),
+(13, 119, 'Nemo.', 'Exercitationem magnam reiciendis provident impedit. Harum aut dicta incidunt quis. Quam dolorum cumque sunt consequatur voluptas temporibus explicabo aut.', 68564, 6, '2023-08-14 14:04:49', 'nemo'),
+(14, 121, 'Enim.', 'Explicabo labore corrupti neque atque. Commodi possimus minima aut laudantium dolorem veritatis. Totam recusandae nesciunt sunt fugit.', 136194, 5, '2023-08-14 14:04:49', 'enim'),
+(15, 120, 'Qui.', 'Vitae quis debitis reiciendis rerum eum. Quis temporibus odit ad aut dolor sed excepturi. Ea excepturi et ut autem eum sequi quasi facilis.', 20058, 2, '2023-08-14 14:04:49', 'qui'),
+(16, 121, 'Aut.', 'Dolorum autem nihil omnis eaque recusandae delectus. Earum inventore qui placeat.', 146010, 6, '2023-08-14 14:04:49', 'aut'),
 (17, 123, 'Ut.', 'Laborum non cum explicabo labore quos voluptatem. Sequi eos enim officiis. Sunt tempora rerum quod sint velit.', 93797, 3, '2023-08-14 14:04:49', 'ut'),
 (18, 122, 'Non.', 'Necessitatibus aut voluptatem atque dolore est. Ipsa officiis necessitatibus deleniti rerum beatae. Et omnis provident porro odit sed similique velit.', 29431, 9, '2023-08-14 14:04:49', 'non'),
-(19, 124, 'Et.', 'Eum corrupti ex tempore qui. Assumenda omnis sit natus qui. Voluptas harum sunt esse non dolores quasi.', 117630, 6, '2023-08-14 14:04:49', 'et'),
-(20, 121, 'Et.', 'Eveniet sapiente deserunt nam dolorem repudiandae. Voluptate hic consequuntur itaque rem maiores. Odit voluptates quod alias.', 38560, 8, '2023-08-14 14:04:49', 'et');
+(19, 125, 'Et.', 'Eum corrupti ex tempore qui. Assumenda omnis sit natus qui. Voluptas harum sunt esse non dolores quasi.', 117630, 6, '2023-08-14 14:04:49', 'et'),
+(20, 121, 'Et.', 'Eveniet sapiente deserunt nam dolorem repudiandae. Voluptate hic consequuntur itaque rem maiores. Odit voluptates quod alias.', 38560, 8, '2023-08-14 14:04:49', 'et'),
+(21, 123, 'Elmo le pabo', 'Lol tu sais quoi ?', 150200, 20, '2023-08-28 13:46:32', 'Elmo-le-pabo'),
+(22, 119, 'sdddssd', 'sdddssddffgdfddfdf', 1584200, 10, '2023-08-28 13:57:06', 'sdddssd'),
+(23, 119, 'aaaaaaaaaaaaaaaaaa', 'fdfgfgfdfdfdfgf', 1500000, 10, '2023-08-28 13:58:09', 'aaaaaaaaaaaaaaaaaa'),
+(25, 125, 'Service de massage', 'Humm, les bons messages du chef, hummm', 150000, 1, '2023-08-29 14:32:03', 'Service-de-massage');
 
 -- --------------------------------------------------------
 
@@ -331,7 +335,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `email`, `roles`, `password`, `lastname`, `firstname`, `address`, `zipcode`, `city`, `created_at`, `is_verified`, `reset_token`) VALUES
 (22, 'admin@example.com', '[\"ROLE_ADMIN\"]', '$2y$13$l6M26E4rHoj0u1R.L2O34usPsOeoLV/ztGVYtZZ6vnnsg.DZF8lt6', 'Tervil', 'Ilan', '4 rue Eugène Galbrun', '94130', 'Nogent sur Marne', '2023-08-14 14:04:49', 1, '1_72Lah3eg9G3RZsP81UO4ISYd64T57DUTLsPrQYmww'),
-(23, 'olivie90@orange.fr', '[]', '$2y$13$RS0Wn3GSf5em09KIYp6d3OvwGRSL2kXeto3hO3oVogT9Ul9puipEa', 'Duhamel', 'Claudine', '60, rue Boucher', '09872', 'Meunier-la-Forêt', '2023-08-14 14:04:50', 0, ''),
+(23, 'olivie90@orange.fr', '[\"ROLE_EMPLOYE\"]', '$2y$13$RS0Wn3GSf5em09KIYp6d3OvwGRSL2kXeto3hO3oVogT9Ul9puipEa', 'Duhamel', 'Claudine', '60, rue Boucher', '09872', 'Meunier-la-Forêt', '2023-08-14 14:04:50', 0, ''),
 (24, 'jules38@sfr.fr', '[]', '$2y$13$O6zdQb8BTX9NjdtQWXQt3OE0j61kP43e1mAIyUByx3kWyBOTX286.', 'Besnard', 'Pauline', '756, boulevard Collin', '03091', 'Lebon', '2023-08-14 14:04:50', 0, ''),
 (25, 'rodrigues.helene@berger.com', '[]', '$2y$13$97mrwT2No0UzypF0uQFTReTiIX189zCbYJYc00S8AU1flHpNwip36', 'Robert', 'Aimé', '68, chemin Denis', '28038', 'Blanchard-sur-Mer', '2023-08-14 14:04:51', 0, ''),
 (26, 'capucine.hamel@vallee.fr', '[]', '$2y$13$N3FaAKnaCbdSJztjPn9UTelXz8oMBVguNKpPB4vFdX9vokCWmWBwe', 'Samson', 'Martine', '956, avenue Jérôme Lecomte', '43587', 'Guibert', '2023-08-14 14:04:51', 0, ''),
@@ -443,7 +447,7 @@ ALTER TABLE `coupons_types`
 -- AUTO_INCREMENT pour la table `images`
 --
 ALTER TABLE `images`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=107;
 
 --
 -- AUTO_INCREMENT pour la table `messenger_messages`
@@ -461,7 +465,7 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT pour la table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT pour la table `users`

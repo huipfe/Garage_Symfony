@@ -17,3 +17,4 @@ $(document).ready(function () {
         setTimeout(hideMessage, 1500);
     }
 });
+
