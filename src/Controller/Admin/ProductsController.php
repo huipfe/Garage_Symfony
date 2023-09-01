@@ -68,8 +68,8 @@ class ProductsController extends AbstractController
             $product->setSlug($slug);
 
             // On arrondit le prix
-            $prix = $product->getPrice() * 100;
-            $product->setPrice($prix);
+            //$prix = $product->getPrice() * 100;
+            //$product->setPrice($prix);
 
             // On stock et on enregistre
             $em->persist($product);
@@ -103,8 +103,8 @@ class ProductsController extends AbstractController
         $this->denyAccessUnlessGranted('PRODUCTS_EDIT', $product);
 
         // On divise le prix par 100
-        $prix = $product->getPrice() / 100;
-        $product->setPrice($prix);
+        //$prix = $product->getPrice() / 100;
+        //$product->setPrice($prix);
 
         // On créer le formulaire
         $productForm = $this->createForm(ProductsFormType::class, $product);
@@ -135,8 +135,8 @@ class ProductsController extends AbstractController
             $product->setSlug($slug);
 
             // On arrondit le prix
-            $prix = $product->getPrice() * 100;
-            $product->setPrice($prix);
+            //$prix = $product->getPrice() * 100;
+            //$product->setPrice($prix);
 
             // On stock et on enregistre
             $em->persist($product);
@@ -151,8 +151,8 @@ class ProductsController extends AbstractController
 
         }
 
-        return $this->render('Admin/products/add.html.twig', [
-        'productForm' => $productForm->createView(),
+        return $this->render('admin/products/edit.html.twig',[
+            'productForm' => $productForm->createView(),
             'product' => $product
         ]);
 
@@ -181,18 +181,19 @@ class ProductsController extends AbstractController
 
         // On récup le token dans Data, et on vérifie s'il est valide
         if($this->IsCsrfTokenValid('delete' . $image->getId(), $data ['_token'])){
+
             // Le token CSRF est valide
             // On récup le nom de l'image
             $nom = $image->getName();
 
-            if($pictureService->delete($nom, 'products', 300, 300)){
-              // La supression fonctionne, on supprime l'image de la bdd.
+            if ($pictureService->delete($nom, 'products', 300, 300)) {
                 $em->remove($image);
                 $em->flush();
-                return new JsonResponse(['success' => true], 200);
+                return new JsonResponse(['success' => true], Response::HTTP_OK);
             }
-            // La supression à échoué
-            return new JsonResponse(['error' => 'Erreur de supression'], 400);
+
+            // La suppression a échoué
+            return new JsonResponse(['error' => 'Erreur de suppression'], Response::HTTP_BAD_REQUEST);
         }
 
         return new JsonResponse(['error' => 'Token Invalide'], 400);
