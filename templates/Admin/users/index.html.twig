@@ -69,7 +69,9 @@
                 </button>
                 </a>
                 -->
+
                 <div class="justify-content-start">
+
                     <a href="{{ path('admin_index') }}"
                        class="text-decoration-none">
                         <span>
@@ -86,14 +88,132 @@
 
 
         </div>
-
+        {% include "_template/_adminnav.html.twig" %}
     </div>
 
-    <div class="container-lg">
+
+    <main class="col-9 border border-light bg-white p-2 container-lg">
+
+
+        <table class="table">
+
+            <thead>
+            <tr>
+                <th>Picto</th>
+                <th>ID</th>
+                <th>Prénom</th>
+                <th>Nom</th>
+                <th>Email</th>
+                <th>Rôles</th>
+                <th>Vérifié</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+
+            <tbody class="list-unstyled">
+            {% for user in users %}
+                <tr class="employee">
+                        <td class="picto">
+                            <img src="/Assets/images/Dashboard page/avatar.png"
+                                 alt="Pictogramme"
+                                 class="img p-2"
+                                 width="72">
+                        </td>
+                    <td class="id">{{ user.id }}</td>
+                    <td class="firstname">{{ user.firstname }}</td>
+                    <td  class="lastname">{{ user.lastname }}</td>
+                    <td class="list-unstyled email-name" id="adminEmail">{{ user.email }}</td>
+
+                    <td>
+                        {% for role in user.roles  %}
+                        {% if role == "ROLE_ADMIN"  %}
+                            {% set name = "Administrateur" %}
+                            {% set color = "danger" %}
+                        {% elseif role == "ROLE_EMPLOYE" %}
+                            {% set name = "Employé" %}
+                            {% set color = "warning" %}
+                        {% else  %}
+                            {% set name = "Membre" %}
+                            {% set color = "success" %}
+                        {% endif  %}
+                        <span class="badge bg-{{ color }}">{{ name }}</span>
+                    {% endfor  %}
+                    </td>
+
+                    <td>
+                        <div class="form-check form-switch">
+                            <input
+                                    class="form-check-input"
+                                    type="checkbox"
+                                    role="switch"
+                                    id="switch{{ user.id }}"
+                                    {{user.isVerified ? "checked" : ""}} disabled>
+                            <label
+                                    class="form-check-label"
+                                    for="switch{{ user.id }}">
+                            </label>
+                        </div>
+                    </td>
+
+                    <td>
+                        <ul class="list-unstyled">
+
+                            <!-- Modification de tout les comptes possible. -->
+                            <button
+                                    class="btn btn-responsive btn-sm btn-danger m-2"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#editUserModal"
+                                    data-user-id="<?= $Dashboard->user_id ?>"
+                                    data-username="<?= $Dashboard->name_users ?>"
+                                    data-email="<?= $Dashboard->email ?>"
+                            >
+                                <li>
+                                    <i class="bi bi-pencil"></i> Modifier
+                                </li>
+                            </button>
+
+                            {% if 'ROLE_ADMIN' not in user.roles %}
+                                <!-- Impossible de se supprimer le compte Admin -->
+                                <button
+                                        class="btn btn-responsive btn-sm btn-danger m-2"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#confirmDeleteModal"
+                                        data-user-id="<?= $Dashboard->user_id ?>"
+                                >
+                                    <li>
+                                        <i class="bi bi-trash"></i> Supprimer
+                                    </li>
+                                </button>
+                            {% endif %}
+
+                            {% if 'ROLE_ADMIN' in user.roles %}
+                                <!-- Seul l'admin peut modifier les horaires -->
+                                <a href="/dashboard/manageHoraires">
+                                    <button
+                                            class="btn btn-responsive btn-sm btn-danger m-2">
+                                        <li>
+                                            <i class="bi bi-calendar-plus me-2"></i>Horaires
+                                        </li>
+                                    </button>
+                                </a>
+                            {% endif %}
+
+                        </ul>
+                    </td>
+
+
+                </tr>
+            {% endfor %}
+            </tbody>
+
+        </table>
+
+    </main>
+
+  <!--  <div class="container-lg">
 
         <div class="row ">
 
-            <!-- Première colonne - Noms d'utilisateur -->
             <div class="col-lg-12 col-md-11 col-10">
 
                 <div class="mb-1">
@@ -112,6 +232,8 @@
                         <h4>Vérifié</h4>
                         <h4>Actions</h4>
                     </div>
+
+
 
                     <ul class="list-unstyled">
 
@@ -187,7 +309,6 @@
 
                                 <ul class="list-unstyled">
 
-                                    <!-- Modification de tout les comptes possible. -->
                                     <button
                                             class="btn btn-responsive btn-sm btn-danger m-2"
                                             data-bs-toggle="modal"
@@ -202,7 +323,6 @@
                                     </button>
 
                                     {% if 'ROLE_ADMIN' not in user.roles %}
-                                    <!-- Impossible de se supprimer le compte Admin -->
                                     <button
                                             class="btn btn-responsive btn-sm btn-danger m-2"
                                             data-bs-toggle="modal"
@@ -216,7 +336,6 @@
                                     {% endif %}
 
                                     {% if 'ROLE_ADMIN' in user.roles %}
-                                    <!-- Seul l'admin peut modifier les horaires -->
                                     <a href="/dashboard/manageHoraires">
                                         <button
                                                 class="btn btn-responsive btn-sm btn-danger m-2">
@@ -240,7 +359,7 @@
 
 
         </div>
-    </div>
+    </div>-->
 
     <!-- Modal de confirmation de suppression -->
     <div

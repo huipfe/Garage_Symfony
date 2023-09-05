@@ -1,40 +1,31 @@
 /*--------------------------------------Barre de Recherche-------------------------------------------*/
 
 
-  // Récupérer la barre de recherche
-    const searchInput = document.querySelector('.form-control');
 
-    // Récupérer l'ID des utilisateurs
-    const id = document.querySelectorAll('.id');
+// Récupérer la barre de recherche
+const searchInput = document.querySelector('.form-control');
 
-    // Récupérer tous les noms d'utilisateur
-    const firstname = document.querySelectorAll('.firstname');
-    const lastname = document.querySelectorAll('.lastname');
+// Récupérer les lignes du tableau d'utilisateurs
+const userRows = document.querySelectorAll('.employee');
 
-    // Récupérer tout les email d'utilisateur
-    const emailNames = document.querySelectorAll('.email-name');
+// Fonction pour filtrer les utilisateurs en fonction de la recherche
+function filterUsersEmail() {
+    const searchValue = searchInput.value.toLowerCase();
 
-    // Fonction pour filtrer les utilisateurs en fonction de la recherche
-    function filterUsersEmail() {
-  const searchValue = searchInput.value.toLowerCase();
-  
-      // Filtrer les utilisateurs et l'email
-      emailNames.forEach((emailName) => {
-        const email = emailName.textContent.toLowerCase();
-        const listItem = emailName.closest('li');
+    // Parcourir les lignes du tableau
+    userRows.forEach((userRow) => {
+        const email = userRow.querySelector('.email-name').textContent.toLowerCase();
+        const id = userRow.querySelector('.id').textContent.toLowerCase();
+        const firstname = userRow.querySelector('.firstname').textContent.toLowerCase();
+        const lastname = userRow.querySelector('.lastname').textContent.toLowerCase();
 
-        const id = listItem.querySelector('.id').textContent.toLowerCase();
-        const firstname = listItem.querySelector('.firstname').textContent.toLowerCase();
-        const lastname = listItem.querySelector('.lastname').textContent.toLowerCase();
-
-        if (email.includes(searchValue) || id.includes(searchValue) || firstname.includes(searchValue) || lastname.includes(searchValue) ) {
-          listItem.style.display = 'block';
+        if (email.includes(searchValue) || id.includes(searchValue) || firstname.includes(searchValue) || lastname.includes(searchValue)) {
+            userRow.style.display = 'table-row';
         } else {
-          listItem.style.display = 'none';
+            userRow.style.display = 'none';
         }
-      });
-
-    }
+    });
+}
 
     // Ajouter un gestionnaire d'événement pour la recherche en temps réel
     searchInput.addEventListener('input', filterUsersEmail);
@@ -45,8 +36,8 @@
 /*----------------------------------Nb d'employé affichage dynamique-------------------------------*/
 
 
-// Récupérer tous les éléments <li> avec la classe "employee"
-const employeeElements = document.querySelectorAll('.list-unstyled li.employee');
+// Récupérer tous les éléments <li> avec la classe "employee" en tableau tr
+const employeeElements = document.querySelectorAll('.list-unstyled tr.employee'); // <li> avant
 
 // Récupérer l'élément <p> avec l'id "employeeCount"
 const employeeCountElement = document.getElementById('employeeCount');
