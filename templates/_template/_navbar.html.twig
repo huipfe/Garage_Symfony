@@ -78,9 +78,11 @@
 
 
                         <!-- Profile-->
-                        <li class="list-inline-item nav-item" style="margin-top: 5px;">
+                        <li class="list-inline-item nav-item">
                             <a href="{{ path('profile_index') }}">
-                                <svg xmlns="http://www.w3.org/2000/svg"
+                                <i class="bi bi-person" style="font-size: 38px; color: #D92332;"></i>
+                                <!--
+                                     <svg xmlns="http://www.w3.org/2000/svg"
                                      width="38"
                                      height="38"
                                      fill="none"
@@ -91,6 +93,7 @@
                                     4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289
                                     10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z" fill="#D92332" />
                                 </svg>
+                                -->
                             </a>
                         </li>
 
@@ -101,10 +104,12 @@
                     <!--<?php if ($_SESSION['user']['is_admin']): ?>-->
                     {% if is_granted('ROLE_ADMIN') %}
                     <!-- Icône du tableau de bord (visible pour les administrateurs) -->
-                    <li class="list-inline-item nav-item" style="margin-top: 5px;">
+                    <li class="list-inline-item nav-item">
                         <!-- /ECF_Garage/src/Views/templates/Dashboard.html.php -->
                             <!--  <a href="/dashboard/administration">-->
-                        <a href="{{ path('admin_users_index') }}">
+                        <a href="{{ path('admin_index') }}">
+                            <i class="bi bi-sliders " style="font-size: 35px; color: #D92332;"></i>
+                            <!--
                             <svg width="30"
                                  height="35"
                                  viewBox="0 0 25 29"
@@ -152,13 +157,17 @@
                 25.0038 0.750672 24.8392 0.457646 24.5462C0.16462 24.2532 0 23.8557 0 23.4413C0 23.0269 0.16462
                 22.6295 0.457646 22.3365C0.750672 22.0434 1.1481 21.8788 1.5625 21.8788H3.39062Z" fill="#D92332" />
                             </svg>
+                            -->
                         </a>
                     </li>
                     {% endif %}
 
                         <!-- Déconnexion (ne doit être visible que si connecter-->
-                        <li class="list-inline-item nav-item" style="margin-top: 5px;">
+                        <li class="list-inline-item nav-item" >
                             <a href="{{ path('app_logout') }}">
+                                <i class="bi bi-person-fill-down" style="font-size: 38px; color: #D92332;"></i>
+
+                                <!--
                                 <svg
                                         width="38"
                                         height="38"
@@ -189,6 +198,7 @@
                                     17.1426L18.3539 14.6467Z"
                                           fill="#D92332"/>
                                 </svg>
+                                -->
                             </a>
                         </li>
 

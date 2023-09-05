@@ -4,8 +4,12 @@
   // Récupérer la barre de recherche
     const searchInput = document.querySelector('.form-control');
 
+    // Récupérer l'ID des utilisateurs
+    const id = document.querySelectorAll('.id');
+
     // Récupérer tous les noms d'utilisateur
-    const usernames = document.querySelectorAll('.username');
+    const firstname = document.querySelectorAll('.firstname');
+    const lastname = document.querySelectorAll('.lastname');
 
     // Récupérer tout les email d'utilisateur
     const emailNames = document.querySelectorAll('.email-name');
@@ -19,9 +23,11 @@
         const email = emailName.textContent.toLowerCase();
         const listItem = emailName.closest('li');
 
-        const username = listItem.querySelector('.username').textContent.toLowerCase();
+        const id = listItem.querySelector('.id').textContent.toLowerCase();
+        const firstname = listItem.querySelector('.firstname').textContent.toLowerCase();
+        const lastname = listItem.querySelector('.lastname').textContent.toLowerCase();
 
-        if (email.includes(searchValue) || username.includes(searchValue)) {
+        if (email.includes(searchValue) || id.includes(searchValue) || firstname.includes(searchValue) || lastname.includes(searchValue) ) {
           listItem.style.display = 'block';
         } else {
           listItem.style.display = 'none';

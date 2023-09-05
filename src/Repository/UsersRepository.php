@@ -39,6 +39,24 @@ class UsersRepository extends ServiceEntityRepository implements PasswordUpgrade
         $this->getEntityManager()->flush();
     }
 
+    public function findByRoles(array $roles)
+    {
+        return $this->createQueryBuilder('u')
+            ->andWhere('u.roles IN (:roles)')
+            ->setParameter('roles', $roles)
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findByExcludedRoles(array $excludedRoles)
+    {
+        return $this->createQueryBuilder('u')
+            ->andWhere('u.roles NOT IN (:excludedRoles)')
+            ->setParameter('excludedRoles', $excludedRoles)
+            ->getQuery()
+            ->getResult();
+    }
+
 //    /**
 //     * @return Users[] Returns an array of Users objects
 //     */

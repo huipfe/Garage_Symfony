@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Repository\UsersRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -10,9 +11,17 @@ use Symfony\Component\Routing\Annotation\Route;
 class UsersController extends AbstractController
 {
     #[Route('/', name: 'index')]
-    public function index(): Response
+    public function index(UsersRepository $usersRepository): Response
     {
-        return $this->render('Admin/users/index.html.twig');
-    }
+        // Récupérez les utilisateurs avec les rôles "admin" et "employé"
+        $adminUsers = $usersRepository->findByRoles(['ROLE_ADMIN', 'ROLE_EMPLOYE']);
 
+        // Récupérez les autres utilisateurs
+        $otherUsers = $usersRepository->findByExcludedRoles(['ROLE_ADMIN', 'ROLE_EMPLOYE']);
+
+        // Fusionnez les deux tableaux
+        $users = array_merge($adminUsers, $otherUsers);
+
+        return $this->render('Admin/users/index.html.twig', compact('users'));
+    }
 }
