@@ -62,7 +62,7 @@
                             <section id="description">
 
                                 {% if product.stock > 0 %}
-                                    <a class="fw-4 m-2 btn btn-success ">
+                                    <a href ="{{ path('cart_add', {id : product.id}) }}" class="fw-4 m-2 btn btn-success ">
                                         <p class="mx-2 bi bi-cart-check">En Stock</p>
                                     </a>
                                 {% else %}
