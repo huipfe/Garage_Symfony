@@ -56,6 +56,9 @@ class RegistrationFormType extends AbstractType
                 'label' => 'Ville',
                 ])
             ->add('RGPDConsent', CheckboxType::class, [
+                'attr' => [
+                    'class' => 'my-5 pointer-event '
+                ],
                 'mapped' => false,
                 'constraints' => [
                     new IsTrue([

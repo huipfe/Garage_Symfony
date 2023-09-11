@@ -61,13 +61,13 @@
                     <!-- ECF_Garage/src/Views/templates/Used_cars_listing.html.php -->
 
                     <li class="nav-item ">
-                        <a class="nav-link" href="/Apropos">
+                        <a class="nav-link" href="{{ path('about_index') }}">
                             À propos</a>
                         <!-- /ECF_Garage/src/Views/templates/Apropos.html.php -->
                     </li>
 
                     <li class="nav-item ">
-                        <a class="nav-link" href="/Contact">
+                        <a class="nav-link" href="{{ path('contact_index') }}">
                             Contact</a>
                         <!-- /ECF_Garage/src/Views/templates/Contact.html.php -->
                     </li>
@@ -76,7 +76,7 @@
 
                     {% if app.user %}
 
-
+                    {% if not is_granted('ROLE_ADMIN') %}
                         <!-- Profile-->
                         <li class="list-inline-item nav-item">
                             <a href="{{ path('profile_index') }}">
@@ -96,7 +96,7 @@
                                 -->
                             </a>
                         </li>
-
+                    {% endif %}
 
 
                         <!--<?php else: ?>-->

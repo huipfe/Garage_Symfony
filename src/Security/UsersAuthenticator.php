@@ -44,14 +44,19 @@ class UsersAuthenticator extends AbstractLoginFormAuthenticator
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?Response
     {
+        // Récupérez l'utilisateur actuel
+        $user = $token->getUser();
+
         if ($targetPath = $this->getTargetPath($request->getSession(), $firewallName)) {
             return new RedirectResponse($targetPath);
         }
 
-        // For example:
-        // app_main, pour page main
-        return new RedirectResponse($this->urlGenerator->generate('profile_index'));
-        //throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
+        // Vérifiez si l'utilisateur a le rôle ROLE_ADMIN
+        if (in_array('ROLE_ADMIN', $user->getRoles())) {
+            return new RedirectResponse($this->urlGenerator->generate('admin_index'));
+        } else {
+            return new RedirectResponse($this->urlGenerator->generate('profile_index'));
+        }
     }
 
     protected function getLoginUrl(Request $request): string

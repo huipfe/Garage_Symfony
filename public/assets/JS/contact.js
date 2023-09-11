@@ -10,7 +10,10 @@ function submitForm(event) {
 
     // Créer une requête AJAX
     let xhr = new XMLHttpRequest();
-    xhr.open('POST', '/Utils/sendMail.php', true);
+    //xhr.open('POST', '/Service/sendMail.php', true);
+    //xhr.open('POST', form.getAttribute('data-path'), true);
+    xhr.open('POST', '/contact/send_mail', true);
+
     xhr.onreadystatechange = function () {
         if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
             // Réponse de la requête AJAX
@@ -41,6 +44,7 @@ function displayModal(response) {
         }
     }
 
+
     // Créer une nouvelle modal
     let newModal = document.createElement('div');
     newModal.classList.add('modal', 'fade');
@@ -53,8 +57,8 @@ function displayModal(response) {
           <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
         <div class="modal-body">
-          <p style="color: #F2F2F2;">${response === 'success' ? 'Le formulaire a été envoyé avec succès!' 
-          : 'Une erreur s\'est produite lors de l\'envoi du formulaire.'}</p>
+          <p style="color: #F2F2F2;">${response.includes('success') ? 'Le formulaire a été envoyé avec succès!'
+        : 'Une erreur s\'est produite lors de l\'envoi du formulaire.'}</p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fermer</button>
@@ -63,6 +67,7 @@ function displayModal(response) {
     </div>
   `;
 
+
     // Ajouter la modal à la page
     document.body.appendChild(newModal);
 
@@ -70,7 +75,6 @@ function displayModal(response) {
     let modalInstance = new bootstrap.Modal(newModal);
     modalInstance.show();
 }
-
 
 
 // Ajouter un gestionnaire d'événement au formulaire

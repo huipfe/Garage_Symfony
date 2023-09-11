@@ -2,3 +2,9 @@ controllers:
     resource: ../src/Controller/
     type: attribute
 
+
+# config/routes.yaml
+send_mail:
+    path: /contact/send_mail
+    controller: App\Controller\ContactController::sendMail
+    methods: [POST]
