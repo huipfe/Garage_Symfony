@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : mar. 29 août 2023 à 14:42
+-- Généré le : mar. 19 sep. 2023 à 08:26
 -- Version du serveur : 8.0.30
 -- Version de PHP : 8.2.6
 
@@ -101,7 +101,34 @@ INSERT INTO `doctrine_migration_versions` (`version`, `executed_at`, `execution_
 ('DoctrineMigrations\\Version20230816135326', '2023-08-16 13:54:06', 233),
 ('DoctrineMigrations\\Version20230816135625', '2023-08-16 13:56:37', 210),
 ('DoctrineMigrations\\Version20230818081720', '2023-08-18 08:25:32', 1067),
-('DoctrineMigrations\\Version20230822073728', '2023-08-22 07:38:53', 288);
+('DoctrineMigrations\\Version20230822073728', '2023-08-22 07:38:53', 288),
+('DoctrineMigrations\\Version20230912084458', '2023-09-12 08:47:42', 331);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `horaires`
+--
+
+CREATE TABLE `horaires` (
+  `id` int NOT NULL,
+  `jour` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `heure_debut` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `heure_fin` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `horaires`
+--
+
+INSERT INTO `horaires` (`id`, `jour`, `heure_debut`, `heure_fin`) VALUES
+(23, 'Lundi', '08h00-12h00', '14h00-18h00'),
+(24, 'Mardi', '08h00-12h00', '14h00-18h00'),
+(25, 'Mercredi', '08h00-12h00', '14h00-18h00'),
+(26, 'Jeudi', '08h00-12h00', '14h00-18h00'),
+(27, 'Vendredi', '08h00-12h00', '14h00-18h00'),
+(28, 'Samedi', '08h00', '13h00'),
+(29, 'Dimanche', 'Fermeture ', '-------');
 
 -- --------------------------------------------------------
 
@@ -120,106 +147,15 @@ CREATE TABLE `images` (
 --
 
 INSERT INTO `images` (`id`, `products_id`, `name`) VALUES
-(1, 16, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\9c77519d96bf0f6c9a4f82ce45f1407e.png'),
-(3, 16, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\58d66c1ff59b92a9d75571f9d1a7cecf.png'),
-(4, 15, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\15fef9211421611e6716821777e5a9c0.png'),
-(6, 13, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\37ff5bc8f597b543a391b8c43d1296c2.png'),
-(7, 16, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\f9c0f4fb1b65b1e9773f7726fce6c334.png'),
-(8, 15, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\146e70f5f126a3c798a115fea12c8f66.png'),
-(9, 13, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\ed53ee0fe34a2b986af3776822172307.png'),
-(10, 11, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\fc3760e15b67bb7350775a355f624e24.png'),
-(11, 15, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\b9b1fa93960e552a34f84800a96469c2.png'),
-(12, 15, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\a6ffc4ab521d53b61c76db7c9541f2ac.png'),
-(13, 13, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\780034895e664712e4606f93f3ef6a30.png'),
-(14, 19, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\55042be246abc75b43b930bbf5114f86.png'),
-(15, 20, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\0fb91fe332acb27604947ae93e07dc16.png'),
-(16, 17, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\398324aaafb9aad4c3d530769594de61.png'),
-(17, 11, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\edf3796562c69bc9f78f6a77c4a7d317.png'),
-(18, 12, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\c36b6fa415298a3109ed73b169842256.png'),
-(19, 18, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\10479c35ea465e80a7f881df55d3a95b.png'),
-(20, 17, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\64e30854ea0cbf771dec02497ee8d163.png'),
-(21, 11, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\cea1206053e2b2bee5ee857ebc026f96.png'),
-(22, 11, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\513afb9135f00d52af0228b3e45afc6a.png'),
-(23, 15, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\8f40ed48105b2789b8f22056862e608e.png'),
-(24, 18, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\70bab6713c0801f908e52e6003637bd3.png'),
-(25, 18, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\825855326c6e308f53bef43e04b53bcd.png'),
-(26, 18, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\72f00f93c21bf6f23540b84da0ccbcf4.png'),
-(27, 18, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\c3a53958e8c990fd093913a59d423bae.png'),
-(28, 16, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\f0608b2d0938527cd1fa4c9224166e86.png'),
-(29, 18, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\37f93bcbe515a721bd6858000122ddc2.png'),
-(30, 15, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\e9ff447b046add8a57ee8e874d33b401.png'),
-(31, 15, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\a5cd098a0d2d2bc01a43e05caab1c020.png'),
-(32, 16, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\88d1faf25ece35e0b9cf42de4f9f8a6d.png'),
-(33, 20, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\11f81695f7fe5bf5e22c7bd2b317ffe1.png'),
-(34, 13, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\d908ad272f7e243b66a666eec66ffe2b.png'),
-(35, 19, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\69edd79592420ce2a7f64357cf02a92d.png'),
-(36, 17, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\a259d0f332b3fc7fdcda0388a6ba0a7c.png'),
-(37, 18, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\a19ffe34dda2563d27f61b128e56fd6e.png'),
-(38, 15, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\031623683d6b4f410b288f4fcd2829da.png'),
-(39, 19, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\3508071582e86270e4b6bf07708596d7.png'),
-(40, 16, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\fef82a36883da9d149ee7c5db7b30ac8.png'),
-(41, 13, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\bccd53e838d484721c201d5cbdf7018f.png'),
-(42, 13, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\d0e2b0e69277f7e809bd0cf0cd1ac74d.png'),
-(43, 14, 'miniature-1.jpg'),
-(44, 20, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\f2168139d5473845af4f0504e49db6bf.png'),
-(45, 12, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\cfe6c95bb17a415d7740022edc89a65f.png'),
-(46, 17, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\830b9c93aa7d5f5ec8aef6f95b8dc42a.png'),
-(47, 15, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\257abf1aadf39058e529f1c184db32c9.png'),
-(48, 18, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\e9f9a306ea0ca0f7a08ff2b95e9ba2ce.png'),
-(49, 13, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\20289f3acab99ad91d4a1825b0f7647f.png'),
-(50, 20, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\3ffb94deb55da52a5fc60d093eb5da63.png'),
-(52, 17, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\026da58032f2fbfb3c472d92ff8d6a63.png'),
-(53, 12, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\654e5c4b15937182efdcee64cf8726b8.png'),
-(54, 11, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\41445ebd2c7bd909f658ebcfff1862b8.png'),
-(55, 19, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\0bcc3debdd45568568082dfbebc9f467.png'),
-(56, 19, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\9ddcbaaa725f014c0db536c34bf8ef43.png'),
-(57, 13, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\a562f392775fbcd218d5335e56f33d73.png'),
-(58, 15, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\ad8f9dd2bc5437d9ddd1dcf92e356fbc.png'),
-(59, 20, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\c5dcfef5a51f10673c14791a8dca1958.png'),
-(60, 20, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\8d4dcf71c04c22d9e3844b9b5f93bf1b.png'),
-(61, 18, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\9a3d9b4640737fcd32761bc286ede421.png'),
-(62, 11, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\6dfc4ec1ef43cad0c7d9dc1876b4aaa2.png'),
-(63, 20, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\81df24cf869cf0ac7bd346e60c10ec38.png'),
-(64, 13, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\a814405ac31e16dd21eb80573391605e.png'),
-(65, 20, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\64dccaa9851043dc840418d41e3fe168.png'),
-(66, 17, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\8a22a03323c38768b258d6741e5c4ff5.png'),
-(67, 18, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\f18be66977b6eb395b84d9bf76b50520.png'),
-(68, 11, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\6029a27e9a21f632a786b4d2066ed671.png'),
-(69, 14, 'miniature-2.jpg'),
-(70, 14, 'miniature-3.jpg'),
-(71, 19, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\10ce496285b8cf60aa4d90011dd27ddf.png'),
-(72, 19, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\6f97ef25e386f0a098166c33537b42d1.png'),
-(73, 19, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\3798901073b218bd1557bd83107f2a59.png'),
-(74, 19, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\030f78f6934b0fd4dc8b3172dc26ed58.png'),
-(75, 19, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\b559c3922241f8e92a69d4aa37f88618.png'),
-(76, 17, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\94c9bef33629ddeaba26c24d623e5d90.png'),
-(77, 13, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\d061dbf96ddaff8878e0cb55f21059ec.png'),
-(78, 15, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\52db630fcaaeae8f3e57d7bf9f17233a.png'),
-(79, 13, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\9492836599e737c0248f10825c6ff638.png'),
-(80, 16, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\3ab56d1cac8842eb3c95757ef392b62c.png'),
-(81, 18, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\08bccee5e0faa177eef6c099326a7abc.png'),
-(82, 12, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\b09014143351ec6a2da7d9dbfc2e02df.png'),
-(83, 11, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\9054841e9fed427583107b748c5651f1.png'),
-(84, 19, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\20c4ab687b3180db314001924d6a8961.png'),
-(85, 18, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\bf53fe8259e5e13cb89a2d835573a361.png'),
-(86, 20, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\b02ff679c824324046ba2c446bb171ba.png'),
-(87, 16, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\fdf882c69bf05ad68e5f7888eecccf7e.png'),
-(88, 19, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\37f2a6dea34d27e2ced858c2eb5e6e8a.png'),
-(89, 16, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\0e665988c6f2c9f1e17f8db27f615fd6.png'),
-(90, 19, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\5c50b9e6fe725d304871f42b2f63838d.png'),
-(91, 19, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\5ff1b49353ef8f57a10c79618482d6bf.png'),
-(92, 14, 'miniature-4.jpg'),
-(93, 20, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\c1559ea06036b03a724f0f0dcf05b137.png'),
-(94, 13, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\dc81bb0705521c7dfc384689ef0fc437.png'),
-(95, 20, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\ffa6c32d3c9a4427584efb7d07da5ab1.png'),
-(96, 12, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\0e6e1340e61a6cf92adfcb21d122c1f6.png'),
-(97, 17, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\10d0ed4ab8a525ddfddff9e59c93347a.png'),
-(98, 17, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\d44858830282fc548cf37e83e547e328.png'),
-(99, 11, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\56636b9a39b98ccfe2af876a074cff6a.png'),
-(100, 20, 'C:\\Users\\Ilan\\AppData\\Local\\Temp\\a1827b72cee421e570c511eb269b217a.png'),
 (104, 25, 'c00eb0d25120ad325709e0705a4fc601.webp'),
 (105, 25, 'f5ee2401f3625418deb7d4ebf41ce0fd.webp'),
-(106, 25, 'ae5ba232bd79da8af44ff274dc955a8f.webp');
+(106, 25, 'ae5ba232bd79da8af44ff274dc955a8f.webp'),
+(107, 26, 'e8e10ab865b528d49224406b6e68faca.webp'),
+(108, 26, '7d8c81cd7bae00428351fe97899da05f.webp'),
+(109, 26, '6364ca1f81f5008dcc9e822dedd39cbb.webp'),
+(110, 25, '01345f9a6491d8960a433c2b778d099a.webp'),
+(111, 29, '1ad44c6243d2ed3ce8ae51044595e948.webp'),
+(112, 30, '516da7addbe747de19f3e944853a1058.webp');
 
 -- --------------------------------------------------------
 
@@ -258,6 +194,16 @@ CREATE TABLE `orders` (
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '(DC2Type:datetime_immutable)'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Déchargement des données de la table `orders`
+--
+
+INSERT INTO `orders` (`id`, `coupons_id`, `users_id`, `reference`, `created_at`) VALUES
+(1, NULL, 39, '64f9dcd0db6ab', '2023-09-07 14:23:12'),
+(2, NULL, 39, '64f9de04ae590', '2023-09-07 14:28:20'),
+(3, NULL, 39, '64f9defdc634c', '2023-09-07 14:32:29'),
+(4, NULL, 22, '6501c10fbffb5', '2023-09-13 14:02:55');
+
 -- --------------------------------------------------------
 
 --
@@ -270,6 +216,20 @@ CREATE TABLE `orders_details` (
   `quantity` int NOT NULL,
   `price` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `orders_details`
+--
+
+INSERT INTO `orders_details` (`orders_id`, `products_id`, `quantity`, `price`) VALUES
+(1, 26, 2, 15000000),
+(1, 29, 2, 5000),
+(1, 30, 2, 8010),
+(2, 26, 1, 15000000),
+(2, 29, 1, 5000),
+(3, 25, 1, 150000),
+(3, 26, 1, 15000000),
+(4, 30, 2, 8010);
 
 -- --------------------------------------------------------
 
@@ -293,20 +253,10 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `categories_id`, `name`, `description`, `price`, `stock`, `created_at`, `slug`) VALUES
-(11, 124, 'Hic.', 'Autem dolorum veritatis consequatur neque. Omnis aliquam quos et. Labore adipisci et dicta.', 62693, 7, '2023-08-14 14:04:49', 'hic'),
-(12, 118, 'Vel.', 'Qui nesciunt voluptatem tempora esse odit autem. Placeat sit nesciunt deleniti laboriosam id. Earum expedita consequuntur quidem eius et. Incidunt quidem sed magnam rerum.', 105726, 1, '2023-08-14 14:04:49', 'vel'),
-(13, 119, 'Nemo.', 'Exercitationem magnam reiciendis provident impedit. Harum aut dicta incidunt quis. Quam dolorum cumque sunt consequatur voluptas temporibus explicabo aut.', 68564, 6, '2023-08-14 14:04:49', 'nemo'),
-(14, 121, 'Enim.', 'Explicabo labore corrupti neque atque. Commodi possimus minima aut laudantium dolorem veritatis. Totam recusandae nesciunt sunt fugit.', 136194, 5, '2023-08-14 14:04:49', 'enim'),
-(15, 120, 'Qui.', 'Vitae quis debitis reiciendis rerum eum. Quis temporibus odit ad aut dolor sed excepturi. Ea excepturi et ut autem eum sequi quasi facilis.', 20058, 2, '2023-08-14 14:04:49', 'qui'),
-(16, 121, 'Aut.', 'Dolorum autem nihil omnis eaque recusandae delectus. Earum inventore qui placeat.', 146010, 6, '2023-08-14 14:04:49', 'aut'),
-(17, 123, 'Ut.', 'Laborum non cum explicabo labore quos voluptatem. Sequi eos enim officiis. Sunt tempora rerum quod sint velit.', 93797, 3, '2023-08-14 14:04:49', 'ut'),
-(18, 122, 'Non.', 'Necessitatibus aut voluptatem atque dolore est. Ipsa officiis necessitatibus deleniti rerum beatae. Et omnis provident porro odit sed similique velit.', 29431, 9, '2023-08-14 14:04:49', 'non'),
-(19, 125, 'Et.', 'Eum corrupti ex tempore qui. Assumenda omnis sit natus qui. Voluptas harum sunt esse non dolores quasi.', 117630, 6, '2023-08-14 14:04:49', 'et'),
-(20, 121, 'Et.', 'Eveniet sapiente deserunt nam dolorem repudiandae. Voluptate hic consequuntur itaque rem maiores. Odit voluptates quod alias.', 38560, 8, '2023-08-14 14:04:49', 'et'),
-(21, 123, 'Elmo le pabo', 'Lol tu sais quoi ?', 150200, 20, '2023-08-28 13:46:32', 'Elmo-le-pabo'),
-(22, 119, 'sdddssd', 'sdddssddffgdfddfdf', 1584200, 10, '2023-08-28 13:57:06', 'sdddssd'),
-(23, 119, 'aaaaaaaaaaaaaaaaaa', 'fdfgfgfdfdfdfgf', 1500000, 10, '2023-08-28 13:58:09', 'aaaaaaaaaaaaaaaaaa'),
-(25, 125, 'Service de massage', 'Humm, les bons messages du chef, hummm', 150000, 1, '2023-08-29 14:32:03', 'Service-de-massage');
+(25, 125, 'Service de massage', 'Humm, les bons messages du chef, hummm', 150000, 1, '2023-08-29 14:32:03', 'Service-de-massage'),
+(26, 121, 'Bolide de l\'espace lol.', 'Mdr', 15000000, 2, '2023-08-29 16:03:59', 'Bolide-de-l-espace-lol'),
+(29, 123, 'Service Un du Un', 'Description au piff lol', 5000, 1, '2023-09-01 09:55:48', 'Service-Un-du-Un'),
+(30, 124, 'Service au piff', 'fddfdf', 8010, 10, '2023-09-01 09:57:55', 'Service-au-piff');
 
 -- --------------------------------------------------------
 
@@ -335,12 +285,12 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `email`, `roles`, `password`, `lastname`, `firstname`, `address`, `zipcode`, `city`, `created_at`, `is_verified`, `reset_token`) VALUES
 (22, 'admin@example.com', '[\"ROLE_ADMIN\"]', '$2y$13$l6M26E4rHoj0u1R.L2O34usPsOeoLV/ztGVYtZZ6vnnsg.DZF8lt6', 'Tervil', 'Ilan', '4 rue Eugène Galbrun', '94130', 'Nogent sur Marne', '2023-08-14 14:04:49', 1, '1_72Lah3eg9G3RZsP81UO4ISYd64T57DUTLsPrQYmww'),
-(23, 'olivie90@orange.fr', '[\"ROLE_EMPLOYE\"]', '$2y$13$RS0Wn3GSf5em09KIYp6d3OvwGRSL2kXeto3hO3oVogT9Ul9puipEa', 'Duhamel', 'Claudine', '60, rue Boucher', '09872', 'Meunier-la-Forêt', '2023-08-14 14:04:50', 0, ''),
+(23, 'olivie90@orange.fr', '[\"ROLE_EMPLOYE\"]', '$2y$13$RS0Wn3GSf5em09KIYp6d3OvwGRSL2kXeto3hO3oVogT9Ul9puipEa', 'Duhamel', 'Claudine', '60, rue Boucher', '09872', 'Meunier-la-Forêt', '2023-08-14 14:04:50', 1, ''),
 (24, 'jules38@sfr.fr', '[]', '$2y$13$O6zdQb8BTX9NjdtQWXQt3OE0j61kP43e1mAIyUByx3kWyBOTX286.', 'Besnard', 'Pauline', '756, boulevard Collin', '03091', 'Lebon', '2023-08-14 14:04:50', 0, ''),
 (25, 'rodrigues.helene@berger.com', '[]', '$2y$13$97mrwT2No0UzypF0uQFTReTiIX189zCbYJYc00S8AU1flHpNwip36', 'Robert', 'Aimé', '68, chemin Denis', '28038', 'Blanchard-sur-Mer', '2023-08-14 14:04:51', 0, ''),
 (26, 'capucine.hamel@vallee.fr', '[]', '$2y$13$N3FaAKnaCbdSJztjPn9UTelXz8oMBVguNKpPB4vFdX9vokCWmWBwe', 'Samson', 'Martine', '956, avenue Jérôme Lecomte', '43587', 'Guibert', '2023-08-14 14:04:51', 0, ''),
 (27, 'dufour.sylvie@perret.com', '[]', '$2y$13$7Atbf9MOZcPBa0VbC3syj.CkZUVB6NReANTOlmWHTvi4DsIPnBFVC', 'Dupuy', 'Léon', '590, chemin de Masse', '74369', 'Neveu', '2023-08-14 14:04:52', 0, ''),
-(38, 'ilan.tervil@wanadoo.fr', '[]', '$2y$13$PpBXrSjz4Tm5qRJG3D00SuQ5vEuguS7nVi.wii0cyEOYEQUmWf4We', 'Tervil', 'Ilan', '4 Rue Eugène Galbrun', '94130', 'Nogent-sur-Marne', '2023-08-21 08:07:13', 0, ''),
+(38, 'ilan.tervil@wanadoo.fr', '[]', '$2y$13$PpBXrSjz4Tm5qRJG3D00SuQ5vEuguS7nVi.wii0cyEOYEQUmWf4We', 'Tervil', 'Ilan', '4 Rue Eugène Galbrun', '94130', 'Nogent-sur-Marne', '2023-08-21 08:07:13', 1, ''),
 (39, 'test.tervil@wanadoo.fr', '[]', '$2y$13$2BroQgisbVyok68FNdBsq.Nxt2DJa9XxSK5G6LabcxtZ60Hk9ouNS', 'Tervilux', 'Ilanux', '4 Rue Eugène Galbrun', '94130', 'Nogent-sur-Marne', '2023-08-21 12:53:07', 1, '');
 
 --
@@ -373,6 +323,12 @@ ALTER TABLE `coupons_types`
 --
 ALTER TABLE `doctrine_migration_versions`
   ADD PRIMARY KEY (`version`);
+
+--
+-- Index pour la table `horaires`
+--
+ALTER TABLE `horaires`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Index pour la table `images`
@@ -444,10 +400,16 @@ ALTER TABLE `coupons_types`
   MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT pour la table `horaires`
+--
+ALTER TABLE `horaires`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+
+--
 -- AUTO_INCREMENT pour la table `images`
 --
 ALTER TABLE `images`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=107;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=113;
 
 --
 -- AUTO_INCREMENT pour la table `messenger_messages`
@@ -459,13 +421,13 @@ ALTER TABLE `messenger_messages`
 -- AUTO_INCREMENT pour la table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT pour la table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT pour la table `users`

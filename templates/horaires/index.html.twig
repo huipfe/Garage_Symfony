@@ -1,0 +1,109 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Horaires - {% endblock %}
+
+{% block body %}
+
+
+
+    <div class="container">
+
+        <div class="justify-content-start">
+            <a href="{{ path('admin_users_index') }}"
+               class="text-decoration-none">
+                <span>
+                    <button class="btn btn-danger my-2">
+                        <i class="bi bi-arrow-left"></i>
+                        Retour à la liste des utilisateurs
+                    </button>
+                </span>
+            </a>
+        </div>
+
+        <!-- Affichage les horaires actuels -->
+        <h1>Horaires d'ouverture</h1>
+        <table class="table">
+            <tr class="">
+                <th>Jour</th>
+                <th>Matin</th>
+                <th>Après-midi</th>
+            </tr>
+            {% for horaire in horaires %}
+                <tr class="">
+                    <td>{{ horaire.jour }}</td>
+                    <td>{{ horaire.heureDebut }}</td>
+                    <td>{{ horaire.heureFin }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+
+
+        <!-- Modifier les horaires actuels -->
+        <h3>Modification des horaires</h3>
+        <p>Horaires d'ouverture et de fermeture :</p>
+
+
+        <!--     <form method="POST" action="{{ path('horaires_edit') }}">
+            {% for horaire in horaires %}
+                <div class="form-group">
+                    <label for="heure_debut_{{ horaire.id }}">Heure de début ({{ horaire.jour }})</label>
+                    <input
+                            type="text"
+                            name="horaires[{{ horaire.id }}][heure_debut]"
+                            id="heure_debut_{{ horaire.id }}"
+                            class="form-control"
+                            value="{{ horaire.heureDebut }}"
+                            required
+                    >
+                </div>
+                <div class="form-group">
+                    <label for="heure_fin_{{ horaire.id }}">Heure de fin ({{ horaire.jour }})</label>
+                    <input
+                            type="text"
+                            name="horaires[{{ horaire.id }}][heure_fin]"
+                            id="heure_fin_{{ horaire.id }}"
+                            class="form-control"
+                            value="{{ horaire.heureFin }}"
+                            required
+                    >
+                </div>
+            {% endfor %}
+            <button type="submit" class="btn btn-danger my-3">Mettre à jour</button>
+           </form>      -->
+
+
+        <form method="POST" action="{{ path('horaires_edit') }}">
+            {% for horaire in horaires %}
+                <div class="form-group">
+                    <label>{{ horaire.jour }}</label>
+                    <div class="row">
+                        <div class="col">
+                            <input
+                                    type="text"
+                                    name="heure_debut_{{ horaire.id }}"
+                                    class="form-control"
+                                    value="{{ horaire.heureDebut }}"
+                                    required>
+                        </div>
+                        <div class="col">
+                            <input
+                                    type="text"
+                                    name="heure_fin_{{ horaire.id }}"
+                                    class="form-control"
+                                    value="{{ horaire.heureFin }}"
+                                    required>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            <button type="submit" class="btn btn-danger my-3">Mettre à jour</button>
+        </form>
+
+
+
+    </div>
+
+
+
+
+{% endblock %}

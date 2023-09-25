@@ -257,7 +257,11 @@
             </div>
         </div>
 
-        <script src="/Assets/JS/Used_cars_listing.js"></script>
+        <!--<script src="/Assets/JS/Used_cars_listing.js"></script>-->
+
+        {% block javascripts %}
+            <script src="{{ asset('Assets/JS/Used_cars_listing.js') }}" defer></script>
+        {% endblock %}
 
 
     </main>

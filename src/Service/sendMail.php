@@ -1,18 +1,18 @@
 <?php
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['formId']) && $_POST['formId'] === 'contactForm') {
     // Récupérer les valeurs du formulaire
     $name = $_POST['name'];
     $email = $_POST['email'];
     $message = $_POST['message'];
-    // $subject = $_POST['subject'];
+    $subject = $_POST['subject'];
 
     // Adresse e-mail de destination
     $to = 'ilan.tervil@wanadoo.fr';
 
     // Sujet de l'e-mail
-    $subject = 'Message depuis le contact du site de Garage V.Parrot';
-    // $body .= "Message: " . $subject;
+    //$subject = 'Message depuis le contact du site de Garage V.Parrot';
+    $body = "Sujet: " . $subject;
 
     // Corps de l'e-mail
     $body = "Nom: " . $name . "\n";

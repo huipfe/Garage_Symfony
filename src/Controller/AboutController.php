@@ -6,7 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/À PROPOS', name: 'about_')]
+#[Route('/information', name: 'about_')]
 class AboutController extends AbstractController
 {
     #[Route('/', name: 'index')]

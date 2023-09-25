@@ -6,14 +6,15 @@
                 <h4>Nos horaires</h4>
                 <p>Horaires d'ouverture et de fermeture :</p>
 
-                <?php if (isset($horaires) && is_array($horaires)) : ?>
-
-                <?php foreach ($horaires as $horaire) : ?>
-                <p><?php echo $horaire['jour']; ?> :
-                    <?php echo $horaire['heure_debut']; ?> / <?php echo $horaire['heure_fin']; ?></p>
-                <?php endforeach; ?>
-
-                <?php endif; ?>
+                {% if horaires is not empty %}
+                    <ul class="pb-3 list-unstyled">
+                        {% for horaire in horaires %}
+                            <li class="mt-4">{{ horaire.jour }} : {{ horaire.heureDebut }} / {{ horaire.heureFin }}</li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>Aucun horaire disponible.</p>
+                {% endif %}
 
 
             </div>
@@ -95,4 +96,6 @@
 </section>
 
 <!-- Inclure jQuery -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+{% block javascripts %}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script>
+{% endblock %}

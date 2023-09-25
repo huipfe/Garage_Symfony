@@ -8,3 +8,10 @@ send_mail:
     path: /contact/send_mail
     controller: App\Controller\ContactController::sendMail
     methods: [POST]
+
+
+# config/routes.yaml
+horaires_edit:
+    path: '/horaires/edit'
+    controller: 'App\Controller\HorairesController::edit'
+    methods: ['GET', 'POST']

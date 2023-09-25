@@ -93,13 +93,23 @@
                                 <!-- Partie message -->
                                 <form
                                         id="contactForm"
-
+                                        action="{{ path('contact_send_mail') }}"
                                         method="POST">
+
+                                    <input type="hidden" name="formId" value="contactForm">
+
                                     <!-- SurName & Name Input -->
                                     <div class="form-floating mb-3">
                                         <input class="form-control" name="name" id="name" type="text"
                                                placeholder="Votre Prénom & Nom" required>
                                         <label for="name" class="form-color form-label">Votre Prénom & Nom</label>
+                                    </div>
+
+                                    <!-- $subject Input -->
+                                    <div class="form-floating mb-3">
+                                        <input class="form-control" name="subject" id="subject" type="text"
+                                               placeholder="Sujet du message" required>
+                                        <label for="subject" class="form-color form-label">Sujet du message</label>
                                     </div>
 
                                     <div style="border: 3px solid #D94350;"></div>
@@ -154,6 +164,8 @@
     </main>
 
 
-    <script src="/Assets/JS/contact.js"></script>
+    {% block javascripts %}
+        <script src="{{ asset('Assets/JS/contact.js') }}" defer></script>
+    {% endblock %}
 
 {% endblock %}
