@@ -25,8 +25,16 @@ services:
     # please note that last definitions always *replace* previous ones
 
 # Horaires partout sur le site, via le footer
-# config/services.yaml
     App\Controller\HorairesControllerAdvice:
         tags:
             - { name: kernel.event_listener, event: kernel.controller, method: onKernelController }
+
+
+# GarageInfo partout sur le site, via le footer
+
+    App\Twig\GarageInfoExtension:
+        arguments:
+            $garageInfoRepository: '@App\Repository\GarageInfoRepository'
+        tags:
+            - { name: twig.extension }
 

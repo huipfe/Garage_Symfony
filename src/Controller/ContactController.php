@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\GarageInfo;
+use App\Repository\GarageInfoRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -11,10 +13,14 @@ use Symfony\Component\Routing\Annotation\Route;
 class ContactController extends AbstractController
 {
     #[Route('/', name: 'index')]
-    public function index(): Response
+    public function index(GarageInfoRepository $infoGarageRepository): Response
     {
+        // Récupérez les informations de la table InfoGarage depuis votre repository
+        $infoGarage = $infoGarageRepository->findOneBy([]); // Vous devrez ajuster cela en fonction de votre logique de récupération
+
         return $this->render('contact/index.html.twig', [
             'controller_name' => 'ContactController',
+            'info_garage' => $infoGarage, // Passez les informations de la table à la vue
         ]);
     }
 

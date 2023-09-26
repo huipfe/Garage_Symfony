@@ -15,3 +15,10 @@ horaires_edit:
     path: '/horaires/edit'
     controller: 'App\Controller\HorairesController::edit'
     methods: ['GET', 'POST']
+
+
+# config/routes.yaml
+garage_info_contact:
+    path: '/garage-info/contact'
+    controller: App\Controller\GarageInfoController::contact
+

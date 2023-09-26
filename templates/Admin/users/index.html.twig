@@ -164,6 +164,7 @@
                                     <td>
                                         <ul class="list-unstyled">
 
+                                            {% if 'ROLE_ADMIN' not in user.roles %}
                                             <!-- Modification de tout les comptes possible. -->
                                             <button
                                                     class="btn btn-responsive btn-sm btn-danger m-2"
@@ -178,7 +179,6 @@
                                                 </li>
                                             </button>
 
-                                            {% if 'ROLE_ADMIN' not in user.roles %}
                                                 <!-- Impossible de se supprimer le compte Admin -->
                                                 <button
                                                         class="btn btn-responsive btn-sm btn-danger m-2"
@@ -199,6 +199,16 @@
                                                             class="btn btn-responsive btn-sm btn-danger m-2">
                                                         <li>
                                                             <i class="bi bi-calendar-plus me-2"></i>Horaires
+                                                        </li>
+                                                    </button>
+                                                </a>
+
+                                                <!-- Seul l'admin peut modifier les informations -->
+                                                <a href="{{ path('garage-info_index') }}">
+                                                    <button
+                                                            class="btn btn-responsive btn-sm btn-danger m-2">
+                                                        <li>
+                                                            <i class="bi bi-info-square me-2"></i>Information
                                                         </li>
                                                     </button>
                                                 </a>

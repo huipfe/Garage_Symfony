@@ -29,7 +29,7 @@
 
                             <!-- Info -->
                             <section class="p-3">
-                                <div>
+                               <!-- <div>
                                     <i style="color:#D9777F"class="bi bi-envelope-fill fs-2 m-2"></i>
                                     <h2 class="m-2 fs-4">VincentParrot@gmail.com</h2>
                                 </div>
@@ -42,8 +42,28 @@
                                 <div>
                                     <i style="color:#D9777F"class="bi bi-geo-alt-fill fs-2 m-2"></i>
                                     <h2 class="m-2 fs-4">8 avenue de la prairie verte - Paris 75000</h2>
+                                </div>-->
+
+                                <!-- Insérez ceci où vous souhaitez afficher les informations du garage dans contact.html.twig -->
+
+                                <div>
+                                    <i style="color:#D9777F" class="bi bi-envelope-fill fs-2 m-2"></i>
+                                    <h2 class="m-2 fs-4">{{ info_garage.address }}</h2>
                                 </div>
+
+                                <div class="Num-Garage">
+                                    <i style="color:#D9777F" class="bi bi-telephone-fill fs-2 m-2"></i>
+                                    <h2 class="m-2 fs-4">{{ info_garage.phoneNumber }}</h2>
+                                </div>
+
+                                <div>
+                                    <i style="color:#D9777F" class="bi bi-geo-alt-fill fs-2 m-2"></i>
+                                    <h2 class="m-2 fs-4">{{ info_garage.email }}</h2>
+                                </div>
+
                             </section>
+
+
                             <!-- Uniquement en desktop, pour apparaitre en dessous -->
                             <ul class="d-none d-lg-block" style="margin-top: 10rem;">
                                 <li class="list-inline-item"><a href="#">

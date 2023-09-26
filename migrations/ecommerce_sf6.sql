@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : mar. 19 sep. 2023 à 08:26
+-- Généré le : lun. 25 sep. 2023 à 15:27
 -- Version du serveur : 8.0.30
 -- Version de PHP : 8.2.6
 
@@ -107,6 +107,26 @@ INSERT INTO `doctrine_migration_versions` (`version`, `executed_at`, `execution_
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `garage_info`
+--
+
+CREATE TABLE `garage_info` (
+  `id` int NOT NULL,
+  `address` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phone_number` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `garage_info`
+--
+
+INSERT INTO `garage_info` (`id`, `address`, `phone_number`, `email`) VALUES
+(1, '8 avenue de la prairie verte - Paris 75002', '01 62 23 42 51', 'VincentParrot@gmail.com');
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `horaires`
 --
 
@@ -128,7 +148,7 @@ INSERT INTO `horaires` (`id`, `jour`, `heure_debut`, `heure_fin`) VALUES
 (26, 'Jeudi', '08h00-12h00', '14h00-18h00'),
 (27, 'Vendredi', '08h00-12h00', '14h00-18h00'),
 (28, 'Samedi', '08h00', '13h00'),
-(29, 'Dimanche', 'Fermeture ', '-------');
+(29, 'Dimanche', 'Fermé', 'Fermé');
 
 -- --------------------------------------------------------
 
@@ -253,7 +273,7 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `categories_id`, `name`, `description`, `price`, `stock`, `created_at`, `slug`) VALUES
-(25, 125, 'Service de massage', 'Humm, les bons messages du chef, hummm', 150000, 1, '2023-08-29 14:32:03', 'Service-de-massage'),
+(25, 125, 'Service de massage', 'Humm, les bons messages du chef, hummm', 1580, 10, '2023-08-29 14:32:03', 'Service-de-massage'),
 (26, 121, 'Bolide de l\'espace lol.', 'Mdr', 15000000, 2, '2023-08-29 16:03:59', 'Bolide-de-l-espace-lol'),
 (29, 123, 'Service Un du Un', 'Description au piff lol', 5000, 1, '2023-09-01 09:55:48', 'Service-Un-du-Un'),
 (30, 124, 'Service au piff', 'fddfdf', 8010, 10, '2023-09-01 09:57:55', 'Service-au-piff');
@@ -323,6 +343,12 @@ ALTER TABLE `coupons_types`
 --
 ALTER TABLE `doctrine_migration_versions`
   ADD PRIMARY KEY (`version`);
+
+--
+-- Index pour la table `garage_info`
+--
+ALTER TABLE `garage_info`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Index pour la table `horaires`
@@ -398,6 +424,12 @@ ALTER TABLE `coupons`
 --
 ALTER TABLE `coupons_types`
   MODIFY `id` int NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `garage_info`
+--
+ALTER TABLE `garage_info`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT pour la table `horaires`
