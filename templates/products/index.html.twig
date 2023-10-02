@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Liste des produits{% endblock %}
+{% block title %}Liste des produits - {% endblock %}
 
 {% block body %}
 
@@ -31,210 +31,109 @@
             </div>
         </div>
 
-
-        <!-- Barre de filtrage -->
-        <!--<section id="filter-sidebar">
-            <div class=" filtrage-bar ">
-                <h5 class="m-2 p-2 filtrage-title">
-                    Liste des voitures <br> d'occasions par filtre
-                </h5>
-                <div class="gray-bar d-flex align-items-center">
-                    <div class="form-check ">
-                        <input class="form-check-input"
-                               type="checkbox"
-                               value=""
-                               id="checkbox1"
-                               name="years">
-                        <label
-                                class="form-check-label cursor-pointer"
-                                for="checkbox1">
-                            <span class="checkbox-icon pe-none">2020>=</span>
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input
-                                class="form-check-input"
-                                type="checkbox"
-                                value=""
-                                id="checkbox2"
-                                name="years">
-                        <label
-                                class="form-check-label cursor-pointer"
-                                for="checkbox2">
-                            <span class="checkbox-icon pe-none">2020<=</span>
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input
-                                class="form-check-input"
-                                type="checkbox"
-                                value=""
-                                id="checkbox3"
-                                name="kilometers">
-                        <label
-                                class="form-check-label cursor-pointer"
-                                for="checkbox3">
-                            <span class="checkbox-icon pe-none">2000km>=</span>
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input
-                                class="form-check-input"
-                                type="checkbox"
-                                value=""
-                                id="checkbox4"
-                                name="kilometers">
-                        <label
-                                class="form-check-label cursor-pointer"
-                                for="checkbox4">
-                            <span class="checkbox-icon pe-none">2000km<=</span>
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input
-                                class="form-check-input"
-                                type="checkbox"
-                                value=""
-                                id="checkbox5"
-                                name="price">
-                        <label
-                                class="form-check-label cursor-pointer"
-                                for="checkbox5">
-                            <span class="checkbox-icon pe-none">100000€<=</span>
-                        </label>
-                    </div>
-                </div>
-            </div>
-        </section>-->
-
-
         <!-- Main cars -->
 
         <div class="container">
             <div class="row">
-                <!--{{ dump() }}
 
-                <?php foreach ($carsDetails as $car) : ?>-->
+                {% set foundSomething = false %}
+                <div id="noResultsMessage" style="display: none">
+                    <h4>Aucun produit dans aucune catégorie trouvé</h4>
+                </div>
 
                 {% for category in categories %}
                     {% if category.parent == null %}
-                    <div class="col-12 m-3 py-3">
-                        <h2>{{ category.name }}</h2>
-                    </div>
-                {% else %}
-                <div class="col-lg-4">
-                    <div class="card mb-3" style="background: #E8E4E4;">
-                        <div class="row g-0">
-                            <div class="col-md-5 col-lg-12">
-
-                                <!-- Supression d'une voiture -->
-                                {% if app.user %}
-                                <!--<?php if(isset($_SESSION['user']) && !empty($_SESSION['user'])): ?>-->
-                                <button class="btn btn-danger mx-2 my-2 bi bi-trash3-fill deleteBtn"
-                                        data-bs-toggle="modal"
-                                        data-bs-target="#deleteModal"
-                                        data-action="/deleteCars/delete/<?= $car->id ?>">
-                                </button>
-                                    <!--<?php endif; ?>-->
-                                {% endif %}
-
-                                <!-- Modification d'une voiture -->
-                                {% if app.user %}
-                                <!--<<?php if(isset($_SESSION['user']) && !empty($_SESSION['user'])): ?>-->
-                                <a href="/modifier/modifie/<?= $car->id?>">
-                                    <button
-                                            class="btn btn-danger mx-2 my-2 bi bi-pencil-square">
-                                    </button>
-                                </a>
-                                    <!--<?php endif; ?>-->
-                                {% endif %}
-
-
-                                <!-- Me permet de faire apparaitre les images de ma BDD,
-                                qui ont été passé via mon formulaire.
-                                <img src="data:image/jpeg;base64,<?= $imageData ?>"
-                                     alt="ImageVoiture" class="img-fluid">-->
-
-                            </div>
-                            <div class="col-md-7 col-lg-12">
-
-                                <div class="card-body mx-3 text-md-center text-lg-end">
-                                    <h3 class="card-title fw-bold"
-                                        id = "title-card">{{ category.name }}
-                                    </h3>
-
-
-                                    <p class="card-text fst-italic"
-                                       id = "title-description">
-                                        <?= $car->description?>
-                                    </p>
-
-                                    <p class="card-text fs-5"
-                                       id = "title-modele">Modèle :
-                                        <?= $car->modele?>
-                                    </p>
-
-                                    <p class="card-text fs-5 filter-year"
-                                       id = "title-year">Année :
-                                        <span>
-                                        <?= $car->annee?>
-                                    </span>
-                                    </p>
-
-                                    <p class="card-text fs-5 filter-kilometrage"
-                                       id = "title-kilometrage">Kilométrage :
-                                        <span>
-                                        <?= $car->kilometrage?> km
-                                    </span>
-                                    </p>
-
-                                    <p class="card-text fs-5"
-                                       id = "title-price">Prix :
-                                        <span class="fw-bold">
-                                        <?= $car->prix?>€
-                                    </span>
-                                    </p>
-
-
-                                    <!-- <div class="rating">
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star"></i>
-                                        <i class="bi bi-star"></i>
-                                    </div> -->
-
-                                    <a href="{{ path('categories_list', {slug: category.slug}) }}"
-                                       class="btn btn-danger">Voir les produits
-                                        <i class="mx-1 bi bi-tools" style="color:#D9777F"></i>
-                                    </a>
-                                </div>
-                            </div>
+                        <div class="col-12 m-3 py-3">
+                            <h2>{{ category.name }}</h2>
                         </div>
-                    </div>
-                </div>
+                    {% else %}
+                        <div class="col-lg-4">
+                            <div class="card mb-3" style="background: #E8E4E4;">
+                                <div class="row g-0">
+                                    <div class="col-md-5 col-lg-12">
 
-                <!--<?php endforeach; ?>-->
+                                        <img src=""
+                                             alt="{{ category.name }}"
+                                             class="img-fluid m-2"
+                                             width="400"
+                                             height="300">
+                                    </div>
+
+                                    <div class="col-md-7 col-lg-12">
+                                        <div class="card-body mx-3 text-md-center text-lg-end">
+                                            <h3 class="card-title fw-bold" id="title-card">
+                                                {{ category.name }}
+                                            </h3>
+
+                                            <h4 class="card-text fst-italic" id="title-slug">
+                                                {{ category.slug }}
+                                            </h4>
+
+                                            <p class="card-text fs-5 fst-italic" id="title-description"> Desc :
+                                                {% if category.products|length == 0 %}
+                                                    Aucun produit trouvé
+                                                {% else %}
+                                                    {% set foundSomething = true %}
+                                                   {{ category.products.first.name }}
+                                                <!--{category.description }-->
+                                                {% endif %}
+                                            </p>
+
+                                            <p class="card-text fs-5"
+                                               id = "title-modele">Modèle :
+                                            </p>
+
+                                            <p class="card-text fs-5 filter-year"
+                                               id = "title-year">Année :
+                                                <span></span>
+                                            </p>
+
+                                            <p class="card-text fs-5 filter-kilometrage"
+                                               id = "title-kilometrage">Kilométrage :
+                                                <span></span>
+                                            </p>
+
+                                            <p class="card-text fs-5"
+                                               id = "title-price">Prix :
+                                                <span class="fw-bold"></span>
+                                            </p>
+
+                                            <!-- Ajoutez d'autres informations sur le produit ici -->
+
+                                            <a href="{{ path('categories_list', {slug: category.slug}) }}"
+                                               class="btn btn-danger">Voir les produits
+                                                <i class="mx-1 bi bi-tools" style="color:#D9777F"></i>
+                                            </a>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
 
                     {% endif %}
-
                 {% endfor %}
+
 
             </div>
 
             <!-- Creation d'une nouvelle voiture -->
             {% if app.user %}
-            <!--<?php if(isset($_SESSION['user']) && !empty($_SESSION['user'])): ?>-->
-            <a href="{{ path('admin_products_add') }}">
-                <button
-                        class="btn btn-danger mx-2 my-2 bi bi-plus-circle">
-                    Ajouter un produit
-                </button>
-            </a>
-            <!-- <?php endif; ?>-->
-
+                <a href="{{ path('admin_products_add') }}">
+                    <button
+                            class="btn btn-danger mx-2 my-2 bi bi-plus-circle">
+                        Ajouter un produit
+                    </button>
+                </a>
             {% endif %}
         </div>
+
+
+
 
         <!-- Modal de suppression -->
         <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">

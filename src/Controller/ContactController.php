@@ -31,4 +31,6 @@ class ContactController extends AbstractController
 
         return new Response('success'); // Réponse de succès
     }
+
+
 }

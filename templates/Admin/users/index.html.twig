@@ -3,10 +3,7 @@
 {% block title %}Panel d'administration - Utilisateurs{% endblock %}
 
 {% block body %}
-<main>
-
-
-
+    <main>
 
         <div class="container">
             <div class="row">
@@ -60,23 +57,6 @@
                                 </div>
                             </div>
 
-                            <!-- Bouton "Créer Compte"-->
-
-                            <!--
-                            <div class="col-12 col-lg-6 py-2 justify-content-end text-end">
-                            -->
-
-                            <!--
-                <a href={{ path('app_register') }}>
-                <button
-
-                        class="btn btn-danger btn-lg-lg btn-sm"
-                        data-bs-toggle="modal"
-                        data-bs-target="#createAccountModal">
-                    <i class="bi bi-person-add"></i> Créer un Compte
-                </button>
-                </a>
-                -->
 
                                 <div class="justify-content-start">
 
@@ -98,36 +78,46 @@
 
                     </div>
 
-                        <main class="border border-light bg-white p-2 container-lg">
+                        <section class="border border-light bg-white p-2 container-fluid ">
                         <!-- Votre contenu utilisateur -->
                         <h1>Liste des utilisateurs</h1>
                         <table class="table">
 
                             <thead>
                             <tr>
-                                <th>Picto</th>
-                                <th>ID</th>
-                                <th>Prénom</th>
-                                <th>Nom</th>
-                                <th>Email</th>
-                                <th>Rôles</th>
-                                <th>Vérifié</th>
-                                <th>Action</th>
+                                <th class="d-none d-lg-table-cell">Picto</th>
+                                <th class="">ID</th>
+                                <th class="d-none d-sm-table-cell">Prénom</th>
+                                <th class="d-none d-sm-table-cell">Nom</th>
+                                <th class="">Email</th>
+                                <th class="">Rôles</th>
+                                <th class="d-none d-md-table-cell">Vérifié</th>
+                                <th class="">Action</th>
                             </tr>
                             </thead>
 
+
                             <tbody class="list-unstyled">
+                            <tr id="noResultsMessage" style="display: none">
+                                <td colspan="8">
+                                    <h4>Aucun utilisateur trouvé</h4>
+                                </td>
+                            </tr>
+
                             {% for user in users %}
                                 <tr class="employee">
-                                    <td class="picto">
+                                    <td class="picto d-none d-lg-table-cell">
                                         <img src="/Assets/images/Dashboard page/avatar.png"
                                              alt="Pictogramme"
                                              class="img p-2"
                                              width="72">
                                     </td>
+
+
+
                                     <td class="id">{{ user.id }}</td>
-                                    <td class="firstname">{{ user.firstname }}</td>
-                                    <td  class="lastname">{{ user.lastname }}</td>
+                                    <td class="firstname d-none d-sm-table-cell">{{ user.firstname }}</td>
+                                    <td class="lastname d-none d-sm-table-cell">{{ user.lastname }}</td>
                                     <td class="list-unstyled email-name" id="adminEmail">{{ user.email }}</td>
 
                                     <td>
@@ -146,7 +136,7 @@
                                         {% endfor  %}
                                     </td>
 
-                                    <td>
+                                    <td class="d-none d-md-table-cell">
                                         <div class="form-check form-switch">
                                             <input
                                                     class="form-check-input"
@@ -162,12 +152,12 @@
                                     </td>
 
                                     <td>
-                                        <ul class="list-unstyled">
+                                        <ul class="list-unstyled ">
 
                                             {% if 'ROLE_ADMIN' not in user.roles %}
                                             <!-- Modification de tout les comptes possible. -->
                                             <button
-                                                    class="btn btn-responsive btn-sm btn-danger m-2"
+                                                    class="btn btn-custom btn-danger m-2 d-lg-inline-block"
                                                     data-bs-toggle="modal"
                                                     data-bs-target="#editUserModal"
                                                     data-user-id="<?= $Dashboard->user_id ?>"
@@ -181,13 +171,13 @@
 
                                                 <!-- Impossible de se supprimer le compte Admin -->
                                                 <button
-                                                        class="btn btn-responsive btn-sm btn-danger m-2"
+                                                        class="btn btn-custom btn-danger m-2 d-lg-inline-block"
                                                         data-bs-toggle="modal"
                                                         data-bs-target="#confirmDeleteModal"
                                                         data-user-id="<?= $Dashboard->user_id ?>"
                                                 >
                                                     <li>
-                                                        <i class="bi bi-trash"></i> Supprimer
+                                                        <i class="bi bi-trash"></i>Suppr
                                                     </li>
                                                 </button>
                                             {% endif %}
@@ -196,7 +186,7 @@
                                                 <!-- Seul l'admin peut modifier les horaires -->
                                                 <a href="{{ path('horaires_index') }}">
                                                     <button
-                                                            class="btn btn-responsive btn-sm btn-danger m-2">
+                                                            class="btn btn-custom btn-danger m-2 d-lg-inline-block">
                                                         <li>
                                                             <i class="bi bi-calendar-plus me-2"></i>Horaires
                                                         </li>
@@ -206,9 +196,9 @@
                                                 <!-- Seul l'admin peut modifier les informations -->
                                                 <a href="{{ path('garage-info_index') }}">
                                                     <button
-                                                            class="btn btn-responsive btn-sm btn-danger m-2">
+                                                            class="btn btn-custom btn-danger m-2 d-lg-inline-block">
                                                         <li>
-                                                            <i class="bi bi-info-square me-2"></i>Information
+                                                            <i class="bi bi-info-square me-1"></i>Info
                                                         </li>
                                                     </button>
                                                 </a>
@@ -223,7 +213,7 @@
                             </tbody>
 
                         </table>
-                    </main>
+                    </section>
                 </div>
             </div>
         </div>
@@ -337,7 +327,9 @@
         </div>
 
 
+        {% block javascripts %}
+            <script src="{{ asset('Assets/JS/Dashboard.js') }}" defer></script>
+        {% endblock %}
 
-        <script src="/Assets/JS/Dashboard.js"></script>
-
+    </main>
     {% endblock %}

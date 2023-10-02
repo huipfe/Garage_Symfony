@@ -2,6 +2,9 @@
    {{ form_row (productForm.name) }}
    {{ form_row (productForm.categories) }}
    {{ form_row (productForm.description) }}
+   {{ form_row (productForm.modeles) }}
+   {{ form_row (productForm.years) }}
+   {{ form_row (productForm.kilometrage) }}
    {{ form_row (productForm.price) }}
    {{ form_row (productForm.stock) }}
 
@@ -17,7 +20,7 @@
                    {id: image.id}) }}" data-delete data-token="{{ csrf_token('delete' ~ image.id) }}">Supprimer</a>
            </div>
        {% endfor %}
-   {% endif %}
+   {% endif %} a
 
    {{ form_row (productForm.images) }}
 

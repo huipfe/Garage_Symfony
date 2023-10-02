@@ -8,10 +8,13 @@ const searchCars = () => {
     // Récupérer toutes les cartes de voiture
     const carCards = document.getElementsByClassName("card");
 
+    // Variable pour vérifier si au moins une carte a été affichée
+    let foundCar = false;
+
     // Parcourir les cartes de voiture et afficher/masquer en fonction de la recherche
     for (const carCard of carCards) {
         const carTitle = carCard.querySelector(".card-title").innerText.toLowerCase();
-        const carDescription = carCard.querySelector(".card-text").innerText.toLowerCase();
+        const carDescription = carCard.querySelector(".card-text#title-description").innerText.toLowerCase();
         const carmModele = carCard.querySelector(".card-text#title-modele").innerText.toLowerCase();
         const carPrice = carCard.querySelector(".card-text#title-price").innerText.toLowerCase();
         const carYear = carCard.querySelector(".card-text#title-year").innerText.toLowerCase();
@@ -31,11 +34,20 @@ const searchCars = () => {
             (isNumber && parseFloat(carKilometrage.replace(/[^\d.-]/g, "")) === searchNumber)
         ) {
             carCard.style.display = "block";
+            foundCar = true; // Au moins une carte a été trouvée
         } else {
             carCard.style.display = "none";
         }
     }
+    // Afficher ou masquer le message "Aucun produit trouvé"
+    const noResultsMessage = document.getElementById("noResultsMessage");
+    if (foundCar) {
+        noResultsMessage.style.display = "none"; // Masquer le message s'il y a des résultats
+    } else {
+        noResultsMessage.style.display = "block"; // Afficher le message s'il n'y a pas de résultats
+    }
 };
+
 
 // Écouter l'événement de clic sur le bouton de recherche
 // const searchButton = document.getElementById("searchButton");

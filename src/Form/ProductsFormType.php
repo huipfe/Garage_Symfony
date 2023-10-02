@@ -35,6 +35,19 @@ class ProductsFormType extends AbstractType
                     )
                 ]
             ])
+
+            ->add('modeles', options:[
+                'label' => 'Modèle',
+            ])
+
+            ->add('years', options:[
+                'label' => 'Années',
+            ])
+
+            ->add('kilometrage', options:[
+                'label' => 'Kilométrage',
+            ])
+
             ->add('stock', options:[
                 'label' => 'Unités en stock',
             ])

@@ -13,6 +13,9 @@ function filterUsersEmail() {
     const searchValue = searchInput.value.toLowerCase();
 
     // Parcourir les lignes du tableau
+    let foundUser = false; // Réinitialiser la variable pour chaque recherche
+
+    // Parcourir les lignes du tableau
     userRows.forEach((userRow) => {
         const email = userRow.querySelector('.email-name').textContent.toLowerCase();
         const id = userRow.querySelector('.id').textContent.toLowerCase();
@@ -21,10 +24,19 @@ function filterUsersEmail() {
 
         if (email.includes(searchValue) || id.includes(searchValue) || firstname.includes(searchValue) || lastname.includes(searchValue)) {
             userRow.style.display = 'table-row';
+            foundUser = true; // Au moins un utilisateur a été trouvé
         } else {
             userRow.style.display = 'none';
         }
     });
+
+    // Afficher ou masquer le message "Aucun utilisateur trouvé"
+    const noResultsMessage = document.getElementById("noResultsMessage");
+    if (foundUser) {
+        noResultsMessage.style.display = "none"; // Masquer le message s'il y a des résultats
+    } else {
+        noResultsMessage.style.display = "table-row"; // Afficher le message s'il n'y a pas de résultats
+    }
 }
 
     // Ajouter un gestionnaire d'événement pour la recherche en temps réel

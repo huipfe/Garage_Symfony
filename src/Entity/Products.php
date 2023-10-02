@@ -54,6 +54,23 @@ class Products
     #[ORM\OneToMany(mappedBy: 'products', targetEntity: OrdersDetails::class)]
     private Collection $ordersDetails;
 
+    #[ORM\Column]
+    #[Assert\NotBlank(message: 'L\'année ne peut pas être vide')]
+    #[Assert\Length(
+        min: 4,
+        max: 4,
+        exactMessage: 'L\'année doit être composée de 4 chiffres'
+    )]
+    private ?int $years = null;
+
+    #[ORM\Column(length: 50)]
+    private ?string $modeles = null;
+
+    #[ORM\Column]
+    #[Assert\PositiveOrZero(message: 'Le kilométrage ne peut pas être négatif')]
+    private ?int $kilometrage = null;
+
+
     public function __construct()
     {
         $this->images = new ArrayCollection();
@@ -182,6 +199,42 @@ class Products
                 $ordersDetail->setProducts(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getYears(): ?int
+    {
+        return $this->years;
+    }
+
+    public function setYears(int $years): static
+    {
+        $this->years = $years;
+
+        return $this;
+    }
+
+    public function getModeles(): ?string
+    {
+        return $this->modeles;
+    }
+
+    public function setModeles(string $modeles): static
+    {
+        $this->modeles = $modeles;
+
+        return $this;
+    }
+
+    public function getKilometrage(): ?int
+    {
+        return $this->kilometrage;
+    }
+
+    public function setKilometrage(int $kilometrage): static
+    {
+        $this->kilometrage = $kilometrage;
 
         return $this;
     }

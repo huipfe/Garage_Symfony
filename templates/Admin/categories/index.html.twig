@@ -31,28 +31,28 @@
                 <table class="table">
                     <thead>
                        <tr>
-                          <th>ID</th>
-                          <th>Nom</th>
-                          <th>Parent</th>
-                          <th>Slug</th>
-                          <th>Ordre</th>
+                          <th class="">ID</th>
+                          <th class="">Nom</th>
+                          <th class="">Parent</th>
+                          <th class="">Slug</th>
+                          <th class="d-none d-sm-table-cell">Ordre</th>
                        </tr>
                     </thead>
 
                     <tbody>
                         {% for categorie in categories %}
                             <tr>
-                                <td>{{ categorie.id }}</td>
-                                <td>{{ categorie.name }}</td>
+                                <td  class="">{{ categorie.id }}</td>
+                                <td  class="">{{ categorie.name }}</td>
 
-                                <td>
+                                <td  class="">
                                     {% if categorie.parent is not null %}
                                     {{ categorie.parent.name }}
                                     {% endif %}
                                 </td>
 
-                                <td>{{ categorie.slug }}</td>
-                                <td>{{ categorie.categoryOrder }}</td>
+                                <td class=""> {{ categorie.slug }}</td>
+                                <td class="d-none d-sm-table-cell">{{ categorie.categoryOrder }}</td>
                             </tr>
                         {% endfor %}
                     </tbody>

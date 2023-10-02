@@ -339,6 +339,30 @@ div.container div.row div.col-lg-6 div.m-2 h3 + p {
   margin-right: 10px;
 }
 
+@media (min-width: 0px) and (max-width: 576px) {
+  .btn-custom {
+    padding: 0.3rem 0.3rem;
+    font-size: 0.4rem;
+  }
+}
+@media (min-width: 576px) and (max-width: 768px) {
+  .btn-custom {
+    padding: 0.35rem 0.35rem;
+    font-size: 0.5rem;
+  }
+}
+@media (min-width: 768px) and (max-width: 992px) {
+  .btn-custom {
+    padding: 0.3rem 0.5rem;
+    font-size: 0.9rem;
+  }
+}
+@media (min-width: 1200px) {
+  .btn-custom {
+    padding: 0.5rem 1rem;
+    font-size: 1.25rem;
+  }
+}
 /* Import Contact Page */
 /* Contact page */
 .p-1.bg-danger.text-white .container-fluid .row .col-lg-6 section .p-2.m-2 h1 {

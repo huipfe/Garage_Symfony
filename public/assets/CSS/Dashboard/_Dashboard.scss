@@ -66,6 +66,45 @@ div.container {
 }
 
 
+
+
+// Action Buttons
+//    --bs-breakpoint-xs: 0;
+//    --bs-breakpoint-sm: 576px;
+//    --bs-breakpoint-md: 768px;
+//    --bs-breakpoint-lg: 992px;
+//    --bs-breakpoint-xl: 1200px;
+//    --bs-breakpoint-xxl: 1400px;
+
+@media (min-width: 0px ) and (max-width: 576px) {
+    .btn-custom {
+        padding: 0.3rem 0.3rem;
+        font-size: 0.4rem;
+    }
+}
+
+@media (min-width: 576px ) and (max-width: 768px) {
+    .btn-custom {
+        padding: 0.35rem 0.35rem;
+        font-size: 0.5rem;
+    }
+}
+
+@media (min-width: 768px ) and (max-width: 992px) {
+    .btn-custom {
+        padding: 0.3rem 0.5rem;
+        font-size: 0.9rem;
+    }
+}
+
+@media (min-width: 1200px ) {
+    .btn-custom {
+        padding: 0.5rem 1rem;
+        font-size: 1.25rem;
+    }
+}
+
+
 //Ligne admin
 // div.container-lg > 
 // div.row > 
