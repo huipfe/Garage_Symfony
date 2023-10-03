@@ -135,3 +135,35 @@ function handleSubjectButtonClick(event) {
 subjectButtons.forEach((subjectButton) => {
   subjectButton.addEventListener('click', handleSubjectButtonClick);
 });
+
+/*-------------------------------------------Click Bouton Sujet Message-----------------------------------------*/
+
+// Récupérer les boutons d'intérêt
+const interestButtons = document.querySelectorAll('.btn-click');
+
+// Récupérer le champ "Sujet" du formulaire
+const subjectInput = document.getElementById('subject');
+
+// Variable pour stocker le dernier texte de bouton cliqué
+let lastClickedText = null;
+
+// Ajouter un gestionnaire d'événement à chaque bouton d'intérêt
+interestButtons.forEach((button) => {
+    button.addEventListener('mousedown', (event) => {
+        // Obtenir le texte du bouton
+        const interestText = button.querySelector('.title-box-dark').textContent;
+
+        // Si le même texte de bouton est cliqué à nouveau, effacer le champ "Sujet"
+        if (interestText === lastClickedText) {
+            subjectInput.value = '';
+            lastClickedText = null; // Réinitialiser le dernier texte de bouton cliqué
+        } else {
+            // Sinon, mettre à jour le champ "Sujet"
+            subjectInput.value = interestText;
+            lastClickedText = interestText; // Mettre à jour le dernier texte de bouton cliqué
+        }
+
+        // Empêcher le comportement par défaut du bouton
+        event.preventDefault();
+    });
+});

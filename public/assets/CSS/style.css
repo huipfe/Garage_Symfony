@@ -962,36 +962,36 @@ section#header {
 section#header div.container {
   background: #d97777;
   width: auto;
-  height: 380px;
+  height: 490px;
 }
 @media (min-width: 480px) and (max-width: 520px) {
   section#header div.container {
-    height: 410px;
+    height: 530px;
   }
 }
 @media (min-width: 521px) and (max-width: 767px) {
   section#header div.container {
-    height: 450px;
+    height: 590px;
   }
 }
 @media (min-width: 768px) and (max-width: 992px) {
   section#header div.container {
-    height: 570px;
+    height: 770px;
   }
 }
-@media (min-width: 993px) and (max-width: 1200px) {
+@media (min-width: 993px) and (max-width: 1199px) {
   section#header div.container {
-    height: 678px;
+    height: 600px;
   }
 }
-@media (min-width: 1200px) and (max-width: 1400px) {
+@media (min-width: 1200px) and (max-width: 1399px) {
   section#header div.container {
     height: 630px;
   }
 }
 @media (min-width: 1400px) {
   section#header div.container {
-    height: 630px;
+    height: 730px;
   }
 }
 section#header div.justify-content-start a.text-decoration-none span {
@@ -1091,8 +1091,8 @@ section#description div.mb-2 p {
 /* Série image modal & poids */
 section#modal-image {
   display: flex;
-  width: 380px;
-  height: 189px;
+  width: 400px;
+  height: 200px;
   flex-direction: column;
   align-items: flex-start;
   gap: 19px;

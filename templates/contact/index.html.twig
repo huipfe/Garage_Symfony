@@ -48,7 +48,7 @@
 
                                 <div>
                                     <i style="color:#D9777F" class="bi bi-envelope-fill fs-2 m-2"></i>
-                                    <h2 class="m-2 fs-4">{{ info_garage.address }}</h2>
+                                    <h2 class="m-2 fs-4">{{ info_garage.email }}</h2>
                                 </div>
 
                                 <div class="Num-Garage">
@@ -58,7 +58,7 @@
 
                                 <div>
                                     <i style="color:#D9777F" class="bi bi-geo-alt-fill fs-2 m-2"></i>
-                                    <h2 class="m-2 fs-4">{{ info_garage.email }}</h2>
+                                    <h2 class="m-2 fs-4">{{ info_garage.address }}</h2>
                                 </div>
 
                             </section>
@@ -118,12 +118,16 @@
 
                                     <input type="hidden" name="formId" value="contactForm">
 
+                                    <div style="border: 3px solid #D94350;"></div>
+
                                     <!-- SurName & Name Input -->
                                     <div class="form-floating mb-3">
                                         <input class="form-control" name="name" id="name" type="text"
                                                placeholder="Votre Prénom & Nom" required>
                                         <label for="name" class="form-color form-label">Votre Prénom & Nom</label>
                                     </div>
+
+                                    <div style="border: 3px solid #D94350;"></div>
 
                                     <!-- $subject Input -->
                                     <div class="form-floating mb-3">

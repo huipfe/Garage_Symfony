@@ -115,8 +115,6 @@
 
         <!-- Main cars -->
 
-
-
         <div class="container">
             <div class="row">
 
@@ -167,15 +165,13 @@
 
                                         <img src="{{ asset('assets/images/uploads/products/mini/300-300-' ~ product.images[0].name) }}"
                                              alt="{{ product.name }}"
-                                             class="img-fluid m-2"
+                                             class="img-fluid mx-5 mx-lg-4 col-9 col-md-10"
                                              width="400"
-                                             height="300">
+                                             height="400">
 
                                     </div>
 
                                     <div class="col-md-7 col-lg-12">
-
-
 
                                         <div class="card-body mx-3 text-md-center text-lg-end">
                                             <h3 class="card-title fw-bold"
@@ -234,7 +230,6 @@
                             </div>
                         </div>
 
-                        <!--<?php endforeach; ?>-->
                 {% endfor %}
 
                 {% else %}
@@ -254,15 +249,12 @@
 
             <!-- Creation d'une nouvelle voiture -->
             {% if app.user %}
-                <!--<?php if(isset($_SESSION['user']) && !empty($_SESSION['user'])): ?>-->
                 <a href="{{ path('admin_products_add') }}">
                     <button
                             class="btn btn-danger mx-2 my-2 bi bi-plus-circle">
                         Ajouter {{category.name}}
                     </button>
                 </a>
-                <!-- <?php endif; ?>-->
-
             {% endif %}
         </div>
 
