@@ -51,7 +51,6 @@
 
                             <td>{{ produit.id }}</td>
                             <td>{{ produit.name }}</td>
-                            <!--<td>{{ produit.images[0].name }}</td>-->
                             <td><img src="{{ asset('assets/images/uploads/products/mini/300-300-' ~ produit.images[0].name) }}"
                                      alt="{{ produit.name }}"
                                      class="img-thumbnail img-fluid"
@@ -66,46 +65,46 @@
                             <td class="d-none d-lg-table-cell ">{{ produit.kilometrage }}</td>
                             <td class="d-none d-lg-table-cell ">{{ produit.categories.name }}</td>
                             <td>
+                                <!-- Modification -->
                                 <a href="{{ path('admin_products_edit',
-                                    {id : produit.id}) }}" class="btn btn-danger btn-custom">Modifier</a>
+                                    {id : produit.id}) }}" class="btn btn-danger btn-custom bi bi-pencil-square"></a>
                             </td>
+
+                            <!-- Supression -->
+                            <td>
+                                <button
+                                        class="btn btn-danger btn-custom bi-trash3-fill deleteBtn"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#deleteModal{{ produit.id }}"
+                                        data-action="{{ path('admin_products_delete', {'id': produit.id}) }}">
+                                </button>
+                            </td>
+
+                            <!-- Modal de suppression -->
+                            <div class="modal fade" id="deleteModal{{ produit.id }}" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="deleteModalLabel">Confirmation de suppression</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Êtes-vous sûr de vouloir supprimer {{produit.name}} ?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                                            <form id="deleteForm{{ produit.id }}" action="{{ path('admin_products_delete', {'id': produit.id}) }}" method="POST">
+                                                <input type="hidden" name="method" value="DELETE">
+                                                <button type="submit" class="btn btn-danger">Supprimer</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </tr>
                     {% endfor %}
                     </tbody>
                 </table>
-
-               <!--
-               <table class="table">
-                    <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td colspan="2">Larry the Bird</td>
-                        <td>@twitter</td>
-                    </tr>
-                    </tbody>
-                </table>
-                -->
-
 
             </main>
 

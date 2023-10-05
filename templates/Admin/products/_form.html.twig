@@ -20,7 +20,7 @@
                    {id: image.id}) }}" data-delete data-token="{{ csrf_token('delete' ~ image.id) }}">Supprimer</a>
            </div>
        {% endfor %}
-   {% endif %} a
+   {% endif %}
 
    {{ form_row (productForm.images) }}
 

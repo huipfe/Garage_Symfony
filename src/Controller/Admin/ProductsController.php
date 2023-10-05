@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Images;
+use App\Entity\OrdersDetails;
 use App\Entity\Products;
 use App\Form\ProductsFormType;
 use App\Repository\ProductsRepository;
@@ -13,6 +14,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Security;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
 #[Route('/admin/produits', name: 'admin_products_')]
@@ -164,15 +166,47 @@ class ProductsController extends AbstractController
         //return $this->renderForm('Admin/products/edit.html.twig', compact('productForm'));
     }
 
-    #[Route('/suppression/{id}', name: 'delete')]
-    public function delete(int $id): Response
+    #[Route('/suppression/{id}', name: 'delete', methods: ['DELETE'])]
+    #[SecurityAnnotation("is_granted('ROLE_ADMIN')")]
+    public function delete(int $id, EntityManagerInterface $em, Security $security): Response
     {
         // Récupérez l'objet Products à partir de l'identifiant
         $product = $this->entityManager->getRepository(Products::class)->find($id);
 
-        // On vérifie si l'utilisateur peut supprimer avec le voter.
-        $this->denyAccessUnlessGranted('PRODUCTS_DELETE', $product);
-        return $this->render('Admin/products/index.html.twig');
+        if (!$product) {
+            $this->addFlash('danger', 'Produit non trouvé.');
+            return $this->redirectToRoute('products_index');
+        }
+
+        // Vérifiez si l'utilisateur a le rôle ROLE_ADMIN
+        if (!$security->isGranted('ROLE_ADMIN')) {
+            // Ajoutez un message Flash d'erreur
+            $this->addFlash('danger', 'Accès refusé. Vous devez être un administrateur pour supprimer un produit.');
+
+            // Redirigez l'utilisateur vers la liste des produits ou toute autre page appropriée
+            return $this->redirectToRoute('products_index');
+
+        }
+
+        // Récupérer les détails de commandes liés au produit
+        $orderDetails = $this->entityManager->getRepository(OrdersDetails::class)->findBy(['products' => $product]);
+
+        // Supprimer chaque détail de commande
+        foreach ($orderDetails as $orderDetail) {
+            $em->remove($orderDetail);
+        }
+
+        // Supprimez le produit de la base de données.
+        $em->remove($product);
+        $em->flush();
+
+        // Ajoutez un message Flash pour indiquer que la suppression a réussi
+        $this->addFlash('success', 'Produit supprimé avec succès.');
+
+        return $this->render('Admin/products/index.html.twig',[
+            'produits' => $product
+        ]);
+
     }
 
     #[Route('/suppression/image/{id}', name: 'delete_image', methods : ['DELETE'])]

@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}La Liste des {{ category.name }}{% endblock %}
+{% block title %}La Liste des {{ category.name }} {% endblock %}
 
 {% block body %}
 
@@ -143,17 +143,41 @@
                                 <div class="row g-0">
                                     <div class="col-md-5 col-lg-12">
 
-                                        <!-- Supression d'une voiture -->
-                                        {% if app.user %}
+
+                                        {% if app.user and is_granted('ROLE_EMPLOYE') %}
+                                            <!-- Suppression d'une voiture -->
                                             <button class="btn btn-danger mx-2 my-2 bi bi-trash3-fill deleteBtn"
                                                     data-bs-toggle="modal"
                                                     data-bs-target="#deleteModal"
-                                                    data-action="/deleteCars/delete/<?= $car->id ?>">
+                                                    data-action="{{ path('admin_products_delete', {'id': product.id}) }}">
                                             </button>
-                                        {% endif %}
+
+
+
+                                        <!-- Modal de suppression -->
+
+                                        <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="deleteModalLabel">Confirmation de suppression</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        Êtes-vous sûr de vouloir supprimer {{product.name}} de la catégorie {{category.name}}  ?
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                                                        <form id="deleteForm" action="{{ path('admin_products_delete', {'id': product.id}) }}" method="POST">
+                                                            <input type="hidden" name="method" value="DELETE">
+                                                            <button type="submit" class="btn btn-danger">Supprimer</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
 
                                         <!-- Modification d'une voiture -->
-                                        {% if app.user %}
                                             <a href="{{ path('admin_products_edit',
                                                 {"id" : product.id }) }}">
                                                 <button
@@ -256,28 +280,6 @@
                     </button>
                 </a>
             {% endif %}
-        </div>
-
-        <!-- Modal de suppression -->
-
-        <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="deleteModalLabel">Confirmation de suppression</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        Êtes-vous sûr de vouloir supprimer cette {{category.name}}  ?
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-                        <form id="deleteForm" action="/deleteCars/delete/" method="POST">
-                            <button type="submit" class="btn btn-danger">Supprimer</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
         </div>
 
         {% block javascripts %}

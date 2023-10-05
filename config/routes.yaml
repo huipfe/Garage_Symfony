@@ -22,3 +22,8 @@ garage_info_contact:
     path: '/garage-info/contact'
     controller: App\Controller\GarageInfoController::contact
 
+
+admin_products_delete:
+    path: '/admin/produits/suppression/{id}'
+    controller: 'App\Controller\Admin\ProductsController::delete'
+    methods: ['POST']

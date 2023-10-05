@@ -141,11 +141,20 @@ checkboxes.forEach(checkbox => {
 
 
 /*--------------------------------------Modale de supression---------------------------------------*/
-
-    const deleteModal = document.getElementById('deleteModal');
-    deleteModal.addEventListener('show.bs.modal', function (event) {
-        const button = event.relatedTarget;
+const deleteModal = document.getElementById('deleteModal');
+deleteModal.addEventListener('show.bs.modal', function (event) {
+    const button = event.relatedTarget;
     const action = button.getAttribute('data-action');
     const deleteForm = document.getElementById('deleteForm');
     deleteForm.action = action;
+});
+
+
+document.querySelectorAll('.deleteBtn').forEach(button => {
+    button.addEventListener('click', function () {
+        const action = this.getAttribute('data-action');
+        const deleteForm = document.querySelector('#deleteForm' + action.split('/').pop());
+
+        deleteForm.action = action;
     });
+});

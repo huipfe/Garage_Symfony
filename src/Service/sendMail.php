@@ -8,7 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['formId']) && $_POST['f
     $subject = $_POST['subject'];
 
     // Adresse e-mail de destination
-    $to = 'ilan.tervil@wanadoo.fr';
+    $to = 'Garage-Parrot@gmail.com'; //Mail du destinataire, proprio du Garage
 
     // Sujet de l'e-mail
     //$subject = 'Message depuis le contact du site de Garage V.Parrot';
