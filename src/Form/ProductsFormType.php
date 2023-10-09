@@ -15,10 +15,38 @@ use Symfony\Component\Validator\Constraints\All;
 use Symfony\Component\Validator\Constraints\Image;
 use Symfony\Component\Validator\Constraints\Positive;
 
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
+
 class ProductsFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
+        //$builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
+            //$product = $event->getData();
+            //$form = $event->getForm();
+
+            // Vérifiez si un produit est en cours de modification (auquel cas $product sera un objet Products)
+            // ou s'il s'agit d'une création (auquel cas $product sera null).
+            //if ($product instanceof Products) {
+                //$parentCategoryName = $product->getCategories()->getParent()->getName();
+
+                // Personnalisez les labels en fonction de la catégorie parente.
+                //$form->add('name', null, [
+                    //'label' => $parentCategoryName === 'Services' ? 'Nom du Service' : 'Nom de la Voiture',
+                //]);
+                //$form->add('modeles', null, [
+                    //'label' => $parentCategoryName === 'Services' ? 'Type de Service' : 'Modèle',
+                //]);
+                //$form->add('years', null, [
+                    //'label' => $parentCategoryName === 'Services' ? 'Disponible jusqu\'en' : 'Année',
+                //]);
+                //$form->add('kilometrage', null, [
+                    //'label' => $parentCategoryName === 'Services' ? 'Durée' : 'Kilométrage',
+                //]);
+            //}
+        //});
+
         $builder
             ->add('name', options:[
                 'label' => 'Nom',
@@ -37,19 +65,19 @@ class ProductsFormType extends AbstractType
             ])
 
             ->add('modeles', options:[
-                'label' => 'Modèle',
+                'label' => 'Modèle/Type de Service',
             ])
 
             ->add('years', options:[
-                'label' => 'Années',
+                'label' => 'Années/Disponible jusqu\'en',
             ])
 
             ->add('kilometrage', options:[
-                'label' => 'Kilométrage',
+                'label' => 'Kilométrage/Durée',
             ])
 
             ->add('stock', options:[
-                'label' => 'Unités en stock',
+                'label' => 'Unités en stock/Nombre disponible',
             ])
             ->add('categories', EntityType::class, [
                 'class' => Categories::class,
@@ -78,8 +106,7 @@ class ProductsFormType extends AbstractType
                         ])
                     )
                 ]
-            ])
-        ;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
@@ -89,3 +116,6 @@ class ProductsFormType extends AbstractType
         ]);
     }
 }
+
+
+

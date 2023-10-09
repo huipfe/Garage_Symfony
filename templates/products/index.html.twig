@@ -122,7 +122,7 @@
             </div>
 
             <!-- Creation d'une nouvelle voiture -->
-            {% if app.user %}
+            {% if app.user and is_granted('ROLE_EMPLOYE') %}
                 <a href="{{ path('admin_products_add') }}">
                     <button
                             class="btn btn-danger mx-2 my-2 bi bi-plus-circle">

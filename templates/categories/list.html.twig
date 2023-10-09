@@ -41,7 +41,7 @@
         <section id="filter-sidebar">
             <div class=" filtrage-bar ">
                 <h5 class="m-2 p-2 filtrage-title">
-                    Liste des voitures <br> d'occasions par filtre
+                    Liste des produits <br> par filtre
                 </h5>
                 <div class="gray-bar d-flex align-items-center">
                     <div class="form-check ">
@@ -135,7 +135,7 @@
                     {% for product in products.data %}
 
                         <div id="noResultsMessage" style="display: none">
-                            <h4>Aucun produit trouvé</h4>
+                            <h4>{% if category.parent.name == 'Services' %}Aucun service trouvé{% else %}Aucune voiture trouvé{% endif %}</h4>
                         </div>
 
                         <div class=" col-lg-4">
@@ -209,22 +209,39 @@
                                             </p>
 
                                             <p class="card-text fs-5"
-                                               id = "title-modele">Modèle :
-                                                {{product.modeles}}
+                                               id="title-modele">
+                                                {% if product.categories.parent.name == 'Services' %}
+                                                    Type de service:
+                                                {% else %}
+                                                    Modèle :
+                                                {% endif %}
+                                                <span>
+                                                  {{product.modeles}}
+                                                </span>
                                             </p>
 
                                             <p class="card-text fs-5 filter-year"
-                                               id = "title-year">Année :
+                                               id="title-year">
+                                                {% if product.categories.parent.name == 'Services' %}
+                                                    Disponible jusqu'en:
+                                                {% else %}
+                                                    Année :
+                                                {% endif %}
                                                 <span>
-                                                    {{product.years}}
-                                            </span>
+                                                  {{ product.years }}
+                                                </span>
                                             </p>
 
                                             <p class="card-text fs-5 filter-kilometrage"
-                                               id = "title-kilometrage">Kilométrage :
+                                               id="title-kilometrage">
+                                                {% if product.categories.parent.name == 'Services' %}
+                                                    Durée:
+                                                {% else %}
+                                                    Kilométrage :
+                                                {% endif %}
                                                 <span>
-                                                    {{product.kilometrage}} Km
-                                            </span>
+                                          {{ product.kilometrage }} {{ product.categories.parent.name == 'Services' ? 'Heures' : 'Km' }}
+                                                </span>
                                             </p>
 
                                             <p class="card-text fs-5"
@@ -233,15 +250,6 @@
                                                 {{ product.price /100 }} €
                                             </span>
                                             </p>
-
-
-                                            <!-- <div class="rating">
-                                                <i class="bi bi-star-fill"></i>
-                                                <i class="bi bi-star-fill"></i>
-                                                <i class="bi bi-star-fill"></i>
-                                                <i class="bi bi-star"></i>
-                                                <i class="bi bi-star"></i>
-                                            </div> -->
 
                                             <a href="{{ path('products_details',
                                                 {"slug" : product.slug }) }}"
@@ -272,7 +280,7 @@
             </div>
 
             <!-- Creation d'une nouvelle voiture -->
-            {% if app.user %}
+            {% if app.user and is_granted('ROLE_EMPLOYE') %}
                 <a href="{{ path('admin_products_add') }}">
                     <button
                             class="btn btn-danger mx-2 my-2 bi bi-plus-circle">

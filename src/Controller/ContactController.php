@@ -8,6 +8,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 #[Route('/contact', name: 'contact_')]
 class ContactController extends AbstractController
@@ -25,11 +27,53 @@ class ContactController extends AbstractController
     }
 
     #[Route("/contact/send_mail", name: "send_mail", methods: ["POST"])]
-    public function sendMail(Request $request): Response
+    public function sendMail(Request $request, ValidatorInterface $validator): Response
     {
-        // Votre logique de traitement de formulaire ici
+        // Récupérer les valeurs du formulaire
+        $name = $request->request->get('name');
+        $email = $request->request->get('email');
+        $message = $request->request->get('message');
+        $subject = $request->request->get('subject');
 
-        return new Response('success'); // Réponse de succès
+        // Valider les données avec Symfony Validator
+        $errors = $validator->validate([
+            'name' => $name,
+            'email' => $email,
+            'message' => $message,
+            'subject' => $subject,
+        ]);
+
+        if (count($errors) > 0) {
+            // Il y a des erreurs de validation
+            $errorMessages = [];
+            foreach ($errors as $error) {
+                $errorMessages[$error->getPropertyPath()] = $error->getMessage();
+            }
+
+            return new JsonResponse(['status' => 'error', 'message' => $errorMessages], 400);
+        }
+
+        // Adresse e-mail de destination
+        $to = 'Garage-Parrot@gmail.com'; //Mail du destinataire, propriétaire du Garage
+
+        // Corps de l'e-mail
+        $body = "Sujet: " . $subject . "\n";
+        $body .= "Nom: " . $name . "\n";
+        $body .= "Email: " . $email . "\n";
+        $body .= "Message: " . $message;
+
+        // En-têtes de l'e-mail
+        $headers = "From: " . $email . "\r\n";
+        $headers .= "Reply-To: " . $email . "\r\n";
+
+        // Envoyer l'e-mail
+        if (mail($to, $subject, $body, $headers)) {
+            // L'e-mail a été envoyé avec succès
+            return new JsonResponse(['status' => 'success', 'message' => 'Le formulaire a été envoyé avec succès!']);
+        } else {
+            // Une erreur s'est produite lors de l'envoi de l'e-mail
+            return new JsonResponse(['status' => 'error', 'message' => 'Une erreur s\'est produite lors de l\'envoi du formulaire.'], 500);
+        }
     }
 
 

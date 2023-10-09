@@ -1,20 +1,13 @@
 /*-----------------------------------Général JS------------------------------------------------- */
 
-// Disparition du message d'erreur/success, après 5 secondes
-$(document).ready(function () {
-    // Fonction pour masquer le message après un délai spécifié
-    function hideMessage() {
-        $('#alert').fadeOut(500, function () {
-            // Supprimer le message de la page
-            $(this).remove();
-        });
-    }
+// Disparition du message d'erreur/success, après 2 secondes
 
-    // Vérifier si le message d'erreur ou de succès est affiché
-    let alertElement = $('#alert');
-    if (alertElement.length > 0) {
-        // Masquer le message après 5 secondes (5000 millisecondes)
-        setTimeout(hideMessage, 1500);
-    }
+document.addEventListener("DOMContentLoaded", function () {
+    // Sélectionnez la div flash-messages
+    const flashMessages = document.querySelector('.flash-messages');
+
+    // Cachez la div flash-messages après 2 secondes
+    setTimeout(() => {
+        flashMessages.style.display = 'none';
+    }, 2000);
 });
-

@@ -20,8 +20,13 @@
                     </a>
                 </div>
 
-                <h1>Modifier un produit</h1>
-                {% include "admin/products/_form.html.twig" with {'button_label': 'Modifier'} %}
+                {% if product.categories.parent.name == 'Services' %}
+                <h1>Modifier un service : {{ product.name }}</h1>
+                {% else %}
+                <h1>Modifier une voiture : {{ product.name }}</h1>
+                {% endif %}
+
+                {% include "admin/products/_form_edit.html.twig" with {'button_label': 'Modifier'} %}
             </div>
         </section>
     </main>

@@ -80,8 +80,8 @@
                                     <h2>{{ product.description }}</h2>
                                 </div>
                                 <div class="m-2">
-                                    <h3>Année de la mise en circulation :
-                                        {{product.years}}
+                                    <h3>{{ product.categories.parent.name == 'Services' ? 'Date de disponibilité' : 'Année de la mise en circulation' }} :
+                                        {{ product.years }}
                                     </h3>
                                 </div>
 
@@ -92,12 +92,18 @@
                                 </div>
 
                                 <div class="m-3 mt-5 d-flex">
-                                    <h4 class=""> Modèle : {{ product.modeles }}
+                                    <h4 class="">
+                                        {% if product.categories.parent.name == 'Services' %}
+                                            Type de service :
+                                        {% else %}
+                                            Marque/Modèle :
+                                        {% endif %}
+                                        {{ product.modeles }}
                                     </h4>
                                 </div>
 
                                 <div class="mb-2">
-                                    <h5 class="m-3 mt-5">Description :</h5>
+                                    <h5 class="m-3 mt-5">{{ product.categories.parent.name == 'Services' ? 'Description du service :' : 'Description du produit :' }}</h5>
                                     <ul class="list-unstyled">
                                         <li><p>{{ product.description }}</p></li>
                                         <li><p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -131,19 +137,41 @@
                                     <div class="mb-3 mt-2">
                                         <div class="d-flex flex-row justify-content-between align-items-center">
 
+
+
                                             <div>
-                                                <h5 class="m-2 mb-4">Stock :</h5>
+                                                <h5 class="m-2 mb-4">
+                                                    {% if product.categories.parent.name == 'Services' %}
+                                                        Disponibilité :
+                                                    {% else %}
+                                                        Stock :
+                                                    {% endif %}
+                                                </h5>
                                                 <div class="btn my-btn-danger mb-2 btn-danger">{{ product.stock }}</div>
                                             </div>
 
                                             <div>
-                                                <h5 class="m-2 mb-4">Prix :</h5>
-                                                <div class="btn my-btn-danger mb-2 btn-danger">{{ product.price / 100 }} €</div>
+                                                <h5 class="m-2 mb-4">
+                                                    {% if product.categories.parent.name == 'Services' %}
+                                                        Durée :
+                                                    {% else %}
+                                                        Kilométrage :
+                                                    {% endif %}
+                                                </h5>
+                                                <div class="btn my-btn-danger mb-2 btn-danger">
+                                                    {{ product.kilometrage }} {{ product.categories.parent.name == 'Services' ? 'Heures' : 'Km' }}
+                                                </div>
                                             </div>
 
                                             <div>
-                                                <h5 class="m-2 mb-4">Kilométrage :</h5>
-                                                <div class="btn my-btn-danger mb-2 btn-danger">{{ product.kilometrage }} Km</div>
+                                                <h5 class="m-2 mb-4">
+                                                    {% if product.categories.parent.name == 'Services' %}
+                                                        Prix :
+                                                    {% else %}
+                                                        Prix :
+                                                    {% endif %}
+                                                </h5>
+                                                <div class="btn my-btn-danger mb-2 btn-danger">{{ product.price / 100 }} €</div>
                                             </div>
 
                                         </div>

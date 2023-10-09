@@ -1,0 +1,44 @@
+{{ form_start(productForm) }}
+{{ form_row(productForm.name, {
+    'label': product.categories.parent.name == 'Services' ? 'Nom du Service' : 'Nom de la Voiture'
+}) }}
+{{ form_row(productForm.categories, {
+    'label': 'Catégorie'
+}) }}
+{{ form_row(productForm.description, {
+    'label': product.categories.parent.name == 'Services' ? 'Description du Service' : 'Description de la Voiture'
+}) }}
+{{ form_row(productForm.modeles, {
+    'label': product.categories.parent.name == 'Services' ? 'Type de Service' : 'Modèle'
+}) }}
+{{ form_row(productForm.years, {
+    'label': product.categories.parent.name == 'Services' ? 'Disponible jusqu\'en' : 'Année'
+}) }}
+{{ form_row(productForm.kilometrage, {
+    'label': product.categories.parent.name == 'Services' ? 'Durée' : 'Kilométrage'
+}) }}
+{{ form_row(productForm.price, {
+    'label': 'Prix'
+}) }}
+{{ form_row(productForm.stock, {
+    'label': product.categories.parent.name == 'Services' ? 'Nombre disponible' : 'Unités en stock'
+}) }}
+
+
+   {# On affiche les images, si on est en édition #}
+   {% if app.request.attributes.get('_route') =='admin_products_edit' %}
+       <h2>Images</h2>
+       {% for image in product.images %}
+           <div class="py-3">
+               <img src="{{ asset('assets/images/uploads/products/mini/300-300-' ~
+                   image.name ) }}" alt="Image" width="150">
+               <a href="{{ path('admin_products_delete_image',
+                   {id: image.id}) }}" data-delete data-token="{{ csrf_token('delete' ~ image.id) }}">Supprimer</a>
+           </div>
+       {% endfor %}
+   {% endif %}
+
+   {{ form_row (productForm.images) }}
+
+<button type="submit" class="btn btn-danger mb-2 mt-3">{{ button_label | default('Ajouter') }}</button>
+{{ form_end(productForm) }}

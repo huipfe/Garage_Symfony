@@ -4,54 +4,6 @@
 
 {% block body %}
 
- <!--
-<section class="container my-3">
-    <div class="row">
-        <div class="col">
-             <form method="post">
-        {% if error %}
-            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-        {% endif %}
-
-        {% if app.user %}
-            <div class="mb-3">
-                You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
-            </div>
-        {% endif %}
-
-        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-
-        <label for="inputEmail">Email</label>
-        <input type="email"
-               value="{{ last_username }}"
-               name="email"
-               id="inputEmail"
-               class="form-control"
-               autocomplete="email"
-               required autofocus>
-
-        <label for="inputPassword">Password</label>
-        <input type="password"
-               name="password"
-               id="inputPassword"
-               class="form-control"
-               autocomplete="current-password"
-               required>
-
-        <input type="hidden" name="_csrf_token"
-               value="{{ csrf_token('authenticate') }}"
-        >
-
-        <button class="btn btn-lg btn-primary mt-3" type="submit">
-            Sign in
-        </button>
-            </form>
-        </div>
-    </div>
-</section>
--->
-
-
     <main>
 
         <section class="position-relative">
@@ -175,12 +127,8 @@
 
                             </div>
 
-                            <!-- Message d'erreur
-                            <?php if(!empty($_SESSION['erreur_login'])): ?>
-                            <div class="alert alert-danger" id="alert" role="alert">
-                                <?php echo $_SESSION['erreur_login']; unset($_SESSION['erreur_login']); ?>
-                            </div>
-                            <?php endif; ?>-->
+
+
 
                             <!-- Submit button -->
                             <button
@@ -194,7 +142,8 @@
                                 Réinitialiser mot de passe
                             </a>
 
-                            <!--<a href="{{ path('app_register') }}" class="btn btn-danger btn-lg btn-block w-100 my-3">
+                            <!--
+                            <a href="{{ path('app_register') }}" class="btn btn-danger btn-lg btn-block w-100 my-3">
                                 <svg
                                         width="38"
                                         height="38"
@@ -220,7 +169,8 @@
                                 9.07979 33.25 9.49972 33.25H28.4997Z" fill="#D92332" />
                                 </svg>
                                 M'inscrire
-                            </a>-->
+                            </a>
+                             -->
 
                         </form>
 
