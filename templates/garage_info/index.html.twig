@@ -20,7 +20,6 @@
     <h1>Modifier les informations du garage</h1>
 
     <form method="POST" action="{{ path('garage-info_edit') }}">
-
         <div class="form-group">
             <label for="address">Adresse</label>
             <input
@@ -31,7 +30,6 @@
                     value="{{ garageInfo.address }}"
                     required>
         </div>
-
         <div class="form-group">
             <label for="phone_number">Numéro de téléphone</label>
             <input
@@ -42,7 +40,6 @@
                     value="{{ garageInfo.phonenumber }}"
                     required>
         </div>
-
         <div class="form-group">
             <label for="email">Adresse email</label>
             <input

@@ -65,5 +65,4 @@ class GarageInfoController extends AbstractController
             'garageInfo' => $garageInfo,
         ]);
     }
-
 }
