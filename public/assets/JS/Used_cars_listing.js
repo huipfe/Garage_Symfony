@@ -4,37 +4,37 @@
 const searchCars = () => {
     // Récupérer la valeur de recherche
     const searchValue = document.getElementById("searchInput").value.toLowerCase();
-
     // Récupérer toutes les cartes de voiture
     const carCards = document.getElementsByClassName("card");
-
     // Variable pour vérifier si au moins une carte a été affichée
     let foundCar = false;
-
     // Parcourir les cartes de voiture et afficher/masquer en fonction de la recherche
     for (const carCard of carCards) {
-        const carTitle = carCard.querySelector(".card-title").innerText.toLowerCase();
-        const carDescription = carCard.querySelector(".card-text#title-description").innerText.toLowerCase();
-        const carmModele = carCard.querySelector(".card-text#title-modele").innerText.toLowerCase();
-        const carPrice = carCard.querySelector(".card-text#title-price").innerText.toLowerCase();
-        const carYear = carCard.querySelector(".card-text#title-year").innerText.toLowerCase();
-        const carKilometrage = carCard.querySelector(".card-text#title-kilometrage").innerText.toLowerCase();
+        const carTitleElement = carCard.querySelector(".card-title");
+        const carSlugElement = carCard.querySelector(".card-category");
+        const carCategoryElement = carCard.querySelector(".card-slug");
+        const carDescriptionElement = carCard.querySelector(".card-text#title-description");
+        const carModeleElement = carCard.querySelector(".card-text#title-modele");
+        const carPriceElement = carCard.querySelector(".card-text#title-price");
+        const carYearElement = carCard.querySelector(".card-text#title-year");
+        const carKilometrageElement = carCard.querySelector(".card-text#title-kilometrage");
 
         // Vérifier si la valeur de recherche est un nombre
         const searchNumber = parseFloat(searchValue);
         const isNumber = !isNaN(searchNumber) && isFinite(searchNumber);
 
-        // Effectuer la recherche en fonction des critères
         if (
-            carTitle.includes(searchValue) ||
-            carDescription.includes(searchValue) ||
-            carmModele.includes(searchValue) ||
-            (isNumber && parseFloat(carPrice.replace(/[^\d.-]/g, "")) === searchNumber) ||
-            (isNumber && parseFloat(carYear.replace(/[^\d.-]/g, "")) === searchNumber) ||
-            (isNumber && parseFloat(carKilometrage.replace(/[^\d.-]/g, "")) === searchNumber)
+            (carTitleElement && carTitleElement.innerText.toLowerCase().includes(searchValue)) ||
+            (carCategoryElement && carCategoryElement.innerText.toLowerCase().includes(searchValue)) ||
+            (carSlugElement && carSlugElement.innerText.toLowerCase().includes(searchValue)) ||
+            (carDescriptionElement && carDescriptionElement.innerText.toLowerCase().includes(searchValue)) ||
+            (carModeleElement && carModeleElement.innerText.toLowerCase().includes(searchValue)) ||
+            (carPriceElement && carPriceElement.innerText.toLowerCase().includes(searchValue)) ||
+            (carYearElement && carYearElement.innerText.toLowerCase().includes(searchValue)) ||
+            (carKilometrageElement && carKilometrageElement.innerText.toLowerCase().includes(searchValue))
         ) {
             carCard.style.display = "block";
-            foundCar = true; // Au moins une carte a été trouvée
+            foundCar = true;  // Au moins une carte a été trouvée
         } else {
             carCard.style.display = "none";
         }
@@ -48,15 +48,13 @@ const searchCars = () => {
     }
 };
 
-
-// Écouter l'événement de clic sur le bouton de recherche
-// const searchButton = document.getElementById("searchButton");
-// searchButton.addEventListener("click", searchCars);
-
 // Écouter l'événement de saisie dans la barre de recherche
 const searchInput = document.getElementById("searchInput");
 searchInput.addEventListener("input", searchCars);
 
+// Écouter l'événement de clic sur le bouton de recherche
+// const searchButton = document.getElementById("searchButton");
+// searchButton.addEventListener("click", searchCars);
 
 // /*--------------------------------------Barre de Filtrage-------------------------------------------*/
 

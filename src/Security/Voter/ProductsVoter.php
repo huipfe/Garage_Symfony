@@ -75,7 +75,7 @@ class ProductsVoter extends Voter
     }
 
     private function canDelete(){
-        // si l'utilisateur à le role employé
+        // si l'utilisateur à le role Admin
         return $this->security->isGranted('ROLE_ADMIN');
     }
 }

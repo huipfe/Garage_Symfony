@@ -16,15 +16,15 @@
 
 
                 <div class="col-lg-6">
-                    <div class="input-group">
-                        <input type="text" class="form-control m-2 p-2 rounded-5"
-                               id="searchInput" placeholder="Recherche">
+                    <label for="searchInput" class="input-group">
+                            <input type="text" class="form-control m-2 p-2 rounded-5"
+                                   id="searchInput" placeholder="Recherche">
                         <div class="input-group-append">
                             <button class="btn btn-light m-2 p-2" type="button" id="searchButton">
                                 <i class="bi bi-search"></i>
                             </button>
                         </div>
-                    </div>
+                    </label>
                 </div>
 
 
@@ -43,8 +43,8 @@
 
                 {% for category in categories %}
                     {% if category.parent == null %}
-                        <div class="col-12 m-3 py-3">
-                            <h2>{{ category.name }}</h2>
+                        <div class="col-12 m-3 py-3 card-category">
+                            <h2 id="title-category">{{ category.name }}</h2>
                         </div>
                     {% else %}
                         <div class="col-lg-4">
@@ -65,7 +65,7 @@
                                                 {{ category.name }}
                                             </h3>
 
-                                            <h4 class="card-text fst-italic" id="title-slug">
+                                            <h4 class="card-slug fst-italic" id="title-slug">
                                                 {{ category.slug }}
                                             </h4>
 
@@ -74,12 +74,14 @@
                                                     Aucun produit trouvé
                                                 {% else %}
                                                     {% set foundSomething = true %}
-                                                   {{ category.products.first.name }}
-                                                <!--{category.description }-->
+                                                    Produit disponible
+                                                    <!--{{ category.products.first.name }}
+                                                    {{ category.products.first.description }}
+                                                {category.description }-->
                                                 {% endif %}
                                             </p>
 
-                                            <p class="card-text fs-5"
+                                           <!-- <p class="card-text fs-5"
                                                id = "title-modele">Modèle :
                                             </p>
 
@@ -96,12 +98,12 @@
                                             <p class="card-text fs-5"
                                                id = "title-price">Prix :
                                                 <span class="fw-bold"></span>
-                                            </p>
+                                            </p> -->
 
                                             <!-- Ajoutez d'autres informations sur le produit ici -->
 
                                             <a href="{{ path('categories_list', {slug: category.slug}) }}"
-                                               class="btn btn-danger">Voir les produits
+                                               class="btn btn-danger">Voir les {{ category.name }}
                                                 <i class="mx-1 bi bi-tools" style="color:#D9777F"></i>
                                             </a>
 
@@ -142,3 +144,4 @@
 
 
 {% endblock %}
+

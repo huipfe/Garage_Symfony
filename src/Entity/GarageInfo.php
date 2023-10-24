@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\GarageInfoRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: GarageInfoRepository::class)]
 class GarageInfo
@@ -17,7 +18,13 @@ class GarageInfo
     private ?string $address = null;
 
     #[ORM\Column(length: 20)]
+    #[Assert\PositiveOrZero(message: 'Le numéro ne pas être négatif')]
+    #[Assert\Regex(
+        pattern: "/^\d+$/",
+        message: "Le numéro de téléphone doit contenir uniquement des chiffres."
+    )]
     private ?string $phoneNumber = null;
+
 
     #[ORM\Column(length: 100)]
     private ?string $email = null;

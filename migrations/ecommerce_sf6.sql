@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : lun. 25 sep. 2023 à 15:27
+-- Généré le : ven. 20 oct. 2023 à 17:52
 -- Version du serveur : 8.0.30
 -- Version de PHP : 8.2.6
 
@@ -102,7 +102,8 @@ INSERT INTO `doctrine_migration_versions` (`version`, `executed_at`, `execution_
 ('DoctrineMigrations\\Version20230816135625', '2023-08-16 13:56:37', 210),
 ('DoctrineMigrations\\Version20230818081720', '2023-08-18 08:25:32', 1067),
 ('DoctrineMigrations\\Version20230822073728', '2023-08-22 07:38:53', 288),
-('DoctrineMigrations\\Version20230912084458', '2023-09-12 08:47:42', 331);
+('DoctrineMigrations\\Version20230912084458', '2023-09-12 08:47:42', 331),
+('DoctrineMigrations\\Version20230927142023', '2023-09-27 15:08:55', 333);
 
 -- --------------------------------------------------------
 
@@ -122,7 +123,7 @@ CREATE TABLE `garage_info` (
 --
 
 INSERT INTO `garage_info` (`id`, `address`, `phone_number`, `email`) VALUES
-(1, '8 avenue de la prairie verte - Paris 75002', '01 62 23 42 51', 'VincentParrot@gmail.com');
+(1, '8 avenue de la prairie grise - Paris 75006', '0162234260', 'Garage-Parrot@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -167,15 +168,14 @@ CREATE TABLE `images` (
 --
 
 INSERT INTO `images` (`id`, `products_id`, `name`) VALUES
-(104, 25, 'c00eb0d25120ad325709e0705a4fc601.webp'),
-(105, 25, 'f5ee2401f3625418deb7d4ebf41ce0fd.webp'),
-(106, 25, 'ae5ba232bd79da8af44ff274dc955a8f.webp'),
-(107, 26, 'e8e10ab865b528d49224406b6e68faca.webp'),
-(108, 26, '7d8c81cd7bae00428351fe97899da05f.webp'),
-(109, 26, '6364ca1f81f5008dcc9e822dedd39cbb.webp'),
-(110, 25, '01345f9a6491d8960a433c2b778d099a.webp'),
-(111, 29, '1ad44c6243d2ed3ce8ae51044595e948.webp'),
-(112, 30, '516da7addbe747de19f3e944853a1058.webp');
+(151, 66, '7b011cc93be0439a584de5867167cb3c.webp'),
+(154, 70, 'bd01c78eed472ecd514b166378cc8519.webp'),
+(160, 76, 'a95b4c6b88c8ed7cae1428c967416c8c.webp'),
+(161, 77, '644f13c70d9e3e19b85d6a0c629a2975.webp'),
+(162, 77, '56b0c328397c6af68acaf81e5547e91e.webp'),
+(163, 77, '7ab65c843cfe53556738c17ce516cbe2.webp'),
+(164, 78, 'f22ba0d8ac1da26e9d2023cdba35cae5.webp'),
+(165, 79, '4197921c867c4db401c6a03e3eda211e.webp');
 
 -- --------------------------------------------------------
 
@@ -222,7 +222,8 @@ INSERT INTO `orders` (`id`, `coupons_id`, `users_id`, `reference`, `created_at`)
 (1, NULL, 39, '64f9dcd0db6ab', '2023-09-07 14:23:12'),
 (2, NULL, 39, '64f9de04ae590', '2023-09-07 14:28:20'),
 (3, NULL, 39, '64f9defdc634c', '2023-09-07 14:32:29'),
-(4, NULL, 22, '6501c10fbffb5', '2023-09-13 14:02:55');
+(4, NULL, 22, '6501c10fbffb5', '2023-09-13 14:02:55'),
+(5, NULL, 22, '6523caff8898c', '2023-10-09 09:42:23');
 
 -- --------------------------------------------------------
 
@@ -242,14 +243,8 @@ CREATE TABLE `orders_details` (
 --
 
 INSERT INTO `orders_details` (`orders_id`, `products_id`, `quantity`, `price`) VALUES
-(1, 26, 2, 15000000),
-(1, 29, 2, 5000),
-(1, 30, 2, 8010),
-(2, 26, 1, 15000000),
-(2, 29, 1, 5000),
-(3, 25, 1, 150000),
-(3, 26, 1, 15000000),
-(4, 30, 2, 8010);
+(5, 76, 2, 2000),
+(5, 79, 2, 8000000);
 
 -- --------------------------------------------------------
 
@@ -265,18 +260,23 @@ CREATE TABLE `products` (
   `price` int NOT NULL,
   `stock` int NOT NULL,
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '(DC2Type:datetime_immutable)',
-  `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+  `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `years` int NOT NULL,
+  `modeles` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `kilometrage` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `products`
 --
 
-INSERT INTO `products` (`id`, `categories_id`, `name`, `description`, `price`, `stock`, `created_at`, `slug`) VALUES
-(25, 125, 'Service de massage', 'Humm, les bons messages du chef, hummm', 1580, 10, '2023-08-29 14:32:03', 'Service-de-massage'),
-(26, 121, 'Bolide de l\'espace lol.', 'Mdr', 15000000, 2, '2023-08-29 16:03:59', 'Bolide-de-l-espace-lol'),
-(29, 123, 'Service Un du Un', 'Description au piff lol', 5000, 1, '2023-09-01 09:55:48', 'Service-Un-du-Un'),
-(30, 124, 'Service au piff', 'fddfdf', 8010, 10, '2023-09-01 09:57:55', 'Service-au-piff');
+INSERT INTO `products` (`id`, `categories_id`, `name`, `description`, `price`, `stock`, `created_at`, `slug`, `years`, `modeles`, `kilometrage`) VALUES
+(66, 123, 'service 1', 'service 1  descript', 1000000, 10, '2023-10-05 13:55:03', 'service-1', 2018, 'service 1 modele', 10000),
+(70, 125, 'service 3', 'service 3', 150000, 3, '2023-10-05 13:58:23', 'service-3', 2030, 'service 3 modele', 100),
+(76, 124, 'service 2.2', 'service 2.2 desc', 2000, 2, '2023-10-05 15:40:58', 'service-2-2', 2022, 'service 2.2 modele', 20),
+(77, 121, 'test test', 'test', 10000100, 10, '2023-10-05 15:46:26', 'test-test', 2000, 'R7 sniff', 1020),
+(78, 119, 'Voit 5 teste', 'fddfqsd', 100000, 10, '2023-10-06 16:29:55', 'Voit-5-teste', 2015, 'qsdqqds', 100),
+(79, 120, 'voiture de course', 'voiture de course desc lol', 8000000, 2, '2023-10-09 09:21:48', 'voiture-de-course', 2017, 'Quadra sport', 1600);
 
 -- --------------------------------------------------------
 
@@ -296,7 +296,7 @@ CREATE TABLE `users` (
   `city` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '(DC2Type:datetime_immutable)',
   `is_verified` tinyint(1) NOT NULL,
-  `reset_token` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL
+  `reset_token` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -304,9 +304,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `email`, `roles`, `password`, `lastname`, `firstname`, `address`, `zipcode`, `city`, `created_at`, `is_verified`, `reset_token`) VALUES
-(22, 'admin@example.com', '[\"ROLE_ADMIN\"]', '$2y$13$l6M26E4rHoj0u1R.L2O34usPsOeoLV/ztGVYtZZ6vnnsg.DZF8lt6', 'Tervil', 'Ilan', '4 rue Eugène Galbrun', '94130', 'Nogent sur Marne', '2023-08-14 14:04:49', 1, '1_72Lah3eg9G3RZsP81UO4ISYd64T57DUTLsPrQYmww'),
+(22, 'admin@example.com', '[\"ROLE_ADMIN\"]', '$2y$13$ft0bJ70AC7L9AxRTYTLIweE/x9q9JDm1FJMq958h9g/vJ0LZ4r.Qy', 'Tervil', 'Ilan', '4 rue Eugène Galbrun', '94130', 'Nogent sur Marne', '2023-08-14 14:04:49', 1, ''),
 (23, 'olivie90@orange.fr', '[\"ROLE_EMPLOYE\"]', '$2y$13$RS0Wn3GSf5em09KIYp6d3OvwGRSL2kXeto3hO3oVogT9Ul9puipEa', 'Duhamel', 'Claudine', '60, rue Boucher', '09872', 'Meunier-la-Forêt', '2023-08-14 14:04:50', 1, ''),
-(24, 'jules38@sfr.fr', '[]', '$2y$13$O6zdQb8BTX9NjdtQWXQt3OE0j61kP43e1mAIyUByx3kWyBOTX286.', 'Besnard', 'Pauline', '756, boulevard Collin', '03091', 'Lebon', '2023-08-14 14:04:50', 0, ''),
+(24, 'jules38@sfr.fr', '[]', '$2y$13$O6zdQb8BTX9NjdtQWXQt3OE0j61kP43e1mAIyUByx3kWyBOTX286.', 'Besnard', 'Pauline', '756, boulevard Collin', '03091', 'Lebon', '2023-08-14 14:04:50', 1, ''),
 (25, 'rodrigues.helene@berger.com', '[]', '$2y$13$97mrwT2No0UzypF0uQFTReTiIX189zCbYJYc00S8AU1flHpNwip36', 'Robert', 'Aimé', '68, chemin Denis', '28038', 'Blanchard-sur-Mer', '2023-08-14 14:04:51', 0, ''),
 (26, 'capucine.hamel@vallee.fr', '[]', '$2y$13$N3FaAKnaCbdSJztjPn9UTelXz8oMBVguNKpPB4vFdX9vokCWmWBwe', 'Samson', 'Martine', '956, avenue Jérôme Lecomte', '43587', 'Guibert', '2023-08-14 14:04:51', 0, ''),
 (27, 'dufour.sylvie@perret.com', '[]', '$2y$13$7Atbf9MOZcPBa0VbC3syj.CkZUVB6NReANTOlmWHTvi4DsIPnBFVC', 'Dupuy', 'Léon', '590, chemin de Masse', '74369', 'Neveu', '2023-08-14 14:04:52', 0, ''),
@@ -441,7 +441,7 @@ ALTER TABLE `horaires`
 -- AUTO_INCREMENT pour la table `images`
 --
 ALTER TABLE `images`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=113;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=166;
 
 --
 -- AUTO_INCREMENT pour la table `messenger_messages`
@@ -453,13 +453,13 @@ ALTER TABLE `messenger_messages`
 -- AUTO_INCREMENT pour la table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT pour la table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
 
 --
 -- AUTO_INCREMENT pour la table `users`
