@@ -31,17 +31,23 @@
                 </a>
 
             </div>
+
             <div class="col-md-3">
-                <h4>Nos expertises</h4>
-                <p>INSTALLATION DES CAMERAS</p>
-                <p>INSTALLATION DES GPS</p>
-                <p>INSTALLATION ELECTRIQUES</p>
-                <p>CAMERAS DE RECUL</p>
-                <p>CONTROLE D’ACCES</p>
-                <p>ALARMES ANTI-INCENDIE</p>
-                <p>CAPTEURS BIOMETRIQUES</p>
-                <p>ALARMES ANTI-INTRUSION</p>
+                <h4>Nos services & expertises</h4>
+                {% set categories = categories %}
+                <a href="{{ path('categories_list', {'slug': categories[5].slug}) }}" class="text-decoration-none link-light">
+                    <p>{{ categories[5].name }}</p>
+                </a>
+                <a href="{{ path('categories_list', {'slug': categories[6].slug}) }}" class="text-decoration-none link-light">
+                    <p>{{ categories[6].name }}</p>
+                </a>
+                <a href="{{ path('categories_list', {'slug': categories[7].slug}) }}" class="text-decoration-none link-light">
+                    <p>{{ categories[7].name }}</p>
+                </a>
+
             </div>
+
+
             <div class="col-md-3">
                 <h4>Contact</h4>
 

@@ -23,6 +23,13 @@ class MainController extends AbstractController
     #[Route('/', name: 'index')]
     public function index(): Response
     {
+
+        // Vérifiez si l'utilisateur à un compte admin
+        //if (!$this->isGranted('ROLE_ADMIN')) {
+        //$this->addFlash('danger', 'Veuillez vous connecter pour accéder à la page.');
+        //return $this->redirectToRoute('app_login'); // Redirigez l'utilisateur vers la page de connexion
+        //}
+
         $user = $this->security->getUser(); // Récupère l'utilisateur connecté
         return $this->render('Admin/index.html.twig', [
             'user' => $user, // Transmet l'utilisateur à la vue

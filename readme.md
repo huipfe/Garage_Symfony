@@ -1,12 +1,12 @@
-Read me :
+Symfony 6.1 - Garage V.Parrot
 ----------------------------------------------------------------
 
-Title :
+Mail & mdp des comptes inscrits
 ----------------------------------------------------------------
-
 ----------------------------------------------------------------
 
 ### Compte créer par moi, via la fonction d'inscription :
+
 ilan.tervil@wanadoo.fr
 
 6EnVm6F8qpWFtdG
@@ -23,11 +23,16 @@ jojo.tervil@wanadoo.fr
 
 vZv4wdZCbMTnd93
 
+----------------------------------------------------------------
+
+JeuDessai@wanadoo.fr
+
+5Ju!Lkxm@sZkQ4H
 
 ----------------------------------------------------------------
 ----------------------------------------------------------------
 
-### Compte Admin, généré par datafitxure : 
+### Compte Admin, généré par DataFitxures : 
 
 admin@example.com
 
@@ -35,7 +40,7 @@ admin123456789
 
 ----------------------------------------------------------------
 
-#### Comptes Users, généré aléatoirement via la fixture
+#### Comptes Users, généré aléatoirement via DataFitxures
 
 olivie90@orange.fr
 
@@ -47,7 +52,8 @@ capucine.hamel@vallee.fr
 
 dufour.sylvie@perret.com
 
-userFaker123456789
+
+MDP : userFaker123456789
 
 ----------------------------------------------------------------
 ----------------------------------------------------------------

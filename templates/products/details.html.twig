@@ -123,12 +123,12 @@
                                     <div class="m-2">
 
                                         {% for image in product.images %}
-                                            <button class="btn" data-bs-toggle="modal" data-bs-target="#imageModal1">
+                                            <button class="btn" data-bs-toggle="modal" data-bs-target="#imageModal{{ loop.index }}">
                                                 <img
                                                         width="50px"
                                                         height="50px"
                                                         src="{{ asset('assets/images/uploads/products/mini/300-300-') ~ image.name }}"
-                                                        alt={{ product.name }}>
+                                                        alt="{{ product.name }}">
                                             </button>
                                         {% endfor %}
 
@@ -182,12 +182,12 @@
 
                         <!-- Modal 1 -->
                         {% for image in product.images %}
-                        <div
-                                class="modal fade"
-                                id="imageModal1"
-                                tabindex="-1"
-                                aria-labelledby="imageModalLabel1"
-                                aria-hidden="true">
+                            <div
+                                    class="modal fade"
+                                    id="imageModal{{ loop.index }}"
+                                    tabindex="-1"
+                                    aria-labelledby="imageModalLabel{{ loop.index }}"
+                                    aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered modal-lg">
                                 <div class="modal-content">
                                     <div class="modal-header">

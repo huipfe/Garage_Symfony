@@ -25,6 +25,19 @@ class CartController extends AbstractController
     #[Route("/", name: "index")]
     public function index(SessionInterface $session, ProductsRepository $productsRepository): Response
     {
+        // Vérifiez si l'utilisateur à un compte connecté
+        if (!$this->isGranted('ROLE_USER')) {
+            $this->addFlash('danger', 'Veuillez vous connecter pour accéder à votre panier.');
+            return $this->redirectToRoute('app_login'); // Redirigez l'utilisateur vers la page de connexion
+        }
+
+        $user = $this->getUser();
+
+        // Vérifiez si l'utilisateur a validé son compte
+        if ($user->getIsVerified() === false) {
+            $this->addFlash('danger', 'Votre compte doit être vérifié pour accéder au panier.');
+            return $this->redirectToRoute('profile_index'); // Redirigez l'utilisateur vers la page de connexion
+        }
 
         $panier = $session->get('panier', []);
 

@@ -39,7 +39,13 @@ class ProductsController extends AbstractController
     public function add(Request $request, EntityManagerInterface $em, SluggerInterface $slugger,
                         PictureService $pictureService): Response
     {
-        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+        //$this->denyAccessUnlessGranted('ROLE_ADMIN');
+
+        // Vérifiez si l'utilisateur à un compte admin
+        if (!$this->isGranted('ROLE_ADMIN')) {
+        $this->addFlash('danger', 'Veuillez vous connecter à un compte admin pour accéder à la page.');
+        return $this->redirectToRoute('products_index'); // Redirigez l'utilisateur vers la page de connexion
+        }
 
        // On créer un "nouveau produit"
         $product = new Products();

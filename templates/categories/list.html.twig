@@ -36,84 +36,6 @@
             </div>
         </div>
 
-
-        <!-- Barre de filtrage -->
-      <!--
-        <section id="filter-sidebar">
-            <div class=" filtrage-bar ">
-                <h5 class="m-2 p-2 filtrage-title">
-                    Liste des voitures <br> par filtre
-                </h5>
-                <div class="gray-bar d-flex align-items-center">
-                    <div class="form-check ">
-                        <input class="form-check-input"
-                               type="checkbox"
-                               value=""
-                               id="checkbox1"
-                               name="years">
-                        <label
-                                class="form-check-label cursor-pointer"
-                                for="checkbox1">
-                            <span class="checkbox-icon pe-none">+2020</span>
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input
-                                class="form-check-input"
-                                type="checkbox"
-                                value=""
-                                id="checkbox2"
-                                name="years">
-                        <label
-                                class="form-check-label cursor-pointer"
-                                for="checkbox2">
-                            <span class="checkbox-icon pe-none">-2020</span>
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input
-                                class="form-check-input"
-                                type="checkbox"
-                                value=""
-                                id="checkbox3"
-                                name="kilometers">
-                        <label
-                                class="form-check-label cursor-pointer"
-                                for="checkbox3">
-                            <span class="checkbox-icon pe-none">+2000km</span>
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input
-                                class="form-check-input"
-                                type="checkbox"
-                                value=""
-                                id="checkbox4"
-                                name="kilometers">
-                        <label
-                                class="form-check-label cursor-pointer"
-                                for="checkbox4">
-                            <span class="checkbox-icon pe-none">-2000km</span>
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input
-                                class="form-check-input"
-                                type="checkbox"
-                                value=""
-                                id="checkbox5"
-                                name="price">
-                        <label
-                                class="form-check-label cursor-pointer"
-                                for="checkbox5">
-                            <span class="checkbox-icon pe-none">-100000€</span>
-                        </label>
-                    </div>
-                </div>
-            </div>
-        </section>
--->
-
         <!-- Barre de filtrage -->
         <section id="filter-sidebar">
             <div class="filtrage-bar">
@@ -130,7 +52,11 @@
                         <input class="form-check-input" type="checkbox" value="" id="checkbox1" name="years">
                         <label class="form-check-label cursor-pointer" for="checkbox1">
                             <span class="checkbox-icon pe-none">
-                                +2020
+                                {% if category.parent.name == 'Services' %}
+                                    +2030
+                                {% else %}
+                                    +2020
+                                {% endif %}
                             </span>
                         </label>
                     </div>
@@ -138,7 +64,11 @@
                         <input class="form-check-input" type="checkbox" value="" id="checkbox2" name="years">
                         <label class="form-check-label cursor-pointer" for="checkbox2">
                             <span class="checkbox-icon pe-none">
-                                -2020
+                                {% if category.parent.name == 'Services' %}
+                                    -2030
+                                {% else %}
+                                    -2020
+                                {% endif %}
                             </span>
                         </label>
                     </div>
@@ -147,7 +77,7 @@
                         <label class="form-check-label cursor-pointer" for="checkbox3">
                             <span class="checkbox-icon pe-none">
                                 {% if category.parent.name == 'Services' %}
-                                    +2000h
+                                    +200h
                                 {% else %}
                                     +2000km
                                 {% endif %}
@@ -159,7 +89,7 @@
                         <label class="form-check-label cursor-pointer" for="checkbox4">
                             <span class="checkbox-icon pe-none">
                                 {% if category.parent.name == 'Services' %}
-                                    -2000h
+                                    -200h
                                 {% else %}
                                     -2000km
                                 {% endif %}
@@ -170,7 +100,11 @@
                         <input class="form-check-input" type="checkbox" value="" id="checkbox5" name="price">
                         <label class="form-check-label cursor-pointer" for="checkbox5">
                             <span class="checkbox-icon pe-none">
-                                -100000€
+                                {% if category.parent.name == 'Services' %}
+                                    -1000€
+                                {% else %}
+                                    -100000€
+                                {% endif %}
                             </span>
                         </label>
                     </div>
