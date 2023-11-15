@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : ven. 20 oct. 2023 à 17:52
+-- Généré le : ven. 10 nov. 2023 à 10:08
 -- Version du serveur : 8.0.30
 -- Version de PHP : 8.2.6
 
@@ -307,11 +307,13 @@ INSERT INTO `users` (`id`, `email`, `roles`, `password`, `lastname`, `firstname`
 (22, 'admin@example.com', '[\"ROLE_ADMIN\"]', '$2y$13$ft0bJ70AC7L9AxRTYTLIweE/x9q9JDm1FJMq958h9g/vJ0LZ4r.Qy', 'Tervil', 'Ilan', '4 rue Eugène Galbrun', '94130', 'Nogent sur Marne', '2023-08-14 14:04:49', 1, ''),
 (23, 'olivie90@orange.fr', '[\"ROLE_EMPLOYE\"]', '$2y$13$RS0Wn3GSf5em09KIYp6d3OvwGRSL2kXeto3hO3oVogT9Ul9puipEa', 'Duhamel', 'Claudine', '60, rue Boucher', '09872', 'Meunier-la-Forêt', '2023-08-14 14:04:50', 1, ''),
 (24, 'jules38@sfr.fr', '[]', '$2y$13$O6zdQb8BTX9NjdtQWXQt3OE0j61kP43e1mAIyUByx3kWyBOTX286.', 'Besnard', 'Pauline', '756, boulevard Collin', '03091', 'Lebon', '2023-08-14 14:04:50', 1, ''),
-(25, 'rodrigues.helene@berger.com', '[]', '$2y$13$97mrwT2No0UzypF0uQFTReTiIX189zCbYJYc00S8AU1flHpNwip36', 'Robert', 'Aimé', '68, chemin Denis', '28038', 'Blanchard-sur-Mer', '2023-08-14 14:04:51', 0, ''),
+(25, 'rodrigues.helene@berger.com', '[]', '$2y$13$97mrwT2No0UzypF0uQFTReTiIX189zCbYJYc00S8AU1flHpNwip36', 'Robert', 'Aimé', '68, chemin Denis', '28038', 'Blanchard-sur-Mer', '2023-08-14 14:04:51', 1, ''),
 (26, 'capucine.hamel@vallee.fr', '[]', '$2y$13$N3FaAKnaCbdSJztjPn9UTelXz8oMBVguNKpPB4vFdX9vokCWmWBwe', 'Samson', 'Martine', '956, avenue Jérôme Lecomte', '43587', 'Guibert', '2023-08-14 14:04:51', 0, ''),
 (27, 'dufour.sylvie@perret.com', '[]', '$2y$13$7Atbf9MOZcPBa0VbC3syj.CkZUVB6NReANTOlmWHTvi4DsIPnBFVC', 'Dupuy', 'Léon', '590, chemin de Masse', '74369', 'Neveu', '2023-08-14 14:04:52', 0, ''),
 (38, 'ilan.tervil@wanadoo.fr', '[]', '$2y$13$PpBXrSjz4Tm5qRJG3D00SuQ5vEuguS7nVi.wii0cyEOYEQUmWf4We', 'Tervil', 'Ilan', '4 Rue Eugène Galbrun', '94130', 'Nogent-sur-Marne', '2023-08-21 08:07:13', 1, ''),
-(39, 'test.tervil@wanadoo.fr', '[]', '$2y$13$2BroQgisbVyok68FNdBsq.Nxt2DJa9XxSK5G6LabcxtZ60Hk9ouNS', 'Tervilux', 'Ilanux', '4 Rue Eugène Galbrun', '94130', 'Nogent-sur-Marne', '2023-08-21 12:53:07', 1, '');
+(39, 'test.tervil@wanadoo.fr', '[]', '$2y$13$2BroQgisbVyok68FNdBsq.Nxt2DJa9XxSK5G6LabcxtZ60Hk9ouNS', 'Tervilux', 'Ilanux', '4 Rue Eugène Galbrun', '94130', 'Nogent-sur-Marne', '2023-08-21 12:53:07', 1, ''),
+(40, 'Jojo.tervil@wanadoo.fr', '[]', '$2y$13$san5w1MmIuTCQhD1w7B0reKphwCzH.7AsPHmxrhTam3YhX10.EJj2', 'Tervil', 'Jonas', '5 rue Eugène Galbrun', '94130', 'Nogent Sur Marne', '2023-10-20 17:52:48', 1, NULL),
+(41, 'Jeu.d\'essai@wanadoo.fr', '[]', '$2y$13$3xRj2tshlD1nWANbtY9u0OwZrvpTE/yEYpVYbEVKeBvelFwjO9C6e', 'd\'essai', 'Jeu', '4 rue Eugène Galbrun', '94130', 'Nogent Sur Marne', '2023-10-25 14:57:45', 1, NULL);
 
 --
 -- Index pour les tables déchargées
@@ -441,7 +443,7 @@ ALTER TABLE `horaires`
 -- AUTO_INCREMENT pour la table `images`
 --
 ALTER TABLE `images`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=166;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=169;
 
 --
 -- AUTO_INCREMENT pour la table `messenger_messages`
@@ -459,13 +461,13 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT pour la table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
 
 --
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- Contraintes pour les tables déchargées

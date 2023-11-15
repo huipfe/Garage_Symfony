@@ -38,3 +38,11 @@ services:
         tags:
             - { name: twig.extension }
 
+
+# config/services.yaml
+
+    App\Twig\CategoriesExtension:
+        arguments:
+            $categoriesRepository: '@App\Repository\CategoriesRepository'
+        tags:
+            - { name: 'twig.extension' }

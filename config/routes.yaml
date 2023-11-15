@@ -28,7 +28,5 @@ admin_products_delete:
     controller: 'App\Controller\Admin\ProductsController::delete'
     methods: ['POST']
 
-categories_list:
-    path: '/categories/{slug}'
-    controller: 'App\Controller\CategoriesController::details'
+
 
